@@ -1,13 +1,5 @@
-import React from 'react';
-import '../style.scss';
-
-// function App() {
-//   return (
-//     <div className="test-block">
-//       <h1>React text22</h1>
-//     </div>
-//   );
-// }
+import React from "react";
+import "../style.scss";
 
 const App = () => (
   <div className="test-block">
