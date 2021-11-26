@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --open",
-    "lint": "eslint 'src/**/*.{js,jsx}'"
+    "lint": "eslint 'src/**/*.{js,jsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,jsx}'",
+    "prettier": "prettier 'src/**/*.{js,jsx}'",
+    "prettier:fix": "prettier 'src/**/*.{js,jsx}' --write"
   },
   "author": "",
   "license": "ISC",
@@ -42,5 +45,10 @@
     "@babel/polyfill": "^7.12.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run prettier"
+    }
   }
 }
