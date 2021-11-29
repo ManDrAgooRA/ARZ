@@ -1,10 +1,13 @@
-import React from 'react'
-import '../style.scss'
+import React from 'react';
+import '../style.scss';
 
-export default function App() {
-    return (
-        <div className='test-block'>
-            <h1>React text</h1>
-        </div>
-    )
-}
+const App = () => (
+  <div className="test-block">
+    <h1>React text24</h1>
+    <div className="box">
+      <span>1</span>
+    </div>
+  </div>
+);
+
+export default App;
