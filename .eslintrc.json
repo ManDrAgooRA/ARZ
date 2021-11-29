@@ -23,6 +23,8 @@
     "prettier"
   ],
   "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
+    "quotes": [ 2, "single" ],
     "max-len": [
       "error",
       {
