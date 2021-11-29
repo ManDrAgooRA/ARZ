@@ -45,6 +45,7 @@
       {
         "namedComponents": "arrow-function"
       }
-    ]
+    ],
+    "no-plusplus": "off"
   }
 }
