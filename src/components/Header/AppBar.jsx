@@ -12,6 +12,8 @@ import { Menu as MenuIcon } from 'grommet-icons';
 import './header.scss';
 
 const AppBar = () => {
+  const loginStatus = true;
+
   return (
     <Header background="dark-1" className="header">
       <Anchor href="/#">
@@ -21,31 +23,46 @@ const AppBar = () => {
         {(size) =>
           size === 'small' ? (
             <Box justify="end">
-              <Menu
-                a11yTitle="Navigation Menu"
-                dropProps={{ align: { top: 'bottom', right: 'right' } }}
-                icon={<MenuIcon color="light-1" />}
-                items={[
-                  {
-                    label: <Box pad="medium">login</Box>,
-                    href: '/#',
-                  },
-                  {
-                    label: <Box pad="small">Sign up</Box>,
-                    href: '/#',
-                  },
-                  {
-                    label: <Box pad="small">logout</Box>,
-                    href: '/#',
-                  },
-                ]}
-              />
+              {loginStatus ? (
+                <Menu
+                  a11yTitle="Navigation Menu"
+                  dropProps={{ align: { top: 'bottom', right: 'right' } }}
+                  icon={<MenuIcon color="light-1" />}
+                  items={[
+                    {
+                      label: <Box pad="small">Logout</Box>,
+                      href: '/#',
+                    },
+                  ]}
+                />
+              ) : (
+                <Menu
+                  a11yTitle="Navigation Menu"
+                  dropProps={{ align: { top: 'bottom', right: 'right' } }}
+                  icon={<MenuIcon color="light-1" />}
+                  items={[
+                    {
+                      label: <Box pad="medium">Login</Box>,
+                      href: '/#',
+                    },
+                    {
+                      label: <Box pad="small">Sign up</Box>,
+                      href: '/#',
+                    },
+                  ]}
+                />
+              )}
             </Box>
           ) : (
             <Nav justify="end" direction="row" gap="medium">
-              <Anchor href="/#" label="Login" color="light-1" />
-              <Anchor href="/#" label="Sign up" color="light-1" />
-              <Anchor href="/#" label="Logout" color="light-1" />
+              {loginStatus ? (
+                <Anchor href="/#" label="Logout" color="light-1" />
+              ) : (
+                <>
+                  <Anchor href="/#" label="Login" color="light-1" />
+                  <Anchor href="/#" label="Sign up" color="light-1" />
+                </>
+              )}
             </Nav>
           )
         }
