@@ -33,7 +33,7 @@
       }
     ],
     "no-unexpected-multiline": "error",
-    "multiline-ternary": ["error", "always"],
+    "multiline-ternary": ["error", "never"],
     "prettier/prettier": [
       "error",
       {
