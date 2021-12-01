@@ -1,7 +1,6 @@
 import React from 'react';
 import { FacebookOption, Instagram, Twitter, Youtube } from 'grommet-icons';
 import { Anchor, Box, Footer, Text, Image } from 'grommet';
-import './footer.scss';
 
 const Media = () => (
   <Box direction="row" gap="xxsmall" justify="center">
