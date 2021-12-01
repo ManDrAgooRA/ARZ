@@ -32,6 +32,7 @@
         "tabWidth": 2
       }
     ],
+    "import/prefer-default-export": "off",
     "no-unexpected-multiline": "error",
     "prettier/prettier": [
       "error",
