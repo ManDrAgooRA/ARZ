@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grommet } from 'grommet';
-import AppBar from './Header/AppBar';
+import AppBar from './AppBar/AppBar';
 import theme from '../constants';
 import './styles/style.scss';
 

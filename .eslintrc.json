@@ -33,11 +33,10 @@
       }
     ],
     "no-unexpected-multiline": "error",
-    "multiline-ternary": ["error", "never"],
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
+        "endOfLine": "auto"        
       }
     ],
     "react/function-component-definition": [
