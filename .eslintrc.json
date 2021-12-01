@@ -32,12 +32,12 @@
         "tabWidth": 2
       }
     ],
+    "import/prefer-default-export": "off",
     "no-unexpected-multiline": "error",
-    "multiline-ternary": ["error", "always"],
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
+        "endOfLine": "auto"        
       }
     ],
     "react/function-component-definition": [

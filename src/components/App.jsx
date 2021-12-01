@@ -1,13 +1,15 @@
 import React from 'react';
-import '../style.scss';
+import { Grommet } from 'grommet';
+import AppBar from './AppBar/AppBar';
+import { THEME } from '../constants';
+import './styles/style.scss';
 
-const App = () => (
-  <div className="test-block">
-    <h1>React text24</h1>
-    <div className="box">
-      <span>1</span>
-    </div>
-  </div>
-);
+const App = () => {
+  return (
+    <Grommet theme={THEME}>
+      <AppBar />
+    </Grommet>
+  );
+};
 
 export default App;
