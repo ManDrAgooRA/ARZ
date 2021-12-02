@@ -4,7 +4,6 @@ import Footer from '../Footer/Footer';
 import AppBar from '../AppBar/AppBar';
 
 const Layout = ({ children }) => {
-  // console.log(typeof children)
   return (
     <>
       <AppBar />
