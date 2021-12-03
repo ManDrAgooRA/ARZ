@@ -1,29 +1,25 @@
 import React from 'react';
-import { Box, Grid } from 'grommet';
+import { Grommet, Grid, ResponsiveContext } from 'grommet';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import ProductList from '../../components/ProductList/ProductList';
+import './mainPage.scss';
 
 const MainPage = () => {
   return (
-    <Grid
-      rows={['xsmall', 'large']}
-      columns={['1/4', 'flex']}
-      areas={[
-        ['sidebar', 'main'],
-        ['footer', 'footer'],
-      ]}
-      gap="small"
-      height={{ min: '100vh' }}
-    >
-      <ProductList gredArea="main" />
-      <Box background="light-5" gridArea="sidebar">
-        <Sidebar gredArea="sidebar" />
-      </Box>
-
-      {/* <Box background="light-2" gridArea="main">
-        Main
-      </Box> */}
-    </Grid>
+    <Grommet>
+      <ResponsiveContext.Consumer>
+        {(size) => (
+          <Grid
+            columns={size !== 'small' ? ['1/4', 'flex'] : ['full']}
+            gap="small"
+            className="main"
+          >
+            <Sidebar />
+            <ProductList />
+          </Grid>
+        )}
+      </ResponsiveContext.Consumer>
+    </Grommet>
   );
 };
 
