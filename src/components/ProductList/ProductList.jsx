@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { v4 as uuidv4 } from 'uuid';
 import ProductCard from '../ProductCard/ProductCard';
+import { getGoods } from '../../BusinessLogic';
 import './products.scss';
 
 const ProductList = () => {
@@ -10,10 +11,7 @@ const ProductList = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(
-        'http://localhost:3004/goods?_limit=20&_page=1'
-      );
-      const goods = await response.json();
+      const goods = await getGoods();
       setDataGoods(goods);
     };
 
