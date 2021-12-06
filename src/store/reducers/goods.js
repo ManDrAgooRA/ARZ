@@ -2,7 +2,31 @@
 
 export const initialState = {
   goods: [],
-  selectedGoods: [{ name: 'goods', id: 2 }],
+  selectedGoods: {
+    id: 358,
+    title: 'Sleek Wooden Car',
+    image: 'http://placeimg.com/640/480/nature',
+    category: [
+      {
+        id: 12,
+      },
+    ],
+    price: '998.00',
+    count: 39,
+    raiting: 49,
+    country: 'Senegal',
+    ifFavorite: false,
+    specification: [
+      {
+        title: 'phone',
+        brend: 'samsung',
+      },
+    ],
+    description:
+      'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and',
+    isSale: false,
+    salePrice: 1881,
+  },
 };
 
 export function goods(state = initialState, action = {}) {

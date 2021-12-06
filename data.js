@@ -12,7 +12,7 @@ module.exports = () => {
       title: faker.commerce.productName(),
       image: faker.random.image(),
       category: [{ id: mathRandom(1, 20) }],
-      price: faker.commerce.price(),
+      price: `${faker.commerce.price()}₴`,
       count: mathRandom(1, 100),
       raiting: mathRandom(0, 100),
       country: faker.address.country(),
