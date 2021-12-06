@@ -1,10 +1,12 @@
 import React from 'react';
 import { Grommet } from 'grommet';
 import { Provider } from 'react-redux';
+// import { BrowserRouter } from 'react-router-dom';
+import Routes from '../routes/Routes';
 import { THEME } from '../constants';
 import { store } from '../store';
 import Layout from '../components/Layout/Layout';
-import MainPage from '../pages/MainPage/MainPage';
+// import MainPage from '../pages/MainPage/MainPage';
 import '../styles/style.scss';
 
 const App = () => {
@@ -12,7 +14,7 @@ const App = () => {
     <Provider store={store}>
       <Grommet theme={THEME}>
         <Layout>
-          <MainPage />
+          <Routes />
         </Layout>
       </Grommet>
     </Provider>

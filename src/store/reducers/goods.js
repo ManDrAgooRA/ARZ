@@ -1,4 +1,4 @@
-// import { goodsActions } from '../actions';
+import { goodsActions } from '../actions';
 
 export const initialState = {
   goods: [],
@@ -27,10 +27,25 @@ export const initialState = {
     isSale: false,
     salePrice: 1881,
   },
+  isLoadCurrentGoods: true,
 };
 
 export function goods(state = initialState, action = {}) {
   switch (action.type) {
+    case goodsActions.FETCH_CURRENT_GODDS_SUCCESS:
+      return {
+        ...state,
+        selectedGoods: action.payload,
+        isLoadCurrentGoods: false,
+      };
+
+    case goodsActions.CLEAR_CURRENT_GOODS:
+      return {
+        ...state,
+        selectedGoods: null,
+        isLoadCurrentGoods: true,
+      };
+
     default:
       return state;
   }

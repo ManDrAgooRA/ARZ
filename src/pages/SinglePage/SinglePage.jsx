@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grommet, Box, ResponsiveContext, Grid, Image } from 'grommet';
-import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCurrentGoods } from '../../store/thunks/goods';
+import { clearCurrentUser } from '../../store/actions';
+import { MySpinner } from '../../components/MySpinner/MySpinner';
 import './singlePage.scss';
 
 const SinglePage = () => {
-  const { selectedGoods } = useSelector((state) => state.goods);
+  const { selectedGoods, isLoadCurrentGoods } = useSelector(
+    (state) => state.goods
+  );
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchCurrentGoods(id));
+    return () => {
+      dispatch(clearCurrentUser());
+    };
+  }, [dispatch, id]);
+
+  if (isLoadCurrentGoods) {
+    return <MySpinner />;
+  }
 
   return (
     <Grommet>
@@ -18,6 +38,13 @@ const SinglePage = () => {
               <Image src={selectedGoods.image} />
             </Box>
             <Box className="card-content">
+              <button
+                className="btn btn-back"
+                type="button"
+                onClick={() => navigate('/')}
+              >
+                Go back
+              </button>
               <span>id: {selectedGoods.id}</span>
               <span>{selectedGoods.title}</span>
               <span>{selectedGoods.price}</span>
