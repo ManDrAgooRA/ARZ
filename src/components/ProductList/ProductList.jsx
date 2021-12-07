@@ -23,10 +23,10 @@ const ProductList = () => {
 
   return (
     <Grommet pad="small" theme={THEME}>
-      <Box className="products__list">
+      <Box pad="small" className="products__list">
         <Grid gap="small" columns={getCountColumns(size)}>
           {goods.map((item) => (
-            <ProductCard pad="large" key={item.id} item={item} />
+            <ProductCard pad="small" key={item.id} item={item} />
           ))}
         </Grid>
       </Box>

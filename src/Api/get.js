@@ -4,7 +4,6 @@ export const getAllGoods = (limit, page) => {
   return HTTPService.get(`goods?_limit=${limit}&_page=${page}`);
 };
 
-export const fetchCurrentGoods = async (id) => {
-  const response = await fetch(`${process.env.API_KEY}goods?id=${id}`);
-  return response;
+export const getCurrentGoods = (id) => {
+  return HTTPService.get(`goods?id=${id}`);
 };

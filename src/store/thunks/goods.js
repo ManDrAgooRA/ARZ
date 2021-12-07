@@ -2,8 +2,7 @@ import {
   fetchAllGoodsSuccess,
   fetchCurrentGoodsSuccess,
 } from '../actions/goodsActions';
-import { getGoods } from '../../BusinessLogic';
-import * as api from '../../Api';
+import { getGoods, selectedGoods } from '../../BusinessLogic';
 
 export const fetchAllGoods = (limit, page) => {
   return async (dispatch) => {
@@ -19,9 +18,8 @@ export const fetchAllGoods = (limit, page) => {
 export const fetchCurrentGoods = (id) => {
   return async (dispatch) => {
     try {
-      const selectedGoods = await api.fetchCurrentGoods(id);
-      const goodsParsed = await selectedGoods.json();
-      dispatch(fetchCurrentGoodsSuccess(goodsParsed[0]));
+      const response = await selectedGoods(id);
+      dispatch(fetchCurrentGoodsSuccess(response[0]));
     } catch (e) {
       console.err(e);
     }
