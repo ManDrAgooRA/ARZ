@@ -1,8 +1,7 @@
-import { fetchData } from '../Api/get';
+import { getAllGoods } from '../Api';
 
-export const getGoods = async () => {
-  const fetchGoods = await fetchData();
-  const parseGoods = await fetchGoods.json();
+export const getGoods = async (limit, page) => {
+  const { data } = await getAllGoods(limit, page);
 
-  return parseGoods;
+  return data;
 };

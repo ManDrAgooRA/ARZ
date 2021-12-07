@@ -14,7 +14,7 @@ const ProductList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllGoods());
+    dispatch(fetchAllGoods(20, 1));
   }, [dispatch]);
 
   if (isLoadGoods) {

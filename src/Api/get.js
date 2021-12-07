@@ -1,6 +1,7 @@
-export const fetchData = async () => {
-  const response = await fetch(`${process.env.API_KEY}goods?_limit=20&_page=1`);
-  return response;
+import HTTPService from '../services/httpService';
+
+export const getAllGoods = (limit, page) => {
+  return HTTPService.get(`goods?_limit=${limit}&_page=${page}`);
 };
 
 export const fetchCurrentGoods = async (id) => {
