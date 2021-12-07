@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebPackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -8,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
+    publicPath: '/',
   },
   devServer: {
     port: 3000,
@@ -21,6 +23,9 @@ module.exports = {
       template: './src/index.html',
     }),
     new CleanWebpackPlugin(),
+    new Dotenv({
+      path: './.env',
+    }),
   ],
   module: {
     rules: [

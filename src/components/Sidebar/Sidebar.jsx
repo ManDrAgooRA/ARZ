@@ -1,12 +1,11 @@
 import React from 'react';
-import { Sidebar } from 'grommet';
 import './sidebar.scss';
 
 const MeSydebar = () => {
   return (
-    <Sidebar responsive className="sidebar">
+    <div className="sidebar">
       <span>sidebar</span>
-    </Sidebar>
+    </div>
   );
 };
 

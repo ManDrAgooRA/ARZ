@@ -7,16 +7,16 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   const goSinglePage = () => {
-    navigate(`/${item.id}`);
+    navigate(`goods/${item.id}`);
   };
 
   return (
     <Card pad="large" onClick={goSinglePage}>
-      <Box>
+      <Box className="card-img">
         <img src={item.image} alt={item.title} />
       </Box>
       <span>{item.title}</span>
-      <span>{`${item.price}₴`}</span>
+      <span>{item.price}</span>
     </Card>
   );
 };
@@ -24,4 +24,5 @@ const ProductCard = ({ item }) => {
 ProductCard.propTypes = {
   item: PropTypes.object,
 };
+
 export default ProductCard;

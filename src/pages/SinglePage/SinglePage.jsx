@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grommet, Box, ResponsiveContext, Grid, Image } from 'grommet';
+import { Grommet, Box, ResponsiveContext, Grid } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentGoods } from '../../store/thunks/goods';
@@ -35,7 +35,7 @@ const SinglePage = () => {
             gap="small"
           >
             <Box className="card-img">
-              <Image src={selectedGoods.image} />
+              <img src={selectedGoods.image} alt={selectedGoods.title} />
             </Box>
             <Box className="card-content">
               <button

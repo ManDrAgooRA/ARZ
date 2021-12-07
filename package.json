@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "dotenv-webpack": "^7.0.3",
     "faker": "^5.5.3",
     "grommet": "^2.19.1",
     "grommet-icons": "^4.7.0",

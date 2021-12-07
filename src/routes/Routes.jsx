@@ -9,7 +9,7 @@ const MyRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/:id" element={<SinglePage />} />
+        <Route path="goods/:id" element={<SinglePage />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
