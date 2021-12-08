@@ -1,4 +1,9 @@
-export const fetchData = async () => {
-  const response = await fetch('http://localhost:3004/goods?_limit=20&_page=1');
-  return response;
+import HTTPService from '../services/httpService';
+
+export const getAllGoods = (limit, page) => {
+  return HTTPService.get(`goods?_limit=${limit}&_page=${page}`);
+};
+
+export const getCurrentGoods = (id) => {
+  return HTTPService.get(`goods?id=${id}`);
 };

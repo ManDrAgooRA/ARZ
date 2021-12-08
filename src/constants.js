@@ -6,7 +6,14 @@ export const THEME = {
       height: '20px',
     },
     colors: {
-      focus: 'light-1',
+      focus: 'light-3',
+    },
+  },
+  card: {
+    hover: {
+      container: {
+        elevation: 'large',
+      },
     },
   },
 };

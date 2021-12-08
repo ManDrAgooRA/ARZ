@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-import './components/styles/style.scss';
+import App from './utils/App';
+import './styles/style.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));
