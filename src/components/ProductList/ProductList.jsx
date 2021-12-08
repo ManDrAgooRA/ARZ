@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../ProductCard/ProductCard';
-import { getCountColumns } from '../../utils';
+import { getCountColumns, parsSortString } from '../../utils';
 import { THEME } from '../../constants';
 import { fetchAllGoods } from '../../store/thunks/goods';
 import { MySpinner } from '../MySpinner/MySpinner';
@@ -10,12 +10,14 @@ import './products.scss';
 
 const ProductList = () => {
   const size = useContext(ResponsiveContext);
-  const { goods, isLoadGoods } = useSelector((state) => state.goods);
   const dispatch = useDispatch();
+  const { goods, isLoadGoods, sortString } = useSelector(
+    (state) => state.goods
+  );
 
   useEffect(() => {
-    dispatch(fetchAllGoods(20, 1));
-  }, [dispatch]);
+    dispatch(fetchAllGoods(20, 1, parsSortString(sortString)));
+  }, [dispatch, sortString]);
 
   if (isLoadGoods) {
     return <MySpinner />;

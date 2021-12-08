@@ -17,6 +17,7 @@ const ProductCard = ({ item }) => {
       </Box>
       <span>{item.title}</span>
       <span>{item.price}</span>
+      <span>{item.raiting}</span>
     </Card>
   );
 };

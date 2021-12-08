@@ -27,6 +27,7 @@ export const initialState = {
     isSale: false,
     salePrice: 1881,
   },
+  sortString: '',
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
@@ -52,6 +53,12 @@ export function goods(state = initialState, action = {}) {
         ...state,
         selectedGoods: null,
         isLoadCurrentGoods: true,
+      };
+
+    case goodsActions.SET_SORT_STRING:
+      return {
+        ...state,
+        sortString: action.payload,
       };
 
     default:
