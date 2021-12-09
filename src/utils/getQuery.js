@@ -1,4 +1,4 @@
-export const getQuery = ({ limit, page, sortBy }) => {
+export const getQuery = ({ limit = 20, page = 1, sortBy = 'Raitnig DESC' }) => {
   const sort = sortBy.split(' ')[0].toLowerCase();
   const order = sortBy.split(' ')[1];
 
