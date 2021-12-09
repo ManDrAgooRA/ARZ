@@ -48,12 +48,7 @@ const SinglePage = () => {
               <span>id: {selectedGoods.id}</span>
               <span>{selectedGoods.title}</span>
               <span>{selectedGoods.price}</span>
-              <span>Catagory:</span>
-              <ul>
-                {selectedGoods.category.map((item) => {
-                  return <li key={item.id}>{item.id}</li>;
-                })}
-              </ul>
+              <span>Catagory: {selectedGoods.category}</span>
               <span>Country: {selectedGoods.country}</span>
             </Box>
           </Grid>
