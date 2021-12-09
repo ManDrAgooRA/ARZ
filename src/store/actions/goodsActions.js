@@ -3,6 +3,9 @@ export const goodsActions = {
   FETCH_ALL_GOODS_SUCCESS: '[GOODS] fetch all godds success',
   CLEAR_CURRENT_GOODS: '[GOODS] clear current goods',
   SET_SORT_STRING: '[GOODS] set sort string',
+  SET_COUNTRIES: '[GOODS] set countries',
+  SET_SELECTED_COUNTRY: '[GOODS] set selected country',
+  SET_CATEGORIES: '[GOODS] set categories',
 };
 
 export const fetchAllGoodsSuccess = (allGoods) => ({
@@ -22,4 +25,19 @@ export const clearCurrentUser = () => ({
 export const setSortSting = (sortString) => ({
   type: goodsActions.SET_SORT_STRING,
   payload: sortString,
+});
+
+export const setCountries = (countries) => ({
+  type: goodsActions.SET_COUNTRIES,
+  payload: countries,
+});
+
+export const setSelectedCountry = (selectedCountry) => ({
+  type: goodsActions.SET_SELECTED_COUNTRY,
+  payload: selectedCountry,
+});
+
+export const setCategories = (categories) => ({
+  type: goodsActions.SET_CATEGORIES,
+  payload: categories,
 });
