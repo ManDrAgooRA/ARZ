@@ -4,10 +4,10 @@ import {
 } from '../actions/goodsActions';
 import { getGoods, selectedGoods } from '../../BusinessLogic';
 
-export const fetchAllGoods = (limit, page, sortString) => {
+export const fetchAllGoods = ({ limit, page, sortBy }) => {
   return async (dispatch) => {
     try {
-      const allGoodsParse = await getGoods(limit, page, sortString);
+      const allGoodsParse = await getGoods({ limit, page, sortBy });
       dispatch(fetchAllGoodsSuccess(allGoodsParse));
     } catch (e) {
       console.error(e);

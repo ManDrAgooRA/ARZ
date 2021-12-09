@@ -1,2 +1,2 @@
 export * from './getCoutnColumns';
-export * from './parseSortString';
+export * from './getQuery';

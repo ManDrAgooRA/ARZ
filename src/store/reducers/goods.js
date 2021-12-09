@@ -27,7 +27,7 @@ export const initialState = {
     isSale: false,
     salePrice: 1881,
   },
-  sortString: '',
+  sortBy: 'Price ASC',
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
@@ -58,7 +58,7 @@ export function goods(state = initialState, action = {}) {
     case goodsActions.SET_SORT_STRING:
       return {
         ...state,
-        sortString: action.payload,
+        sortBy: action.payload,
       };
 
     default:
