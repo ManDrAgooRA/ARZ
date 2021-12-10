@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CheckBoxGroup, Heading } from 'grommet';
-import { setCountries, setSelectedCountry } from '../../store/actions';
-import { getUniqueCountries } from '../../utils/getUniqueCountries';
+import { setCountries } from '../../store/actions';
+import { getUniqueData } from '../../utils';
 import './filter.scss';
 
 const Filter = () => {
-  const { goods, selectedCountry } = useSelector((state) => state.goods);
+  const { goods, countries } = useSelector((state) => state.goods);
   const dispatch = useDispatch();
-  const [value, setValue] = useState(selectedCountry);
+  const [value, setValue] = useState(countries);
 
   useEffect(() => {
     dispatch(setCountries(value));
-    dispatch(setSelectedCountry(value));
   }, [value, dispatch]);
 
   return (
@@ -25,7 +24,7 @@ const Filter = () => {
           aria-labelledby="check-box-formfield-id"
           value={value}
           onChange={({ value: nextValue }) => setValue(nextValue)}
-          options={getUniqueCountries({ goods })}
+          options={getUniqueData({ uniqueData: 'countries', goods })}
         />
       </div>
     </>

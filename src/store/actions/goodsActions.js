@@ -4,7 +4,6 @@ export const goodsActions = {
   CLEAR_CURRENT_GOODS: '[GOODS] clear current goods',
   SET_SORT_STRING: '[GOODS] set sort string',
   SET_COUNTRIES: '[GOODS] set countries',
-  SET_SELECTED_COUNTRY: '[GOODS] set selected country',
   SET_CATEGORIES: '[GOODS] set categories',
 };
 
@@ -30,11 +29,6 @@ export const setSortSting = (sortString) => ({
 export const setCountries = (countries) => ({
   type: goodsActions.SET_COUNTRIES,
   payload: countries,
-});
-
-export const setSelectedCountry = (selectedCountry) => ({
-  type: goodsActions.SET_SELECTED_COUNTRY,
-  payload: selectedCountry,
 });
 
 export const setCategories = (categories) => ({

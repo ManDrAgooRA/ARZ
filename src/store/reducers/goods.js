@@ -29,8 +29,7 @@ export const initialState = {
   },
   sortBy: 'Price ASC',
   countries: [],
-  selectedCountry: [],
-  categories: null,
+  categories: [],
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
@@ -68,12 +67,6 @@ export function goods(state = initialState, action = {}) {
       return {
         ...state,
         countries: action.payload,
-      };
-
-    case goodsActions.SET_SELECTED_COUNTRY:
-      return {
-        ...state,
-        selectedCountry: [...action.payload],
       };
 
     default:
