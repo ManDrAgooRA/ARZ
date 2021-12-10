@@ -69,6 +69,12 @@ export function goods(state = initialState, action = {}) {
         countries: action.payload,
       };
 
+    case goodsActions.SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
     default:
       return state;
   }

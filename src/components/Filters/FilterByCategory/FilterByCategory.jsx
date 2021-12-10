@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CheckBoxGroup, Heading } from 'grommet';
-import { setCountries } from '../../store/actions';
-import { getUniqueData } from '../../utils';
-import './filter.scss';
+import { setCategories } from '../../../store/actions';
+import { getUniqueData } from '../../../utils';
 
-const Filter = () => {
-  const { goods, countries } = useSelector((state) => state.goods);
+const FilterByCountry = () => {
+  const { goods, categories } = useSelector((state) => state.goods);
   const dispatch = useDispatch();
-  const [value, setValue] = useState(countries);
+  const [value, setValue] = useState(categories);
 
   useEffect(() => {
-    dispatch(setCountries(value));
+    dispatch(setCategories(value));
   }, [value, dispatch]);
 
   return (
     <>
-      <Heading level="3">Filter by countries: {goods.length}</Heading>
+      <Heading level="3">Filter by categories: {goods.length}</Heading>
       <div className="filter">
         <CheckBoxGroup
           id="check-box-group-id"
@@ -24,11 +23,11 @@ const Filter = () => {
           aria-labelledby="check-box-formfield-id"
           value={value}
           onChange={({ value: nextValue }) => setValue(nextValue)}
-          options={getUniqueData({ uniqueData: 'countries', goods })}
+          options={getUniqueData({ uniqueData: 'categories', goods })}
         />
       </div>
     </>
   );
 };
 
-export default Filter;
+export default FilterByCountry;

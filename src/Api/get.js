@@ -1,9 +1,9 @@
 import HTTPService from '../services/httpService';
 import { getQuery } from '../utils';
 
-export const getAllGoods = ({ limit, page, sortBy, countries }) => {
+export const getAllGoods = ({ limit, page, sortBy, countries, categories }) => {
   return HTTPService.get(
-    `goods?${getQuery({ limit, page, sortBy, countries })}`
+    `goods?${getQuery({ limit, page, sortBy, countries, categories })}`
   );
 };
 
