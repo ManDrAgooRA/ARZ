@@ -4,6 +4,15 @@
     &-range{
         padding: 0 20px;
     }
+    &-filter{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        & input{
+            width: 100%;
+            max-width: 100px;
+        }
+    }
 }
 
 .btn{

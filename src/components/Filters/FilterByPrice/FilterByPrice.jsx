@@ -15,7 +15,14 @@ const Thin = () => {
     dispatch(setMinPrice(getMinValue({ goods })));
     dispatch(setMaxPrice(getMaxValue({ goods })));
     console.log(range);
+    console.log(minPrice);
+    console.log(maxPrice);
   }, [dispatch, goods, range, minPrice, maxPrice]);
+
+  // useEffect(() => {
+  //   dispatch(setMinPrice(range[0]));
+  //   dispatch(setMaxPrice(range[1]));
+  // }, [dispatch, range]);
 
   return (
     <>
@@ -34,7 +41,20 @@ const Thin = () => {
         </div>
       </Stack>
       <Box align="center">
+        <Text size="small">{`${minPrice}₴ - ${maxPrice}₴`}</Text>
         <Text size="small">{`${range[0]}₴ - ${range[1]}₴`}</Text>
+        <div className="price-filter">
+          <input
+            type="text"
+            value={range[0]}
+            onChange={(e) => setRange([+e.target.value, maxPrice])}
+          />
+          <input
+            type="text"
+            value={range[1]}
+            onChange={(e) => setRange([minPrice, +e.target.value])}
+          />
+        </div>
       </Box>
     </>
   );
