@@ -6,7 +6,7 @@ const mathRandom = (min, max) => {
 
 module.exports = () => {
   const data = { goods: [] };
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 500; i++) {
     data.goods.push({
       id: i,
       title: faker.commerce.productName(),
