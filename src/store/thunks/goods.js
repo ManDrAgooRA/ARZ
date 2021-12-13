@@ -10,6 +10,8 @@ export const fetchAllGoods = ({
   sortBy,
   countries,
   categories,
+  minPrice,
+  maxPrice,
 }) => {
   return async (dispatch) => {
     try {
@@ -19,6 +21,8 @@ export const fetchAllGoods = ({
         sortBy,
         countries,
         categories,
+        minPrice,
+        maxPrice,
       });
       dispatch(fetchAllGoodsSuccess(allGoodsParse));
     } catch (e) {

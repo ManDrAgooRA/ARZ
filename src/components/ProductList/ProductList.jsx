@@ -11,15 +11,29 @@ import './products.scss';
 const ProductList = () => {
   const size = useContext(ResponsiveContext);
   const dispatch = useDispatch();
-  const { goods, isLoadGoods, sortBy, countries, categories } = useSelector(
-    (state) => state.goods
-  );
+  const {
+    goods,
+    isLoadGoods,
+    sortBy,
+    countries,
+    categories,
+    minPrice,
+    maxPrice,
+  } = useSelector((state) => state.goods);
 
   useEffect(() => {
     dispatch(
-      fetchAllGoods({ limit: 20, page: 1, sortBy, countries, categories })
+      fetchAllGoods({
+        limit: 20,
+        page: 1,
+        sortBy,
+        countries,
+        categories,
+        minPrice,
+        maxPrice,
+      })
     );
-  }, [dispatch, sortBy, countries, categories]);
+  }, [dispatch, sortBy, countries, categories, minPrice, maxPrice]);
 
   if (isLoadGoods) {
     return <MySpinner />;

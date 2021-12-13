@@ -6,6 +6,8 @@ export const getGoods = async ({
   sortBy,
   countries,
   categories,
+  minPrice,
+  maxPrice,
 }) => {
   const response = await getAllGoods({
     limit,
@@ -13,6 +15,8 @@ export const getGoods = async ({
     sortBy,
     countries,
     categories,
+    minPrice,
+    maxPrice,
   });
   const data = await response.json();
 

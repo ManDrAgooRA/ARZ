@@ -23,6 +23,10 @@
         align-items: center;
         background: transparent;
         margin: $padding-content;
+        transition: all .2s;
+        &:hover{
+            color: #ff7878;
+        }
     }
 }
 
