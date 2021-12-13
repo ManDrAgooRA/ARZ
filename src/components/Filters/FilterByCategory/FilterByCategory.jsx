@@ -11,7 +11,7 @@ const FilterByCountry = () => {
 
   useEffect(() => {
     dispatch(setCategories(value));
-  }, [value, dispatch]);
+  }, [value, goods, dispatch]);
 
   return (
     <>

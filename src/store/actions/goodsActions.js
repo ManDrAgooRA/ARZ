@@ -5,6 +5,8 @@ export const goodsActions = {
   SET_SORT_STRING: '[GOODS] set sort string',
   SET_COUNTRIES: '[GOODS] set countries',
   SET_CATEGORIES: '[GOODS] set categories',
+  SET_MIN_PRICE: '[GOODS] set min price',
+  SET_MAX_PRICE: '[GOODS] set max price',
 };
 
 export const fetchAllGoodsSuccess = (allGoods) => ({
@@ -34,4 +36,14 @@ export const setCountries = (countries) => ({
 export const setCategories = (categories) => ({
   type: goodsActions.SET_CATEGORIES,
   payload: categories,
+});
+
+export const setMinPrice = (minPrice) => ({
+  type: goodsActions.SET_MIN_PRICE,
+  payload: minPrice,
+});
+
+export const setMaxPrice = (maxPrice) => ({
+  type: goodsActions.SET_MAX_PRICE,
+  payload: maxPrice,
 });

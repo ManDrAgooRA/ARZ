@@ -47,7 +47,7 @@
       }
     ],
     "no-plusplus": "off",
-    "react/forbid-prop-types": [2, { "forbid": ["any", "array"], "checkContextTypes": true, "checkChildContextTypes": true }],
+    "react/forbid-prop-types": [2, { "forbid": ["any"], "checkContextTypes": true, "checkChildContextTypes": true }],
     "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true}]
   }
 }

@@ -16,7 +16,7 @@ const ProductCard = ({ item }) => {
         <img src={item.image} alt={item.title} />
       </Box>
       <span>{item.title}</span>
-      <span>{item.price}</span>
+      <span>{item.price}₴</span>
       <span>{item.raiting}</span>
     </Card>
   );

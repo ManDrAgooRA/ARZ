@@ -30,6 +30,8 @@ export const initialState = {
   sortBy: 'Price ASC',
   countries: [],
   categories: [],
+  minPrice: 1,
+  maxPrice: 1000,
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
@@ -75,6 +77,17 @@ export function goods(state = initialState, action = {}) {
         categories: action.payload,
       };
 
+    case goodsActions.SET_MIN_PRICE:
+      return {
+        ...state,
+        minPrice: action.payload,
+      };
+
+    case goodsActions.SET_MAX_PRICE:
+      return {
+        ...state,
+        maxPrice: action.payload,
+      };
     default:
       return state;
   }

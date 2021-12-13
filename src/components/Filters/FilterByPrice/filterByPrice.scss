@@ -1,0 +1,28 @@
+@import '../../../styles/variables.scss';
+
+.price{
+    &-range{
+        padding: 0 20px;
+    }
+}
+
+.btn{
+    &-price{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        margin: $padding-content;
+    }
+}
+
+.icon{
+    &-price{
+        transition: all .4s;
+        &__active{
+            transition: all .4s;
+            transform: rotate(-90deg);
+        }
+    }
+}

@@ -47,7 +47,7 @@ const SinglePage = () => {
               </button>
               <span>id: {selectedGoods.id}</span>
               <span>{selectedGoods.title}</span>
-              <span>{selectedGoods.price}</span>
+              <span>{selectedGoods.price}₴</span>
               <span>Catagory: {selectedGoods.categories}</span>
               <span>Country: {selectedGoods.countries}</span>
             </Box>
