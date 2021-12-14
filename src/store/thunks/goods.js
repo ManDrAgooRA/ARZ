@@ -1,10 +1,11 @@
 import {
-  fetchAllGoodsSuccess,
+  fetchGoodsSuccess,
+  fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
 } from '../actions/goodsActions';
-import { getGoods, selectedGoods } from '../../BusinessLogic';
+import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
 
-export const fetchAllGoods = ({
+export const fetchGoods = ({
   limit,
   page,
   sortBy,
@@ -15,7 +16,7 @@ export const fetchAllGoods = ({
 }) => {
   return async (dispatch) => {
     try {
-      const allGoodsParse = await getGoods({
+      const goodsParse = await getGoods({
         limit,
         page,
         sortBy,
@@ -24,9 +25,20 @@ export const fetchAllGoods = ({
         minPrice,
         maxPrice,
       });
-      dispatch(fetchAllGoodsSuccess(allGoodsParse));
+      dispatch(fetchGoodsSuccess(goodsParse));
     } catch (e) {
       console.error(e);
+    }
+  };
+};
+
+export const fetchAllGoods = () => {
+  return async (dispatch) => {
+    try {
+      const allGoodsParse = await getData();
+      dispatch(fetchAllGoodSuccess(allGoodsParse));
+    } catch (e) {
+      console.log(e);
     }
   };
 };

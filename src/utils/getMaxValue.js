@@ -1,9 +1,9 @@
-export const getMaxValue = ({ goods }) => {
+export const getMaxValue = ({ allGoods = [] }) => {
   let maxValue = '1000';
-  if (goods.length > 0) {
-    maxValue = +goods[0].price;
+  if (allGoods.length > 0) {
+    maxValue = +allGoods[0].price;
 
-    goods.forEach((item) => {
+    allGoods.forEach((item) => {
       if (+item.price > +maxValue) {
         maxValue = item.price;
       }

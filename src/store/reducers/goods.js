@@ -1,6 +1,7 @@
 import { goodsActions } from '../actions';
 
 export const initialState = {
+  allGoods: [],
   goods: [],
   selectedGoods: {
     id: 358,
@@ -32,17 +33,24 @@ export const initialState = {
   categories: [],
   minPrice: 1,
   maxPrice: 1000,
+  maxSearchPrice: 1000,
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
 
 export function goods(state = initialState, action = {}) {
   switch (action.type) {
-    case goodsActions.FETCH_ALL_GOODS_SUCCESS:
+    case goodsActions.FETCH_GOODS_SUCCESS:
       return {
         ...state,
         goods: [...action.payload],
         isLoadGoods: false,
+      };
+
+    case goodsActions.FETCH_ALL_GOODS_SUCCESS:
+      return {
+        ...state,
+        allGoods: [...action.payload],
       };
 
     case goodsActions.FETCH_CURRENT_GODDS_SUCCESS:

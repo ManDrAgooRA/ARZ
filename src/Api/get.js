@@ -23,6 +23,10 @@ export const getAllGoods = ({
   );
 };
 
+export const getAllData = () => {
+  return HTTPService.get('goods');
+};
+
 export const getCurrentGoods = (id) => {
   return HTTPService.get(`goods?id=${id}`);
 };

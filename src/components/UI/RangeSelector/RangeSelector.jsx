@@ -14,11 +14,11 @@ const schema = yup.object().shape({
 });
 
 const MyRangeSelector = () => {
-  const { goods, minPrice, maxPrice } = useSelector((state) => state.goods);
+  const { allGoods, maxSearchPrice } = useSelector((state) => state.goods);
   const dispatch = useDispatch();
   const [range, setRange] = useState([
-    getMinValue({ goods }),
-    getMaxValue({ goods }),
+    getMinValue({ allGoods }),
+    maxSearchPrice,
   ]);
 
   const {
@@ -28,8 +28,8 @@ const MyRangeSelector = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      minValue: getMinValue({ goods }),
-      maxValue: getMaxValue({ goods }),
+      minValue: getMinValue({ allGoods }),
+      maxValue: getMaxValue({ allGoods }),
     },
   });
 
@@ -44,7 +44,7 @@ const MyRangeSelector = () => {
 
   useEffect(() => {
     dispatch(setMinPrice(+range[0]));
-    dispatch(setMaxPrice(+range[1]));
+    dispatch(setMaxPrice(getMaxValue({ allGoods })));
   }, []);
 
   return (
@@ -53,8 +53,8 @@ const MyRangeSelector = () => {
         <div className="price-range">
           <RangeSelector
             direction="horizontal"
-            min={minPrice}
-            max={maxPrice}
+            min={1}
+            max={maxSearchPrice}
             step={1}
             values={range}
             onChange={(nextRange) => {

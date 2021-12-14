@@ -1,5 +1,6 @@
 export const goodsActions = {
   FETCH_CURRENT_GODDS_SUCCESS: '[GOODS] fetch goods success',
+  FETCH_GOODS_SUCCESS: '[GOODS] fetch godds success',
   FETCH_ALL_GOODS_SUCCESS: '[GOODS] fetch all godds success',
   CLEAR_CURRENT_GOODS: '[GOODS] clear current goods',
   SET_SORT_STRING: '[GOODS] set sort string',
@@ -9,9 +10,14 @@ export const goodsActions = {
   SET_MAX_PRICE: '[GOODS] set max price',
 };
 
-export const fetchAllGoodsSuccess = (allGoods) => ({
+export const fetchGoodsSuccess = (goods) => ({
+  type: goodsActions.FETCH_GOODS_SUCCESS,
+  payload: goods,
+});
+
+export const fetchAllGoodSuccess = (goods) => ({
   type: goodsActions.FETCH_ALL_GOODS_SUCCESS,
-  payload: allGoods,
+  payload: goods,
 });
 
 export const fetchCurrentGoodsSuccess = (currentGoods) => ({

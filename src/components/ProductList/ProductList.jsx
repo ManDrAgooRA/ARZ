@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../ProductCard/ProductCard';
 import { getCountColumns } from '../../utils';
 import { THEME } from '../../constants';
-import { fetchAllGoods } from '../../store/thunks/goods';
+import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
 import { MySpinner } from '../MySpinner/MySpinner';
 import './products.scss';
 
@@ -22,8 +22,9 @@ const ProductList = () => {
   } = useSelector((state) => state.goods);
 
   useEffect(() => {
+    dispatch(fetchAllGoods());
     dispatch(
-      fetchAllGoods({
+      fetchGoods({
         limit: 20,
         page: 1,
         sortBy,

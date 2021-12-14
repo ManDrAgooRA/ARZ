@@ -1,9 +1,9 @@
-export const getMinValue = ({ goods = [] }) => {
+export const getMinValue = ({ allGoods = [] }) => {
   let minValue = '1';
-  if (goods.length > 0) {
-    minValue = +goods[0].price;
+  if (allGoods.length > 0) {
+    minValue = +allGoods[0].price;
 
-    goods.forEach((item) => {
+    allGoods.forEach((item) => {
       if (+item.price < +minValue) {
         minValue = item.price;
       }
