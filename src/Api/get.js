@@ -4,21 +4,23 @@ import { getQuery } from '../utils';
 export const getAllGoods = ({
   limit,
   page,
-  sortBy,
+  sort,
+  order,
   countries,
   categories,
   minPrice,
-  maxPrice,
+  currentMaxPrice,
 }) => {
   return HTTPService.get(
     `goods?${getQuery({
       limit,
       page,
-      sortBy,
+      sort,
+      order,
       countries,
       categories,
       minPrice,
-      maxPrice,
+      currentMaxPrice,
     })}`
   );
 };

@@ -14,7 +14,7 @@ module.exports = () => {
       categories: `${faker.random.word()}`,
       price: +faker.commerce.price(),
       count: mathRandom(1, 100),
-      raiting: mathRandom(0, 100),
+      raiting: +mathRandom(0, 100),
       countries: `${faker.address.country()}`,
       ifFavorite: false,
       specification: [{ title: 'phone', brend: 'samsung' }],

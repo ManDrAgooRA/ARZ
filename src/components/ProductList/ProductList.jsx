@@ -14,11 +14,12 @@ const ProductList = () => {
   const {
     goods,
     isLoadGoods,
-    sortBy,
+    sort,
+    order,
     countries,
     categories,
     minPrice,
-    maxPrice,
+    currentMaxPrice,
   } = useSelector((state) => state.goods);
 
   useEffect(() => {
@@ -27,14 +28,15 @@ const ProductList = () => {
       fetchGoods({
         limit: 20,
         page: 1,
-        sortBy,
+        sort,
+        order,
         countries,
         categories,
         minPrice,
-        maxPrice,
+        currentMaxPrice,
       })
     );
-  }, [dispatch, sortBy, countries, categories, minPrice, maxPrice]);
+  }, [dispatch, sort, order, countries, categories, minPrice, currentMaxPrice]);
 
   if (isLoadGoods) {
     return <MySpinner />;

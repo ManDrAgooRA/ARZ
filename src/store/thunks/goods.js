@@ -8,22 +8,24 @@ import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
 export const fetchGoods = ({
   limit,
   page,
-  sortBy,
+  sort,
+  order,
   countries,
   categories,
   minPrice,
-  maxPrice,
+  currentMaxPrice,
 }) => {
   return async (dispatch) => {
     try {
       const goodsParse = await getGoods({
         limit,
         page,
-        sortBy,
+        sort,
+        order,
         countries,
         categories,
         minPrice,
-        maxPrice,
+        currentMaxPrice,
       });
       dispatch(fetchGoodsSuccess(goodsParse));
     } catch (e) {

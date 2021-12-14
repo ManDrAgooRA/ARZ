@@ -28,12 +28,13 @@ export const initialState = {
     isSale: false,
     salePrice: 1881,
   },
-  sortBy: 'Price ASC',
+  sort: 'Price',
+  order: 'ASC',
   countries: [],
   categories: [],
   minPrice: 1,
-  maxPrice: 1000,
-  maxSearchPrice: 1000,
+  currentMaxPrice: 1000,
+  maxPrice: 1500,
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
@@ -70,7 +71,8 @@ export function goods(state = initialState, action = {}) {
     case goodsActions.SET_SORT_STRING:
       return {
         ...state,
-        sortBy: action.payload,
+        sort: action.payload.split(' ')[0].toLowerCase(),
+        order: action.payload.split(' ')[1],
       };
 
     case goodsActions.SET_COUNTRIES:
@@ -89,6 +91,12 @@ export function goods(state = initialState, action = {}) {
       return {
         ...state,
         minPrice: action.payload,
+      };
+
+    case goodsActions.SET_CURRENT_MAX_PRICE:
+      return {
+        ...state,
+        currentMaxPrice: action.payload,
       };
 
     case goodsActions.SET_MAX_PRICE:

@@ -1,26 +1,18 @@
-export const getQuery = ({
-  limit = 20,
-  page = 1,
-  sortBy = '',
-  countries = '',
-  categories = '',
-  minPrice = 1,
-  maxPrice = 200,
-}) => {
-  let fliterByCountries = '';
-  let fliterByCategories = '';
-  if (countries) {
-    fliterByCountries = countries.join('');
-  }
+export const getQuery = (obj) => {
+  let queryString = '';
+  Object.keys(obj).reduce((str, key) => {
+    if (key === 'countries' || key === 'categories') {
+      queryString += `&${key}_like=${obj[key].join('')}`;
+    } else if (key === 'minPrice') {
+      queryString += `&price_gte=${obj[key]}`;
+    } else if (key === 'currentMaxPrice') {
+      queryString += `&price_lte=${obj[key]}`;
+    } else {
+      queryString += `&_${key}=${obj[key]}`;
+    }
 
-  if (categories) {
-    fliterByCategories = categories.join('');
-  }
+    return queryString;
+  }, '');
 
-  const sort = sortBy.split(' ')[0].toLowerCase();
-  const order = sortBy.split(' ')[1];
-
-  return `price_gte=${minPrice}&price_lte=${maxPrice}&_limit=${limit}&_page=${page}
-  &_sort=${sort}&_order=${order}&countries_like=${fliterByCountries}&categories_like=${fliterByCategories}`;
-  // return `_limit=20&_page=1&_sort=&_order=&countries_like=&categories_like=${fliterByCategories}`;
+  return queryString;
 };

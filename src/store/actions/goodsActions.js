@@ -7,6 +7,7 @@ export const goodsActions = {
   SET_COUNTRIES: '[GOODS] set countries',
   SET_CATEGORIES: '[GOODS] set categories',
   SET_MIN_PRICE: '[GOODS] set min price',
+  SET_CURRENT_MAX_PRICE: '[GOODS] set current max price',
   SET_MAX_PRICE: '[GOODS] set max price',
 };
 
@@ -52,4 +53,9 @@ export const setMinPrice = (minPrice) => ({
 export const setMaxPrice = (maxPrice) => ({
   type: goodsActions.SET_MAX_PRICE,
   payload: maxPrice,
+});
+
+export const setCurrentMaxPrice = (currentMaxPrice) => ({
+  type: goodsActions.SET_CURRENT_MAX_PRICE,
+  payload: currentMaxPrice,
 });

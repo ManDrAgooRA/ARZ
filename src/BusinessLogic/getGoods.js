@@ -3,20 +3,22 @@ import { getAllGoods } from '../Api/get';
 export const getGoods = async ({
   limit,
   page,
-  sortBy,
+  sort,
+  order,
   countries,
   categories,
   minPrice,
-  maxPrice,
+  currentMaxPrice,
 }) => {
   const response = await getAllGoods({
     limit,
     page,
-    sortBy,
+    sort,
+    order,
     countries,
     categories,
     minPrice,
-    maxPrice,
+    currentMaxPrice,
   });
   const data = await response.json();
 

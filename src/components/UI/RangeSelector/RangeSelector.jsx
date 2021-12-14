@@ -4,8 +4,16 @@ import { Box, RangeSelector, Stack, Text } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { setMinPrice, setMaxPrice } from '../../../store/actions';
-import { getMinValue, getMaxValue } from '../../../utils';
+import {
+  allGoodsSelector,
+  maxSearchPriceSelector,
+} from '../../../store/selectors';
+import {
+  setMinPrice,
+  setMaxPrice,
+  setCurrentMaxPrice,
+} from '../../../store/actions';
+import { getMinMaxValue } from '../../../utils';
 import './rangeSelector.scss';
 
 const schema = yup.object().shape({
@@ -14,12 +22,11 @@ const schema = yup.object().shape({
 });
 
 const MyRangeSelector = () => {
-  const { allGoods, maxSearchPrice } = useSelector((state) => state.goods);
+  const { allGoods } = useSelector(allGoodsSelector);
+  const { maxPrice } = useSelector(maxSearchPriceSelector);
   const dispatch = useDispatch();
-  const [range, setRange] = useState([
-    getMinValue({ allGoods }),
-    maxSearchPrice,
-  ]);
+  const { minValue, maxValue } = getMinMaxValue({ allGoods });
+  const [range, setRange] = useState([minValue, maxValue]);
 
   const {
     register,
@@ -28,14 +35,14 @@ const MyRangeSelector = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      minValue: getMinValue({ allGoods }),
-      maxValue: getMaxValue({ allGoods }),
+      minValue,
+      maxValue,
     },
   });
 
   const changeValue = () => {
     dispatch(setMinPrice(range[0]));
-    dispatch(setMaxPrice(range[1]));
+    dispatch(setCurrentMaxPrice(range[1]));
   };
 
   const onSubmit = () => {
@@ -44,7 +51,8 @@ const MyRangeSelector = () => {
 
   useEffect(() => {
     dispatch(setMinPrice(+range[0]));
-    dispatch(setMaxPrice(getMaxValue({ allGoods })));
+    dispatch(setCurrentMaxPrice(+range[1]));
+    dispatch(setMaxPrice(maxValue));
   }, []);
 
   return (
@@ -54,7 +62,7 @@ const MyRangeSelector = () => {
           <RangeSelector
             direction="horizontal"
             min={1}
-            max={maxSearchPrice}
+            max={maxPrice}
             step={1}
             values={range}
             onChange={(nextRange) => {
