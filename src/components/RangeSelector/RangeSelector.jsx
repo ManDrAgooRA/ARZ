@@ -18,7 +18,7 @@ const schema = yup.object().shape({
   maxValue: yup.number().positive().integer(),
 });
 
-const MyRangeSelector = () => {
+const PriceRange = () => {
   const allGoods = useSelector(allGoodsSelector);
   const maxPrice = useSelector(goodsMaxPriceSelector);
   const dispatch = useDispatch();
@@ -102,4 +102,4 @@ const MyRangeSelector = () => {
   );
 };
 
-export default MyRangeSelector;
+export default PriceRange;

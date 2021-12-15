@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Collapsible } from 'grommet';
 import { CaretLeftFill } from 'grommet-icons';
-import MyRangeSelector from '../../RangeSelector/RangeSelector';
+import PriceRange from '../../RangeSelector/RangeSelector';
 import './filterByPrice.scss';
 
 const FilterByPrice = () => {
@@ -22,7 +22,7 @@ const FilterByPrice = () => {
         </button>
       </Box>
       <Collapsible open={open}>
-        <MyRangeSelector label="My Range Selector" />
+        <PriceRange label="My Range Selector" />
       </Collapsible>
     </>
   );

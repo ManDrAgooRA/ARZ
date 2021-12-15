@@ -5,7 +5,7 @@ import { FILTERS } from '../../constants';
 import FilterByPrice from '../Filters/FilterByPrice/FilterByPrice';
 import './sidebar.scss';
 
-const MySydebar = () => {
+const Sydebar = () => {
   return (
     <div className="sidebar">
       <Sort />
@@ -17,4 +17,4 @@ const MySydebar = () => {
   );
 };
 
-export default MySydebar;
+export default Sydebar;
