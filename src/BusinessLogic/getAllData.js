@@ -2,7 +2,7 @@ import { getAllData } from '../Api/get';
 
 export const getData = async () => {
   const response = await getAllData();
-  const data = response.json();
+  const data = await response.json();
 
   return data;
 };

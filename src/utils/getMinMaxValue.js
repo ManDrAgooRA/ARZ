@@ -3,7 +3,7 @@ export const getMinMaxValue = ({ allGoods }) => {
   const [itemWithValueMax] = allGoods.sort((a, b) => b.price - a.price);
 
   return {
-    minValue: itemWithValueMin.price,
-    maxValue: itemWithValueMax.price,
+    minValue: itemWithValueMin ? itemWithValueMin.price : [],
+    maxValue: itemWithValueMax ? itemWithValueMax.price : [],
   };
 };

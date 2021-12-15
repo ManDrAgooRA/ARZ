@@ -4,16 +4,13 @@ import { Box, RangeSelector, Stack, Text } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {
-  allGoodsSelector,
-  maxSearchPriceSelector,
-} from '../../../store/selectors';
+import { allGoodsSelector, goodsMaxPriceSelector } from '../../store/selectors';
 import {
   setMinPrice,
   setMaxPrice,
   setCurrentMaxPrice,
-} from '../../../store/actions';
-import { getMinMaxValue } from '../../../utils';
+} from '../../store/actions';
+import { getMinMaxValue } from '../../utils';
 import './rangeSelector.scss';
 
 const schema = yup.object().shape({
@@ -22,8 +19,8 @@ const schema = yup.object().shape({
 });
 
 const MyRangeSelector = () => {
-  const { allGoods } = useSelector(allGoodsSelector);
-  const { maxPrice } = useSelector(maxSearchPriceSelector);
+  const allGoods = useSelector(allGoodsSelector);
+  const maxPrice = useSelector(goodsMaxPriceSelector);
   const dispatch = useDispatch();
   const { minValue, maxValue } = getMinMaxValue({ allGoods });
   const [range, setRange] = useState([minValue, maxValue]);

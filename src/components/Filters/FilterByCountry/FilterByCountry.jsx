@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CheckBoxGroup, Heading } from 'grommet';
+import {
+  goodsSelector,
+  goodsCountriesSelector,
+} from '../../../store/selectors';
 import { setCountries } from '../../../store/actions';
 import { getUniqueData } from '../../../utils';
 import './filter.scss';
 
 const FilterByCountry = () => {
-  const { goods, countries } = useSelector((state) => state.goods);
+  const goods = useSelector(goodsSelector);
+  const countries = useSelector(goodsCountriesSelector);
   const dispatch = useDispatch();
   const [value, setValue] = useState(countries);
 
   useEffect(() => {
     dispatch(setCountries(value));
-  }, [value, dispatch]);
+  }, [value]);
 
   return (
     <>

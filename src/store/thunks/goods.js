@@ -17,7 +17,7 @@ export const fetchGoods = ({
 }) => {
   return async (dispatch) => {
     try {
-      const goodsParse = await getGoods({
+      const goods = await getGoods({
         limit,
         page,
         sort,
@@ -27,7 +27,7 @@ export const fetchGoods = ({
         minPrice,
         currentMaxPrice,
       });
-      dispatch(fetchGoodsSuccess(goodsParse));
+      dispatch(fetchGoodsSuccess(goods));
     } catch (e) {
       console.error(e);
     }
@@ -37,8 +37,8 @@ export const fetchGoods = ({
 export const fetchAllGoods = () => {
   return async (dispatch) => {
     try {
-      const allGoodsParse = await getData();
-      dispatch(fetchAllGoodSuccess(allGoodsParse));
+      const allGoods = await getData();
+      dispatch(fetchAllGoodSuccess(allGoods));
     } catch (e) {
       console.log(e);
     }
@@ -48,8 +48,8 @@ export const fetchAllGoods = () => {
 export const fetchCurrentGoods = (id) => {
   return async (dispatch) => {
     try {
-      const response = await selectedGoods(id);
-      dispatch(fetchCurrentGoodsSuccess(response[0]));
+      const currentGoods = await selectedGoods(id);
+      dispatch(fetchCurrentGoodsSuccess(currentGoods[0]));
     } catch (e) {
       console.err(e);
     }

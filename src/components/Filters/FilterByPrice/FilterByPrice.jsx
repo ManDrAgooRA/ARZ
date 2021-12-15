@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Collapsible } from 'grommet';
 import { CaretLeftFill } from 'grommet-icons';
-import MyRangeSelector from '../../UI/RangeSelector/RangeSelector';
+import MyRangeSelector from '../../RangeSelector/RangeSelector';
 import './filterByPrice.scss';
 
 const FilterByPrice = () => {

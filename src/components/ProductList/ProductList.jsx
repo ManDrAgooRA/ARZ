@@ -2,6 +2,16 @@ import React, { useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../ProductCard/ProductCard';
+import {
+  goodsSelector,
+  isLoadGoodsSelector,
+  goodsSortSelector,
+  goodsOrderSelector,
+  goodsCountriesSelector,
+  goodsCategoriesSelector,
+  goodsMinPriceSelector,
+  goodsCurrentMaxPriceSelector,
+} from '../../store/selectors';
 import { getCountColumns } from '../../utils';
 import { THEME } from '../../constants';
 import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
@@ -9,18 +19,16 @@ import { MySpinner } from '../MySpinner/MySpinner';
 import './products.scss';
 
 const ProductList = () => {
-  const size = useContext(ResponsiveContext);
   const dispatch = useDispatch();
-  const {
-    goods,
-    isLoadGoods,
-    sort,
-    order,
-    countries,
-    categories,
-    minPrice,
-    currentMaxPrice,
-  } = useSelector((state) => state.goods);
+  const size = useContext(ResponsiveContext);
+  const goods = useSelector(goodsSelector);
+  const isLoadGoods = useSelector(isLoadGoodsSelector);
+  const sort = useSelector(goodsSortSelector);
+  const order = useSelector(goodsOrderSelector);
+  const countries = useSelector(goodsCountriesSelector);
+  const categories = useSelector(goodsCategoriesSelector);
+  const minPrice = useSelector(goodsMinPriceSelector);
+  const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
 
   useEffect(() => {
     dispatch(fetchAllGoods());
@@ -36,7 +44,7 @@ const ProductList = () => {
         currentMaxPrice,
       })
     );
-  }, [dispatch, sort, order, countries, categories, minPrice, currentMaxPrice]);
+  }, [sort, order, countries, categories, minPrice, currentMaxPrice]);
 
   if (isLoadGoods) {
     return <MySpinner />;
