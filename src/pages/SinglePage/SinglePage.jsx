@@ -5,12 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentGoods } from '../../store/thunks/goods';
 import { clearCurrentUser } from '../../store/actions';
 import { MySpinner } from '../../components/MySpinner/MySpinner';
+import {
+  selectedGoodsSelector,
+  isLoadCurrentGoodsSelector,
+} from '../../store/selectors';
 import './singlePage.scss';
 
 const SinglePage = () => {
-  const { selectedGoods, isLoadCurrentGoods } = useSelector(
-    (state) => state.goods
-  );
+  const selectedGoods = useSelector(selectedGoodsSelector);
+  const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -20,7 +23,7 @@ const SinglePage = () => {
     return () => {
       dispatch(clearCurrentUser());
     };
-  }, [dispatch, id]);
+  }, [id]);
 
   if (isLoadCurrentGoods) {
     return <MySpinner />;
@@ -47,9 +50,9 @@ const SinglePage = () => {
               </button>
               <span>id: {selectedGoods.id}</span>
               <span>{selectedGoods.title}</span>
-              <span>{selectedGoods.price}</span>
-              <span>Catagory: {selectedGoods.category}</span>
-              <span>Country: {selectedGoods.country}</span>
+              <span>{selectedGoods.price}₴</span>
+              <span>Catagory: {selectedGoods.categories}</span>
+              <span>Country: {selectedGoods.countries}</span>
             </Box>
           </Grid>
         )}

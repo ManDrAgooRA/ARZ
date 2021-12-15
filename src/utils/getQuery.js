@@ -1,6 +1,18 @@
-export const getQuery = ({ limit = 20, page = 1, sortBy = 'Raitnig DESC' }) => {
-  const sort = sortBy.split(' ')[0].toLowerCase();
-  const order = sortBy.split(' ')[1];
+export const getQuery = (obj) => {
+  let queryString = '';
+  Object.keys(obj).reduce((str, key) => {
+    if (key === 'countries' || key === 'categories') {
+      queryString += `&${key}_like=${obj[key].join('')}`;
+    } else if (key === 'minPrice') {
+      queryString += `&price_gte=${obj[key]}`;
+    } else if (key === 'currentMaxPrice') {
+      queryString += `&price_lte=${obj[key]}`;
+    } else {
+      queryString += `&_${key}=${obj[key]}`;
+    }
 
-  return `_limit=${limit}&_page=${page}&_sort=${sort}&_order=${order}`;
+    return queryString;
+  }, '');
+
+  return queryString;
 };

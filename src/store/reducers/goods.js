@@ -1,6 +1,7 @@
 import { goodsActions } from '../actions';
 
 export const initialState = {
+  allGoods: [],
   goods: [],
   selectedGoods: {
     id: 358,
@@ -27,18 +28,30 @@ export const initialState = {
     isSale: false,
     salePrice: 1881,
   },
-  sortBy: 'Price ASC',
+  sort: 'Price',
+  order: 'ASC',
+  countries: [],
+  categories: [],
+  minPrice: 1,
+  currentMaxPrice: 1000,
+  maxPrice: 1500,
   isLoadCurrentGoods: true,
   isLoadGoods: true,
 };
 
 export function goods(state = initialState, action = {}) {
   switch (action.type) {
-    case goodsActions.FETCH_ALL_GOODS_SUCCESS:
+    case goodsActions.FETCH_GOODS_SUCCESS:
       return {
         ...state,
         goods: [...action.payload],
         isLoadGoods: false,
+      };
+
+    case goodsActions.FETCH_ALL_GOODS_SUCCESS:
+      return {
+        ...state,
+        allGoods: [...action.payload],
       };
 
     case goodsActions.FETCH_CURRENT_GODDS_SUCCESS:
@@ -58,9 +71,39 @@ export function goods(state = initialState, action = {}) {
     case goodsActions.SET_SORT_STRING:
       return {
         ...state,
-        sortBy: action.payload,
+        sort: action.payload.split(' ')[0].toLowerCase(),
+        order: action.payload.split(' ')[1],
       };
 
+    case goodsActions.SET_COUNTRIES:
+      return {
+        ...state,
+        countries: action.payload,
+      };
+
+    case goodsActions.SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
+    case goodsActions.SET_MIN_PRICE:
+      return {
+        ...state,
+        minPrice: action.payload,
+      };
+
+    case goodsActions.SET_CURRENT_MAX_PRICE:
+      return {
+        ...state,
+        currentMaxPrice: action.payload,
+      };
+
+    case goodsActions.SET_MAX_PRICE:
+      return {
+        ...state,
+        maxPrice: action.payload,
+      };
     default:
       return state;
   }

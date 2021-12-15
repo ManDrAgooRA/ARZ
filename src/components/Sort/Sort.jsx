@@ -18,7 +18,7 @@ const Sort = () => {
   };
 
   return (
-    <Box fill align="center" justify="start">
+    <Box align="center" justify="start">
       <Select
         name="select"
         placeholder="Sort By"

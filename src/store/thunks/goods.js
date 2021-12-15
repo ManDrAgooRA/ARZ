@@ -1,16 +1,46 @@
 import {
-  fetchAllGoodsSuccess,
+  fetchGoodsSuccess,
+  fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
 } from '../actions/goodsActions';
-import { getGoods, selectedGoods } from '../../BusinessLogic';
+import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
 
-export const fetchAllGoods = ({ limit, page, sortBy }) => {
+export const fetchGoods = ({
+  limit,
+  page,
+  sort,
+  order,
+  countries,
+  categories,
+  minPrice,
+  currentMaxPrice,
+}) => {
   return async (dispatch) => {
     try {
-      const allGoodsParse = await getGoods({ limit, page, sortBy });
-      dispatch(fetchAllGoodsSuccess(allGoodsParse));
+      const goods = await getGoods({
+        limit,
+        page,
+        sort,
+        order,
+        countries,
+        categories,
+        minPrice,
+        currentMaxPrice,
+      });
+      dispatch(fetchGoodsSuccess(goods));
     } catch (e) {
       console.error(e);
+    }
+  };
+};
+
+export const fetchAllGoods = () => {
+  return async (dispatch) => {
+    try {
+      const allGoods = await getData();
+      dispatch(fetchAllGoodSuccess(allGoods));
+    } catch (e) {
+      console.log(e);
     }
   };
 };
@@ -18,8 +48,8 @@ export const fetchAllGoods = ({ limit, page, sortBy }) => {
 export const fetchCurrentGoods = (id) => {
   return async (dispatch) => {
     try {
-      const response = await selectedGoods(id);
-      dispatch(fetchCurrentGoodsSuccess(response[0]));
+      const currentGoods = await selectedGoods(id);
+      dispatch(fetchCurrentGoodsSuccess(currentGoods[0]));
     } catch (e) {
       console.err(e);
     }
