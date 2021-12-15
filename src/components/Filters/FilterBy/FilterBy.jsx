@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CheckBoxGroup, Heading } from 'grommet';
+import PropTypes from 'prop-types';
 import {
   goodsSelector,
+  goodsCategoriesSelector,
   goodsCountriesSelector,
 } from '../../../store/selectors';
-import { setCountries } from '../../../store/actions';
+import { setCategories, setCountries } from '../../../store/actions';
 import { getUniqueData } from '../../../utils';
 import './filter.scss';
 
-const FilterByCountry = () => {
+const FilterBy = ({ filterName }) => {
   const goods = useSelector(goodsSelector);
-  const countries = useSelector(goodsCountriesSelector);
+  const filterParam = useSelector(
+    filterName === 'categories'
+      ? goodsCategoriesSelector
+      : goodsCountriesSelector
+  );
   const dispatch = useDispatch();
-  const [value, setValue] = useState(countries);
+  const [value, setValue] = useState(filterParam);
 
   useEffect(() => {
-    dispatch(setCountries(value));
+    dispatch(
+      filterName === 'categories' ? setCategories(value) : setCountries(value)
+    );
   }, [value]);
 
   return (
     <>
-      <Heading level="3">Filter by countries: {goods.length}</Heading>
+      <Heading level="3">
+        Filter by {filterName}: {goods.length}
+      </Heading>
       <div className="filter">
         <CheckBoxGroup
           id="check-box-group-id"
@@ -29,11 +39,15 @@ const FilterByCountry = () => {
           aria-labelledby="check-box-formfield-id"
           value={value}
           onChange={({ value: nextValue }) => setValue(nextValue)}
-          options={getUniqueData({ uniqueData: 'countries', goods })}
+          options={getUniqueData({ uniqueData: `${filterName}`, goods })}
         />
       </div>
     </>
   );
 };
 
-export default FilterByCountry;
+FilterBy.propTypes = {
+  filterName: PropTypes.string,
+};
+
+export default FilterBy;

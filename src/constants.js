@@ -17,3 +17,5 @@ export const THEME = {
     },
   },
 };
+
+export const FILTERS = [{ name: 'categories' }, { name: 'countries' }];
