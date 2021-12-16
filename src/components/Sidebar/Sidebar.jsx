@@ -10,7 +10,7 @@ const Sydebar = () => {
     <div className="sidebar">
       <Sort />
       {FILTERS.map((item) => {
-        return <FilterBy filterName={item.name} />;
+        return <FilterBy key={item.name} filterName={item.name} />;
       })}
       <FilterByPrice />
     </div>

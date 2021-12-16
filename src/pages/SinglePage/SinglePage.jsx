@@ -17,13 +17,14 @@ const SinglePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-
   useEffect(() => {
     dispatch(fetchCurrentGoods(id));
     return () => {
       dispatch(clearCurrentUser());
     };
   }, [id]);
+
+  // console.log(selectedGoods);
 
   if (isLoadCurrentGoods) {
     return <MySpinner />;

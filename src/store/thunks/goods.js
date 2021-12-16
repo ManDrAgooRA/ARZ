@@ -40,7 +40,7 @@ export const fetchAllGoods = () => {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 };
@@ -49,7 +49,7 @@ export const fetchCurrentGoods = (id) => {
   return async (dispatch) => {
     try {
       const currentGoods = await selectedGoods(id);
-      dispatch(fetchCurrentGoodsSuccess(currentGoods[0]));
+      dispatch(fetchCurrentGoodsSuccess(currentGoods));
     } catch (e) {
       console.err(e);
     }
