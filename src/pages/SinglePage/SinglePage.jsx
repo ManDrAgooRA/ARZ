@@ -24,8 +24,6 @@ const SinglePage = () => {
     };
   }, [id]);
 
-  // console.log(selectedGoods);
-
   if (isLoadCurrentGoods) {
     return <MySpinner />;
   }
