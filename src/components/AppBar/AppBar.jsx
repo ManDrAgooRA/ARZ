@@ -28,7 +28,7 @@ const AppBar = () => {
             href: '/#',
           },
           {
-            label: <Box pad="small">Sign up</Box>,
+            label: <Box pad="small">Sign Up</Box>,
             href: '/#',
           },
         ];
@@ -56,7 +56,7 @@ const AppBar = () => {
               ) : (
                 <>
                   <Anchor href="/#" label="Login" color="light-1" />
-                  <Anchor href="/#" label="Sign up" color="light-1" />
+                  <Anchor href="/#" label="Sign Up" color="light-1" />
                 </>
               )}
             </Nav>

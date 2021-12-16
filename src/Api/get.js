@@ -30,5 +30,5 @@ export const getAllData = () => {
 };
 
 export const getCurrentGoods = (id) => {
-  return HTTPService.get(`goods?id=${id}`);
+  return HTTPService.get(`goods/${id}`);
 };

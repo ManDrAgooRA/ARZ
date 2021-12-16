@@ -17,7 +17,6 @@ const SinglePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-
   useEffect(() => {
     dispatch(fetchCurrentGoods(id));
     return () => {
