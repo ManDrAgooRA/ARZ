@@ -3,6 +3,22 @@
   nav {
     a {
       padding: 0px 12px;
+      color: #fff;
+      text-decoration: none;
+      transition: .4s;
+      &:hover{
+        color: darken($color: #fff, $amount: 30);
+      }
     }
   }
+}
+
+a{
+  padding: 0px 12px;
+      color: #fff;
+      text-decoration: none;
+      transition: .4s;
+      &:hover{
+        color: darken($color: #fff, $amount: 30);
+      }
 }
