@@ -50,7 +50,7 @@
     "react/forbid-prop-types": [2, { "forbid": ["any"], "checkContextTypes": true, "checkChildContextTypes": true }],
     "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true}],
     "react/jsx-props-no-spreading":  [2, {
-      "exceptions": ["input"]
+      "exceptions": ["input", "FormField"]
     }]
   }
 }

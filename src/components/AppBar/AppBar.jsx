@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Anchor,
   Box,
@@ -9,10 +10,11 @@ import {
   Nav,
 } from 'grommet';
 import { Menu as MenuIcon } from 'grommet-icons';
+import { LINKS } from '../../constants';
 import './header.scss';
 
 const AppBar = () => {
-  const loginStatus = true;
+  const loginStatus = false;
 
   const createItems = () =>
     loginStatus
@@ -24,20 +26,26 @@ const AppBar = () => {
         ]
       : [
           {
-            label: <Box pad="medium">Login</Box>,
-            href: '/#',
+            label: (
+              <Link to={LINKS.login} pad="medium">
+                Login
+              </Link>
+            ),
           },
           {
-            label: <Box pad="small">Sign Up</Box>,
-            href: '/#',
+            label: (
+              <Link to={LINKS.signUp} pad="small">
+                Sign Up
+              </Link>
+            ),
           },
         ];
 
   return (
     <Header background="dark-1" className="header">
-      <Anchor href="/#">
+      <Link to="/">
         <Image src="https://xl-static.rozetka.com.ua/assets/img/design/logo_n.svg" />
-      </Anchor>
+      </Link>
       <ResponsiveContext.Consumer>
         {(size) =>
           size === 'small' ? (
@@ -55,8 +63,12 @@ const AppBar = () => {
                 <Anchor href="/#" label="Logout" color="light-1" />
               ) : (
                 <>
-                  <Anchor href="/#" label="Login" color="light-1" />
-                  <Anchor href="/#" label="Sign Up" color="light-1" />
+                  <Link to={LINKS.login} label="Sign Up" color="light-1">
+                    Login
+                  </Link>
+                  <Link to={LINKS.signUp} label="Sign Up" color="light-1">
+                    SignUp
+                  </Link>
                 </>
               )}
             </Nav>

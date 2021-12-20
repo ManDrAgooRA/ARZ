@@ -6,7 +6,7 @@ export const THEME = {
       height: '20px',
     },
     colors: {
-      focus: 'light-3',
+      focus: 'transparent',
     },
   },
   card: {
@@ -19,3 +19,7 @@ export const THEME = {
 };
 
 export const FILTERS = [{ name: 'categories' }, { name: 'countries' }];
+export const LINKS = {
+  signUp: '/signUp',
+  login: '/login',
+};

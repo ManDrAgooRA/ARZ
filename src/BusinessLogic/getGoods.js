@@ -21,6 +21,5 @@ export const getGoods = async ({
     currentMaxPrice,
   });
   const data = await response.json();
-
   return data;
 };
