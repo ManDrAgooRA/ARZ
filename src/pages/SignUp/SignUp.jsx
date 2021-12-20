@@ -3,6 +3,9 @@ import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { fetchLogin } from '../../store/thunks/auth';
+import { signUp } from '../../BusinessLogic';
 import PhoneInput from './Inputs/PhoneInput';
 import DateInput from './Inputs/DateInput';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
@@ -29,6 +32,7 @@ const schema = yup
   .required();
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -37,7 +41,10 @@ const SignUp = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    signUp({ requestBody: data });
+    dispatch(fetchLogin({ requestBody: data }));
+  };
 
   return (
     <div className="container">

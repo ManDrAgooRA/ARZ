@@ -3,7 +3,29 @@ export const baseUrl = (path) => {
 };
 export default class HTTPService {
   static get(path) {
-    return fetch(`${baseUrl(path)}`)
+    return fetch(`${baseUrl(path)}`, {
+      headers: {
+        'Content-Type': 'aplication/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((response) => {
+        return response;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  static post(path, requestBody) {
+    return fetch(`${baseUrl(path)}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+    })
       .then((response) => {
         return response;
       })
