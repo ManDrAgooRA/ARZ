@@ -6,6 +6,18 @@
   &-back{
     max-width: 340px;
   }
+  &-form{
+    background-color: #7d4cdb66;
+    padding: 12px;
+    border-radius: 4px;
+    transition: .4s;
+    &:hover{
+      background-color: darken($color: #7d4cdb66, $amount: 30);
+    }
+    &:active{
+      transform: scale(80%);
+    }
+  }
   &:hover{
     cursor: pointer;
   }

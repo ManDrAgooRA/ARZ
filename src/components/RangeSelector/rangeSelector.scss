@@ -1,3 +1,11 @@
-.error{
-    color: #e00000;
+.price-filter{
+  & form{
+    flex-wrap: wrap;
+  }
+}
+
+.form-wrap{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }

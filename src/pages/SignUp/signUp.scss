@@ -17,7 +17,7 @@ input{
   padding: 12px;
 }
 
-form{
+.signup-form{
   max-width: 600px;
   width: 100%;
   display: flex;
@@ -28,12 +28,4 @@ form{
 
 .passord-wrap{
   display: flex;
-}
-
-.btn{
-  &-signUp{
-    padding: 12px;
-    border-radius: 4px;
-    transition: .4s;
-  }
 }

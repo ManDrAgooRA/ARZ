@@ -42,14 +42,14 @@ const SignUp = () => {
   return (
     <div className="container">
       <Heading level={2}>SignUp</Heading>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
         <UserNameInput register={register} errors={errors} />
         <PhoneInput register={register} errors={errors} />
         <DateInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
         <PasswordInput register={register} errors={errors} />
         <ConfirmPassword register={register} errors={errors} />
-        <button type="submit" className="btn btn-signUp">
+        <button type="submit" className="btn btn-form">
           SignUp
         </button>
       </form>
