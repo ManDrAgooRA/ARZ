@@ -10,6 +10,7 @@ import {
   Nav,
 } from 'grommet';
 import { Menu as MenuIcon } from 'grommet-icons';
+import { LINKS } from '../../constants';
 import './header.scss';
 
 const AppBar = () => {
@@ -26,14 +27,14 @@ const AppBar = () => {
       : [
           {
             label: (
-              <Link to="/" pad="medium">
+              <Link to={LINKS.login} pad="medium">
                 Login
               </Link>
             ),
           },
           {
             label: (
-              <Link to="/signUp" pad="small">
+              <Link to={LINKS.signUp} pad="small">
                 Sign Up
               </Link>
             ),
@@ -62,10 +63,10 @@ const AppBar = () => {
                 <Anchor href="/#" label="Logout" color="light-1" />
               ) : (
                 <>
-                  <Link to="/login" label="Sign Up" color="light-1">
+                  <Link to={LINKS.login} label="Sign Up" color="light-1">
                     Login
                   </Link>
-                  <Link to="/signUp" label="Sign Up" color="light-1">
+                  <Link to={LINKS.signUp} label="Sign Up" color="light-1">
                     SignUp
                   </Link>
                 </>

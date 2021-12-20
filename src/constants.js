@@ -19,3 +19,7 @@ export const THEME = {
 };
 
 export const FILTERS = [{ name: 'categories' }, { name: 'countries' }];
+export const LINKS = {
+  signUp: '/signUp',
+  login: '/login',
+};
