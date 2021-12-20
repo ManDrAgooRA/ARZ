@@ -13,13 +13,13 @@ import { Menu as MenuIcon } from 'grommet-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoginStatus } from '../../store/actions';
 import { LINKS } from '../../constants';
-import { isLogin, userName } from '../../store/selectors';
+import { isLogin, personName } from '../../store/selectors';
 import './header.scss';
 
 const AppBar = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector(isLogin);
-  const name = useSelector(userName);
+  const userName = useSelector(personName);
 
   const logOut = () => {
     localStorage.clear();
@@ -30,7 +30,7 @@ const AppBar = () => {
     loginStatus
       ? [
           {
-            label: <Box pad="small">{name}</Box>,
+            label: <Box pad="small">{userName}</Box>,
           },
           {
             label: (
@@ -77,7 +77,7 @@ const AppBar = () => {
             <Nav justify="end" direction="row" gap="medium">
               {loginStatus ? (
                 <>
-                  <Anchor label={name} color="light-1" />
+                  <Anchor label={userName} color="light-1" />
                   <Anchor label="Logout" color="light-1" onClick={logOut} />
                 </>
               ) : (
