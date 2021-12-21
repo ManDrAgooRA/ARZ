@@ -1,2 +1,2 @@
-export const isLogin = (state) => state.auth.isLogin;
-export const personName = (state) => state.auth.userName;
+export const authIsLogin = (state) => state.auth.isLogin;
+export const authPersonName = (state) => state.auth.userName;

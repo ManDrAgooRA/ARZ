@@ -1,11 +1,11 @@
 import { fetchLoginSuccess } from '../actions';
-import { auth } from '../reducers/auth';
+import { getRegistrationData } from '../../BusinessLogic';
 
 export const fetchLogin = ({ requestBody }) => {
   return async (dispatch) => {
     try {
-      const data = await auth({ requestBody });
-      dispatch(fetchLoginSuccess(data.requestBody.userName));
+      const { user } = await getRegistrationData({ requestBody });
+      dispatch(fetchLoginSuccess(user.userName));
     } catch (error) {
       console.error(error);
     }

@@ -1,5 +1,5 @@
 import HTTPService from '../services/httpService';
 
-export const auth = ({ requestBody }) => {
+export const registation = ({ requestBody }) => {
   return HTTPService.post('register', requestBody);
 };

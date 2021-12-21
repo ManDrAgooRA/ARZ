@@ -1,4 +1,4 @@
 export * from './getGoods';
 export * from './selectedGoods';
 export * from './getAllData';
-export * from './signUp';
+export * from './registration';

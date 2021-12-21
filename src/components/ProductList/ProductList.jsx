@@ -11,6 +11,7 @@ import {
   goodsCategoriesSelector,
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
+  authIsLogin,
 } from '../../store/selectors';
 import { getCountColumns } from '../../utils';
 import { THEME } from '../../constants';
@@ -29,6 +30,7 @@ const ProductList = () => {
   const categories = useSelector(goodsCategoriesSelector);
   const minPrice = useSelector(goodsMinPriceSelector);
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
+  const isLogin = useSelector(authIsLogin);
 
   useEffect(() => {
     dispatch(fetchAllGoods());
@@ -44,7 +46,7 @@ const ProductList = () => {
         currentMaxPrice,
       })
     );
-  }, [sort, order, countries, categories, minPrice, currentMaxPrice]);
+  }, [sort, order, countries, categories, minPrice, currentMaxPrice, isLogin]);
 
   if (isLoadGoods) {
     return <MySpinner />;

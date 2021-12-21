@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/thunks/auth';
-import { signUp } from '../../BusinessLogic';
 import PhoneInput from './Inputs/PhoneInput';
 import DateInput from './Inputs/DateInput';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
@@ -33,17 +33,20 @@ const schema = yup
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
-    signUp({ requestBody: data });
     dispatch(fetchLogin({ requestBody: data }));
+    navigate('/');
+    reset();
   };
 
   return (

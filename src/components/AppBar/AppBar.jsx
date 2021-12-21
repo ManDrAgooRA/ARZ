@@ -13,13 +13,13 @@ import { Menu as MenuIcon } from 'grommet-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLoginStatus } from '../../store/actions';
 import { LINKS } from '../../constants';
-import { isLogin, personName } from '../../store/selectors';
+import { authIsLogin, authPersonName } from '../../store/selectors';
 import './header.scss';
 
 const AppBar = () => {
   const dispatch = useDispatch();
-  const loginStatus = useSelector(isLogin);
-  const userName = useSelector(personName);
+  const loginStatus = useSelector(authIsLogin);
+  const userName = useSelector(authPersonName);
 
   const logOut = () => {
     localStorage.clear();
