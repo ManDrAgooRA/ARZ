@@ -1,14 +1,20 @@
 export const authActions = {
-  FETCH_LOGIN_SUCCESS: '[AUTH] fetch login success',
-  CHANGE_LOGIN_STATUS: '[AUTH] change login status',
+  FETCH_SIGNUP_SUCCESS: '[AUTH] fetch signup success',
+  CHANGE_SIGNUP_STATUS: '[AUTH] change login status',
+  SET_ERROR_MESSAGE: '[AUTH] set error message',
 };
 
-export const changeLoginStatus = (loginstatus) => ({
-  type: authActions.CHANGE_LOGIN_STATUS,
+export const setErrorMessage = (message) => ({
+  type: authActions.SET_ERROR_MESSAGE,
+  payload: message,
+});
+
+export const changeSinUpStatus = (loginstatus) => ({
+  type: authActions.CHANGE_SIGNUP_STATUS,
   payload: loginstatus,
 });
 
-export const fetchLoginSuccess = (user) => ({
-  type: authActions.FETCH_LOGIN_SUCCESS,
+export const fetchSinUpSuccess = (user) => ({
+  type: authActions.FETCH_SIGNUP_SUCCESS,
   payload: user,
 });

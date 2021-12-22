@@ -1,6 +1,7 @@
 export const baseUrl = (path) => {
   return `${process.env.API_KEY}${path}`;
 };
+
 export default class HTTPService {
   static get(path) {
     return fetch(`${baseUrl(path)}`, {
@@ -13,7 +14,7 @@ export default class HTTPService {
         return response;
       })
       .catch((err) => {
-        console.error(err);
+        throw Error(err);
       });
   }
 
@@ -22,6 +23,7 @@ export default class HTTPService {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
       method: 'POST',
       body: JSON.stringify(requestBody),
@@ -30,7 +32,7 @@ export default class HTTPService {
         return response;
       })
       .catch((err) => {
-        console.error(err);
+        throw Error(err);
       });
   }
 }
