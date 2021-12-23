@@ -1,8 +1,13 @@
 .footer{
-    &__logo{
-        width: 100px;
-        img {
-            max-width: 100%;
-        }
-    }
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  background-color: #333333;
+  color: #fff;
+  padding: 12px;
+
+  @media screen and(max-width: 768px){
+    flex-direction: column;
+  }
 }

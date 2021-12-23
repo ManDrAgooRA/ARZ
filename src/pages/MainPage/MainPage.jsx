@@ -1,10 +1,10 @@
 import React from 'react';
 import { Grommet, Grid, ResponsiveContext } from 'grommet';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import ProductList from '../../components/ProductList/ProductList';
+import { Sidebar } from '../../components/Sidebar/Sidebar';
+import { ProductList } from '../../components/ProductList/ProductList';
 import './mainPage.scss';
 
-const MainPage = () => {
+export const MainPage = () => {
   return (
     <Grommet>
       <ResponsiveContext.Consumer>
@@ -22,5 +22,3 @@ const MainPage = () => {
     </Grommet>
   );
 };
-
-export default MainPage;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FormField, MaskedInput } from 'grommet';
 import { PHONE_MASK } from '../masks';
 
-const PhoneInput = ({ register, errors }) => {
+export const PhoneInput = ({ register, errors }) => {
   return (
     <FormField
       label="Phone"
@@ -21,5 +21,3 @@ PhoneInput.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
 };
-
-export default PhoneInput;

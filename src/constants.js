@@ -23,3 +23,11 @@ export const LINKS = {
   signUp: '/signUp',
   login: '/login',
 };
+
+export const EMAIL_MASK = [
+  { regexp: /^[\w\-_.]+$/, placeholder: 'example' },
+  { fixed: '@' },
+  { regexp: /^[\w]+$/, placeholder: 'my' },
+  { fixed: '.' },
+  { regexp: /^[\w]+$/, placeholder: 'com' },
+];

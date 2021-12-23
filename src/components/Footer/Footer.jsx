@@ -1,6 +1,6 @@
 import React from 'react';
 import { FacebookOption, Instagram, Twitter, Youtube } from 'grommet-icons';
-import { Anchor, Box, Footer, Text, Image } from 'grommet';
+import { Anchor, Box, Text, Image } from 'grommet';
 import './footer.scss';
 
 const Media = () => (
@@ -36,9 +36,9 @@ const Media = () => (
   </Box>
 );
 
-const MyFooter = () => {
+export const Footer = () => {
   return (
-    <Footer background="dark-1" pad="small">
+    <div className="footer">
       <Box align="center" direction="row" gap="xsmall" className="footer__logo">
         <Anchor href="/#">
           <Image src="https://xl-static.rozetka.com.ua/assets/img/design/logo_n.svg" />
@@ -50,8 +50,6 @@ const MyFooter = () => {
       <Text textAlign="center" size="xsmall">
         ©Copyright
       </Text>
-    </Footer>
+    </div>
   );
 };
-
-export default MyFooter;

@@ -6,6 +6,8 @@ export const getMinMaxValue = ({ allGoods }) => {
     minValue:
       typeof itemWithValueMin.price === 'number' ? itemWithValueMin.price : 1,
     maxValue:
-      typeof itemWithValueMax.price === 'number' ? itemWithValueMax.price : 1,
+      typeof itemWithValueMax.price === 'number'
+        ? itemWithValueMax.price
+        : 1000,
   };
 };

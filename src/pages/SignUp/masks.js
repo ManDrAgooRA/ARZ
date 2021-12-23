@@ -1,11 +1,3 @@
-export const EMAIL_MASK = [
-  { regexp: /^[\w\-_.]+$/, placeholder: 'example' },
-  { fixed: '@' },
-  { regexp: /^[\w]+$/, placeholder: 'my' },
-  { fixed: '.' },
-  { regexp: /^[\w]+$/, placeholder: 'com' },
-];
-
 export const PHONE_MASK = [
   { fixed: '(' },
   {

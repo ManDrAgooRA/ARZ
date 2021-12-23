@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Heading, Layer, Text } from 'grommet';
 
-const Modal = ({ isOpen, message, handleClose }) => {
+export const Modal = ({ isOpen, message, handleClose }) => {
   return (
     <Box>
       {isOpen && (
@@ -48,5 +48,3 @@ Modal.propTypes = {
   message: PropTypes.string,
   handleClose: PropTypes.func,
 };
-
-export default Modal;

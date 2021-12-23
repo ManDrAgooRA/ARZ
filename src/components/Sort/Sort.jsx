@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Box, Select } from 'grommet';
 import { setSortSting } from '../../store/actions';
 
-const Sort = () => {
+export const Sort = () => {
   const dispatch = useDispatch();
 
   const options = [
@@ -30,5 +30,3 @@ const Sort = () => {
     </Box>
   );
 };
-
-export default Sort;

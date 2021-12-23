@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Box } from 'grommet';
 import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ item }) => {
+export const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   const goSinglePage = () => {
@@ -25,5 +25,3 @@ const ProductCard = ({ item }) => {
 ProductCard.propTypes = {
   item: PropTypes.object,
 };
-
-export default ProductCard;

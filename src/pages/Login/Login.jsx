@@ -1,39 +1,27 @@
 import React, { useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { fetchSignUp } from '../../store/thunks/auth';
-import { PhoneInput } from './Inputs/PhoneInput';
-import { DateInput } from './Inputs/DateInput';
-import { UserNameInput } from './Inputs/UserNameInput';
-import { EmailInput } from '../../components/EmailInput/EmailInput';
-import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
-import { ConfirmPassword } from './Inputs/ConfirmPassword';
+import * as yup from 'yup';
 import { Modal } from '../../components/Modal/Modal';
 import { authError } from '../../store/selectors/auth';
-import './signUp.scss';
+import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
+import { EmailInput } from '../../components/EmailInput/EmailInput';
+import { fetchLogin } from '../../store/thunks/auth';
 
 const schema = yup
   .object({
-    userName: yup.string().required(),
     email: yup.string().email().required(),
-    phone: yup.string().required(),
-    dateOfBirthDay: yup.string().required(),
     password: yup
       .string()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters'),
-    confirmPass: yup
-      .string()
-      .required('Confirm Password is required')
-      .oneOf([yup.ref('password')], 'Passwords must match'),
   })
   .required();
 
-export const SignUp = () => {
+export const Login = () => {
   const error = useSelector(authError);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();
@@ -50,7 +38,7 @@ export const SignUp = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -61,23 +49,19 @@ export const SignUp = () => {
   };
 
   const onSubmit = (data) => {
-    dispatch(fetchSignUp({ requestBody: data, handleNavigate, handleOpen }));
-    reset();
+    dispatch(fetchLogin({ requestBody: data, handleNavigate, handleOpen }));
+    console.log(data);
   };
 
   return (
     <div className="container">
       <Modal isOpen={isOpenModal} message={error} handleClose={handleClose} />
-      <Heading level={2}>SignUp</Heading>
+      <Heading level={2}>Login</Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-        <UserNameInput register={register} errors={errors} />
-        <PhoneInput register={register} errors={errors} />
-        <DateInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
         <PasswordInput register={register} errors={errors} />
-        <ConfirmPassword register={register} errors={errors} />
         <button type="submit" className="btn btn-form">
-          SignUp
+          Login
         </button>
       </form>
     </div>

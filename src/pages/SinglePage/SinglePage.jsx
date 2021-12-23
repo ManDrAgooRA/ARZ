@@ -11,7 +11,7 @@ import {
 } from '../../store/selectors';
 import './singlePage.scss';
 
-const SinglePage = () => {
+export const SinglePage = () => {
   const selectedGoods = useSelector(selectedGoodsSelector);
   const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
   const dispatch = useDispatch();
@@ -59,5 +59,3 @@ const SinglePage = () => {
     </Grommet>
   );
 };
-
-export default SinglePage;

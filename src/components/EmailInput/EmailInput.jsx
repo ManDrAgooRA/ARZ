@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormField, MaskedInput } from 'grommet';
 import { MailOption } from 'grommet-icons';
-import { EMAIL_MASK } from '../masks';
+import { EMAIL_MASK } from '../../constants';
 
-const EmailInput = ({ register, errors }) => {
+export const EmailInput = ({ register, errors }) => {
   return (
     <FormField
       label="Email"
@@ -21,5 +21,3 @@ EmailInput.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
 };
-
-export default EmailInput;

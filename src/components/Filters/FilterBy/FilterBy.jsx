@@ -11,7 +11,7 @@ import { setCategories, setCountries } from '../../../store/actions';
 import { getUniqueData } from '../../../utils';
 import './filter.scss';
 
-const FilterBy = ({ filterName }) => {
+export const FilterBy = ({ filterName }) => {
   const goods = useSelector(goodsSelector);
   const filterParam = useSelector(
     filterName === 'categories'
@@ -49,5 +49,3 @@ const FilterBy = ({ filterName }) => {
 FilterBy.propTypes = {
   filterName: PropTypes.string,
 };
-
-export default FilterBy;
