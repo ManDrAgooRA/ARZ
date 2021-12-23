@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { fetchSignUp } from '../../store/thunks/auth';
 import PhoneInput from './Inputs/PhoneInput';
 import DateInput from './Inputs/DateInput';
 import UserNameInput from '../../components/UserNameInput/UserNameInput';
 import EmailInput from './Inputs/EmailInput';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
 import ConfirmPassword from './Inputs/ConfirmPassword';
+import Modal from '../../components/Modal/Modal';
+import { authError } from '../../store/selectors/auth';
 import './signUp.scss';
 
 const schema = yup
@@ -29,19 +34,43 @@ const schema = yup
   .required();
 
 const SignUp = () => {
+  const error = useSelector(authError);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleOpen = () => {
+    setIsOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setIsOpenModal(false);
+  };
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const handleNavigate = () => {
+    navigate('/');
+  };
+
+  const onSubmit = (data) => {
+    dispatch(fetchSignUp({ requestBody: data, handleNavigate, handleOpen }));
+    reset();
+  };
 
   return (
     <div className="container">
-      <Heading level={2}>SignUp</Heading>
+      <Modal isOpen={isOpenModal} message={error} handleClose={handleClose} />
+      <Heading level={2} onClick={handleOpen}>
+        SignUp
+      </Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
         <UserNameInput register={register} errors={errors} />
         <PhoneInput register={register} errors={errors} />

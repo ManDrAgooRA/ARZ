@@ -2,7 +2,7 @@ import {
   fetchGoodsSuccess,
   fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
-} from '../actions/goodsActions';
+} from '../actions';
 import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
 
 export const fetchGoods = ({

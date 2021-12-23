@@ -84,7 +84,7 @@ const PriceRange = () => {
             <div className="form-wrap">
               <FormField
                 {...register('minValue')}
-                label="Min value"
+                label="Min price"
                 type="number"
                 value={range[0]}
                 error={errors?.minValue?.message}
@@ -94,7 +94,7 @@ const PriceRange = () => {
               </FormField>
               <FormField
                 {...register('maxValue')}
-                label="Max value"
+                label="Max price"
                 type="number"
                 value={range[1]}
                 error={errors.maxValue?.message}
