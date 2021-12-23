@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
-  entry: ['@babel/polyfill', './src/index.jsx'],
+  entry: ['@babel/polyfill', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
@@ -16,7 +16,7 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [
     new HTMLWebPackPlugin({
@@ -34,7 +34,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.jsx$/,
+        test: /\.(ts|tsx|jsx|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -44,7 +44,7 @@ module.exports = {
         },
       },
       {
-        test: /\.jsx$/,
+        test: /\.(ts|tsx|jsx|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
