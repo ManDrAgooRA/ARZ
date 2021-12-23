@@ -2,7 +2,7 @@ export const baseUrl = (path) => {
   return `${process.env.API_KEY}${path}`;
 };
 
-export default class HTTPService {
+export class HTTPService {
   static get(path) {
     return fetch(`${baseUrl(path)}`, {
       headers: {

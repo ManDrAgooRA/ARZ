@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormField, MaskedInput, Button } from 'grommet';
 import { Hide, View } from 'grommet-icons';
 
-const PasswordInput = ({ register, errors }) => {
+export const PasswordInput = ({ register, errors }) => {
   const [passValue, setPassValue] = useState('');
   const [reveal, setReveal] = useState(false);
 
@@ -32,5 +32,3 @@ PasswordInput.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
 };
-
-export default PasswordInput;

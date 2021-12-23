@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Collapsible } from 'grommet';
 import { CaretLeftFill } from 'grommet-icons';
-import PriceRange from '../../RangeSelector/RangeSelector';
+import { PriceRange } from '../../RangeSelector/RangeSelector';
 import './filterByPrice.scss';
 
-const FilterByPrice = () => {
+export const FilterByPrice = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,5 +27,3 @@ const FilterByPrice = () => {
     </>
   );
 };
-
-export default FilterByPrice;

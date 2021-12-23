@@ -4,7 +4,7 @@ import { FormField, MaskedInput } from 'grommet';
 import { Calendar } from 'grommet-icons';
 import { getDateMask } from '../masks';
 
-const DateInput = ({ register, errors }) => {
+export const DateInput = ({ register, errors }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -24,8 +24,8 @@ const DateInput = ({ register, errors }) => {
     </FormField>
   );
 };
+
 DateInput.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
 };
-export default DateInput;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormField, MaskedInput } from 'grommet';
 import { User } from 'grommet-icons';
 
-const UserNameInput = ({ register, errors }) => {
+export const UserNameInput = ({ register, errors }) => {
   return (
     <FormField
       label="User Name"
@@ -21,5 +21,3 @@ UserNameInput.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
 };
-
-export default UserNameInput;

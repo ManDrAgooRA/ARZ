@@ -1,4 +1,4 @@
-import HTTPService from '../services/httpService';
+import { HTTPService } from '../services/httpService';
 import { getQuery } from '../utils';
 
 export const getAllGoods = ({

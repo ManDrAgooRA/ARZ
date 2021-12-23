@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
-import ProductCard from '../ProductCard/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 import {
   goodsSelector,
   isLoadGoodsSelector,
@@ -19,7 +19,7 @@ import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
 import { MySpinner } from '../MySpinner/MySpinner';
 import './products.scss';
 
-const ProductList = () => {
+export const ProductList = () => {
   const dispatch = useDispatch();
   const size = useContext(ResponsiveContext);
   const goods = useSelector(goodsSelector);
@@ -64,5 +64,3 @@ const ProductList = () => {
     </Grommet>
   );
 };
-
-export default ProductList;
