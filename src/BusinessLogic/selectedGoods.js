@@ -1,4 +1,4 @@
-import { getCurrentGoods } from '../Api/get';
+import { getCurrentGoods } from '../api';
 
 export const selectedGoods = async (id) => {
   const response = await getCurrentGoods(id);

@@ -38,7 +38,7 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
-    // reset,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -50,7 +50,7 @@ export const Login = () => {
 
   const onSubmit = (data) => {
     dispatch(fetchLogin({ requestBody: data, handleNavigate, handleOpen }));
-    console.log(data);
+    reset();
   };
 
   return (

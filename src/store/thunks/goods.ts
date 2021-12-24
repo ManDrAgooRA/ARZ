@@ -3,6 +3,7 @@ import {
   fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
 } from '../actions';
+import { IAllGoods } from '../../interfaces';
 import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
 
 export const fetchGoods = ({
@@ -14,7 +15,7 @@ export const fetchGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-}) => {
+}: IAllGoods) => {
   return async (dispatch) => {
     try {
       const goods = await getGoods({
@@ -51,7 +52,7 @@ export const fetchCurrentGoods = (id) => {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));
     } catch (e) {
-      console.err(e);
+      console.log(e);
     }
   };
 };

@@ -1,4 +1,5 @@
 import { HTTPService } from '../services/httpService';
+import { IAllGoods, IGoodId } from '../interfaces';
 import { getQuery } from '../utils';
 
 export const getAllGoods = ({
@@ -10,7 +11,7 @@ export const getAllGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-}) => {
+}: IAllGoods) => {
   return HTTPService.get(
     `goods?${getQuery({
       limit,
@@ -29,6 +30,6 @@ export const getAllData = () => {
   return HTTPService.get('goods');
 };
 
-export const getCurrentGoods = (id) => {
+export const getCurrentGoods = (id: IGoodId) => {
   return HTTPService.get(`goods/${id}`);
 };

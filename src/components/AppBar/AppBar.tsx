@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Anchor,
@@ -16,7 +16,7 @@ import { LINKS } from '../../constants';
 import { authIsLogin, authPersonName } from '../../store/selectors';
 import './header.scss';
 
-export const AppBar = () => {
+export var AppBar: FC = function () {
   const dispatch = useDispatch();
   const loginStatus = useSelector(authIsLogin);
   const userName = useSelector(authPersonName);
@@ -41,18 +41,10 @@ export const AppBar = () => {
         ]
       : [
           {
-            label: (
-              <Link to={LINKS.login} pad="medium">
-                Login
-              </Link>
-            ),
+            label: <Link to={LINKS.login}>Login</Link>,
           },
           {
-            label: (
-              <Link to={LINKS.signUp} pad="small">
-                Sign Up
-              </Link>
-            ),
+            label: <Link to={LINKS.signUp}>Sign Up</Link>,
           },
         ];
 
@@ -76,15 +68,15 @@ export const AppBar = () => {
             <Nav justify="end" direction="row" gap="medium">
               {loginStatus ? (
                 <>
-                  <Anchor to="/" label={userName} color="light-1" />
+                  <Anchor label={userName} color="light-1" />
                   <Anchor label="Logout" color="light-1" onClick={logOut} />
                 </>
               ) : (
                 <>
-                  <Link to={LINKS.login} label="Sign Up" color="light-1">
+                  <Link to={LINKS.login} color="light-1">
                     Login
                   </Link>
-                  <Link to={LINKS.signUp} label="Sign Up" color="light-1">
+                  <Link to={LINKS.signUp} color="light-1">
                     SignUp
                   </Link>
                 </>

@@ -1,4 +1,4 @@
-import { getAllData } from '../Api/get';
+import { getAllData } from '../api';
 
 export const getData = async () => {
   const response = await getAllData();

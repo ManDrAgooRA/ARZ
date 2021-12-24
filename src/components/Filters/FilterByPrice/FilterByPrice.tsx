@@ -22,7 +22,7 @@ export const FilterByPrice = () => {
         </button>
       </Box>
       <Collapsible open={open}>
-        <PriceRange label="My Range Selector" />
+        <PriceRange />
       </Collapsible>
     </>
   );

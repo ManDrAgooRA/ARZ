@@ -1,4 +1,4 @@
-import { getAllGoods } from '../Api/get';
+import { getAllGoods } from '../api';
 
 export const getGoods = async ({
   limit,

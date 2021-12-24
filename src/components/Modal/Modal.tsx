@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Heading, Layer, Text } from 'grommet';
 
-export const Modal = ({ isOpen, message, handleClose }) => {
+export const Modal: FC = ({ isOpen, message, handleClose }) => {
   return (
     <Box>
       {isOpen && (

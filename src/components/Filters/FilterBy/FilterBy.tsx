@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CheckBoxGroup, Heading } from 'grommet';
-import PropTypes from 'prop-types';
 import {
   goodsSelector,
   goodsCategoriesSelector,
@@ -9,9 +8,10 @@ import {
 } from '../../../store/selectors';
 import { setCategories, setCountries } from '../../../store/actions';
 import { getUniqueData } from '../../../utils';
+import { IFilterBy } from '../../../interfaces/IFIlterBy';
 import './filter.scss';
 
-export const FilterBy = ({ filterName }) => {
+export const FilterBy: FC<IFilterBy> = ({ filterName }) => {
   const goods = useSelector(goodsSelector);
   const filterParam = useSelector(
     filterName === 'categories'
@@ -44,8 +44,4 @@ export const FilterBy = ({ filterName }) => {
       </div>
     </>
   );
-};
-
-FilterBy.propTypes = {
-  filterName: PropTypes.string,
 };

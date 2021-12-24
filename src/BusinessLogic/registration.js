@@ -1,4 +1,4 @@
-import { registation } from '../Api/registration';
+import { registation } from '../api';
 
 export const getRegistrationData = async ({ requestBody }) => {
   try {

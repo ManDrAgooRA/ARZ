@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { FC, useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -19,7 +19,7 @@ import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
 import { MySpinner } from '../MySpinner/MySpinner';
 import './products.scss';
 
-export const ProductList = () => {
+export const ProductList: FC = () => {
   const dispatch = useDispatch();
   const size = useContext(ResponsiveContext);
   const goods = useSelector(goodsSelector);
@@ -53,11 +53,11 @@ export const ProductList = () => {
   }
 
   return (
-    <Grommet pad="small" theme={THEME}>
+    <Grommet theme={THEME}>
       <Box pad="small" className="products__list">
         <Grid gap="small" columns={getCountColumns(size)}>
           {goods.map((item) => (
-            <ProductCard pad="small" key={item.id} item={item} />
+            <ProductCard key={item.id} item={item} />
           ))}
         </Grid>
       </Box>

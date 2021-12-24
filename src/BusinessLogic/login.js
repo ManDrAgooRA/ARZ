@@ -1,4 +1,4 @@
-import { login } from '../Api/login';
+import { login } from '../api';
 
 export const getLogin = async ({ requestBody }) => {
   try {
