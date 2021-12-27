@@ -4,13 +4,23 @@
     "es2021": true
   },
   "extends": [
-    "plugin:react-hooks/recommended",
+    // "plugin:react-hooks/recommended",
+    // "plugin:@typescript-eslint/recommended",
+    // "plugin:react/recommended",
+    // "plugin:import/errors",
+    // "plugin:import/warnings",
+    // "plugin:import/typescript",
+    // "prettier/@typescript-eslint",
+    // "airbnb",
+    // "plugin:prettier/recommended"
     "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "airbnb",
+    "eslint-config-airbnb-base",
+    "airbnb/rules/react",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
+
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -20,7 +30,8 @@
   },
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ],
   "rules": {
     "jsx-quotes": ["error", "prefer-double"],
@@ -47,6 +58,7 @@
         }
       ],
       "no-plusplus": "off",
+      "react/jsx-filename-extension": 0,
       "react/forbid-prop-types": [2, { "forbid": ["any"], "checkContextTypes": true, "checkChildContextTypes": true }],
       "react/require-default-props": [2, { "forbidDefaultForRequired": true, "ignoreFunctionalComponents": true}],
       "react/jsx-props-no-spreading":  [2, {
@@ -55,13 +67,13 @@
       "import/no-relative-packages": "error",
       "import/extensions": ["error", "ignorePackages", {
         "js": "never",
+        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }]
     },
   "settings": {
     "import/resolver": {
-      // "typescript": {},
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }

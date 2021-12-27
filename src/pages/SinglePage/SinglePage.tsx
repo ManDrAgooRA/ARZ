@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Grommet, Box, ResponsiveContext, Grid } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,7 +11,7 @@ import {
 } from '../../store/selectors';
 import './singlePage.scss';
 
-export const SinglePage = () => {
+export const SinglePage: FC = () => {
   const selectedGoods = useSelector(selectedGoodsSelector);
   const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
   const dispatch = useDispatch();

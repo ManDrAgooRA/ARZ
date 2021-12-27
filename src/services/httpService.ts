@@ -1,4 +1,4 @@
-export const baseUrl = (path) => {
+export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;
 };
 

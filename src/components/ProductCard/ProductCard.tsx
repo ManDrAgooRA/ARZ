@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import { Card, Box } from 'grommet';
 import { useNavigate } from 'react-router-dom';
-import { IProductCardItem } from '../../interfaces'
+import { IProductCardItem } from '../../interfaces';
 
 export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   const navigate = useNavigate();

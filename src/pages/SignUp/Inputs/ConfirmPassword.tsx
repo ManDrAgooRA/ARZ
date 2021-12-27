@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useState } from 'react';
 import { FormField, MaskedInput, Button } from 'grommet';
 import { Hide, View } from 'grommet-icons';
+import { IInput } from '../../../interfaces';
 
-export const ConfirmPassword = ({ register, errors }) => {
+export const ConfirmPassword: FC<IInput> = ({ register, errors }) => {
   const [confirmReveal, setConfirmReveal] = useState(false);
 
   return (
@@ -27,9 +27,4 @@ export const ConfirmPassword = ({ register, errors }) => {
       </div>
     </FormField>
   );
-};
-
-ConfirmPassword.propTypes = {
-  register: PropTypes.func,
-  errors: PropTypes.object,
 };

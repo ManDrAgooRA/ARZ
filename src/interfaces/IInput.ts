@@ -1,15 +1,15 @@
 type IErrorMessage = {
-  message: string
-}
+  message: string;
+};
 
-export interface IInput{
-  register(message: string): void,
+export interface IInput {
+  register(message: string): void;
   errors: {
-    userName?: IErrorMessage,
-    phone?: IErrorMessage,
-    dateOfBirth?: IErrorMessage,
-    email?:IErrorMessage,
-    password?: IErrorMessage,
-    confirmPass?: IErrorMessage,
-  },
+    userName?: IErrorMessage;
+    phone?: IErrorMessage;
+    dateOfBirth?: IErrorMessage;
+    email?: IErrorMessage;
+    password?: IErrorMessage;
+    confirmPass?: IErrorMessage;
+  };
 }

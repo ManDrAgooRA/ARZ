@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import { Box, Button, Heading, Layer, Text } from 'grommet';
+import { IModal } from '../../interfaces/IModal';
 
-export const Modal: FC = ({ isOpen, message, handleClose }) => {
+export const Modal: FC<IModal> = ({ isOpen, message, handleClose }) => {
   return (
     <Box>
       {isOpen && (
@@ -41,10 +41,4 @@ export const Modal: FC = ({ isOpen, message, handleClose }) => {
       )}
     </Box>
   );
-};
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool,
-  message: PropTypes.string,
-  handleClose: PropTypes.func,
 };

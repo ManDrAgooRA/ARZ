@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, useState } from 'react';
 import { FormField, MaskedInput } from 'grommet';
 import { Calendar } from 'grommet-icons';
 import { getDateMask } from '../masks';
+import { IInput } from '../../../interfaces';
 
-export const DateInput = ({ register, errors }) => {
+export const DateInput: FC<IInput> = ({ register, errors }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -23,9 +23,4 @@ export const DateInput = ({ register, errors }) => {
       />
     </FormField>
   );
-};
-
-DateInput.propTypes = {
-  register: PropTypes.func,
-  errors: PropTypes.object,
 };

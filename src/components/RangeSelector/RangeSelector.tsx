@@ -30,7 +30,7 @@ export const PriceRange = () => {
   const allGoods = useSelector(allGoodsSelector);
   const maxPrice = useSelector(goodsMaxPriceSelector);
   const dispatch = useDispatch();
-  const { minValue, maxValue } = getMinMaxValue({ allGoods });
+  const { minValue, maxValue } = getMinMaxValue(allGoods);
   const [range, setRange] = useState([minValue, maxValue]);
 
   const {

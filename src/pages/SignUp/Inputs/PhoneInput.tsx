@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Phone } from 'grommet-icons';
-import PropTypes from 'prop-types';
 import { FormField, MaskedInput } from 'grommet';
 import { PHONE_MASK } from '../masks';
+import { IInput } from '../../../interfaces';
 
-export const PhoneInput = ({ register, errors }) => {
+export const PhoneInput: FC<IInput> = ({ register, errors }) => {
   return (
     <FormField
       label="Phone"
@@ -15,9 +15,4 @@ export const PhoneInput = ({ register, errors }) => {
       <MaskedInput name="phone" icon={<Phone />} mask={PHONE_MASK} />
     </FormField>
   );
-};
-
-PhoneInput.propTypes = {
-  register: PropTypes.func,
-  errors: PropTypes.object,
 };

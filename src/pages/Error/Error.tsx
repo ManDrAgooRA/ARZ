@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const Error = () => {
+export const Error: FC = () => {
   const navigate = useNavigate();
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,7 +21,7 @@ const schema = yup
   })
   .required();
 
-export const Login = () => {
+export const Login: FC = () => {
   const error = useSelector(authError);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();

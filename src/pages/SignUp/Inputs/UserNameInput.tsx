@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { FormField, MaskedInput } from 'grommet';
 import { User } from 'grommet-icons';
+import { IInput } from '../../../interfaces';
 
-export const UserNameInput = ({ register, errors }) => {
+export const UserNameInput: FC<IInput> = ({ register, errors }) => {
   return (
     <FormField
       label="User Name"
@@ -15,9 +15,4 @@ export const UserNameInput = ({ register, errors }) => {
       <MaskedInput name="userName" placeholder="user name" icon={<User />} />
     </FormField>
   );
-};
-
-UserNameInput.propTypes = {
-  register: PropTypes.func,
-  errors: PropTypes.object,
 };

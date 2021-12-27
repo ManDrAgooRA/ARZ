@@ -1,3 +1,3 @@
-export interface IGoodId{
-  id: string
+export interface IGoodId {
+  id: string;
 }

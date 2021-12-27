@@ -7,7 +7,12 @@ export const PasswordInput: FC<IInput> = ({ register, errors }) => {
   const [passValue, setPassValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <FormField label="Password" name="name" error={errors.password?.message} {...register('password')}>
+    <FormField
+      label="Password"
+      name="name"
+      error={errors.password?.message}
+      {...register('password')}
+    >
       <div className="passord-wrap">
         <MaskedInput
           name="password"

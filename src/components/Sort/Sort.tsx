@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Select } from 'grommet';
 import { setSortSting } from '../../store/actions';
 
-export const Sort = () => {
+export const Sort: FC = () => {
   const dispatch = useDispatch();
 
   const options = [

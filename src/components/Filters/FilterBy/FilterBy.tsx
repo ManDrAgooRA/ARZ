@@ -26,7 +26,6 @@ export const FilterBy: FC<IFilterBy> = ({ filterName }) => {
       filterName === 'categories' ? setCategories(value) : setCountries(value)
     );
   }, [value]);
-
   return (
     <>
       <Heading level="3">
@@ -39,7 +38,7 @@ export const FilterBy: FC<IFilterBy> = ({ filterName }) => {
           aria-labelledby="check-box-formfield-id"
           value={value}
           onChange={({ value: nextValue }) => setValue(nextValue)}
-          options={getUniqueData({ uniqueData: `${filterName}`, goods })}
+          options={getUniqueData(`${filterName}`, goods)}
         />
       </div>
     </>

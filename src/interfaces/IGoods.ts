@@ -1,4 +1,5 @@
-export interface IProductCard {
+export interface IGoods {
+  price: number;
   categories: string;
   count: number;
   countries: string;
@@ -7,12 +8,6 @@ export interface IProductCard {
   isFavorite: boolean;
   image: string;
   isSale: boolean;
-  price: number;
   raiting: number;
   salePrice: number;
-  title: string;
-}
-
-export interface IProductCardItem {
-  item: IProductCard;
 }

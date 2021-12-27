@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { FacebookOption, Instagram, Twitter, Youtube } from 'grommet-icons';
 import { Anchor, Box, Text, Image } from 'grommet';
 import './footer.scss';
@@ -6,7 +6,6 @@ import './footer.scss';
 const Media = () => (
   <Box direction="row" justify="center">
     <Anchor
-      pad="small"
       a11yTitle="Follow us on Instagramm"
       target="_blank"
       href="https://www.instagram.com/rozetkaua/"
@@ -36,7 +35,7 @@ const Media = () => (
   </Box>
 );
 
-export const Footer = () => {
+export const Footer: FC = () => {
   return (
     <div className="footer">
       <Box align="center" direction="row" gap="xsmall" className="footer__logo">

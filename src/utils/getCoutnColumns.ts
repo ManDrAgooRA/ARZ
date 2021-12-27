@@ -1,5 +1,5 @@
-export const getCountColumns = (size) => {
-  let columnsGrid;
+export const getCountColumns = (size: string): string => {
+  let columnsGrid = '';
   if (size === 'large') {
     columnsGrid = '1/4';
   } else if (size === 'medium') {

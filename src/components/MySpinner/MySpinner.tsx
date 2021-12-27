@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Spinner, Text } from 'grommet';
 import './mySpinner.scss';
 
-export const MySpinner = () => {
+export const MySpinner: FC = () => {
   return (
     <Box
       align="center"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -33,7 +33,7 @@ const schema = yup
   })
   .required();
 
-export const SignUp = () => {
+export const SignUp: FC = () => {
   const error = useSelector(authError);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();
