@@ -10,9 +10,8 @@ import {
 } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { priceRangeValidationSchema } from '../../utils/validations';
 import { allGoodsSelector, goodsMaxPriceSelector } from '../../store/selectors';
-
 import {
   setMinPrice,
   setMaxPrice,
@@ -20,11 +19,6 @@ import {
 } from '../../store/actions';
 import { getMinMaxValue } from '../../utils';
 import './rangeSelector.scss';
-
-const schema = yup.object().shape({
-  minValue: yup.number().positive().integer(),
-  maxValue: yup.number().positive().integer(),
-});
 
 export const PriceRange = () => {
   const allGoods = useSelector(allGoodsSelector);
@@ -38,7 +32,7 @@ export const PriceRange = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(priceRangeValidationSchema),
     defaultValues: {
       minValue,
       maxValue,
@@ -82,26 +76,31 @@ export const PriceRange = () => {
         <div className="price-filter">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-wrap">
-              <FormField
-                {...register('minValue')}
-                label="Min price"
-                type="number"
-                value={range[0]}
-                error={errors?.minValue?.message}
-                onChange={(e) => setRange([+e.target.value, range[1]])}
-              >
-                <MaskedInput name="minValue" />
-              </FormField>
-              <FormField
-                {...register('maxValue')}
-                label="Max price"
-                type="number"
-                value={range[1]}
-                error={errors.maxValue?.message}
-                onChange={(e) => setRange([range[0], +e.target.value])}
-              >
-                <MaskedInput name="maxValue" />
-              </FormField>
+              <div className="price-input">
+                <FormField
+                  {...register('minValue')}
+                  label="Min price"
+                  type="number"
+                  value={range[0]}
+                  error={errors?.minValue?.message}
+                  onChange={(e) => setRange([+e.target.value, range[1]])}
+                >
+                  <MaskedInput name="minValue" />
+                </FormField>
+              </div>
+
+              <div className="price-input">
+                <FormField
+                  {...register('maxValue')}
+                  label="Max price"
+                  type="number"
+                  value={range[1]}
+                  error={errors.maxValue?.message}
+                  onChange={(e) => setRange([range[0], +e.target.value])}
+                >
+                  <MaskedInput name="maxValue" />
+                </FormField>
+              </div>
             </div>
 
             <input type="submit" value="Ok" className="btn btn-form" />

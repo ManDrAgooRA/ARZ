@@ -4,22 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import * as yup from 'yup';
 import { Modal } from '../../components/Modal/Modal';
 import { authError } from '../../store/selectors/auth';
 import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
 import { EmailInput } from '../../components/EmailInput/EmailInput';
 import { fetchLogin } from '../../store/thunks/auth';
-
-const schema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup
-      .string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-  })
-  .required();
+import { loginValidationSchema } from '../../utils/validations';
 
 export const Login: FC = () => {
   const error = useSelector(authError);
@@ -41,7 +31,7 @@ export const Login: FC = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginValidationSchema),
   });
 
   const handleNavigate = () => {

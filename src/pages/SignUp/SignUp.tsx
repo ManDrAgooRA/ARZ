@@ -2,7 +2,6 @@ import React, { FC, useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchSignUp } from '../../store/thunks/auth';
@@ -13,25 +12,9 @@ import { EmailInput } from '../../components/EmailInput/EmailInput';
 import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
 import { ConfirmPassword } from './Inputs/ConfirmPassword';
 import { Modal } from '../../components/Modal/Modal';
+import { signUpValidationSchema } from '../../utils/validations';
 import { authError } from '../../store/selectors/auth';
 import './signUp.scss';
-
-const schema = yup
-  .object({
-    userName: yup.string().required(),
-    email: yup.string().email().required(),
-    phone: yup.string().required(),
-    dateOfBirthDay: yup.string().required(),
-    password: yup
-      .string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters'),
-    confirmPass: yup
-      .string()
-      .required('Confirm Password is required')
-      .oneOf([yup.ref('password')], 'Passwords must match'),
-  })
-  .required();
 
 export const SignUp: FC = () => {
   const error = useSelector(authError);
@@ -53,7 +36,7 @@ export const SignUp: FC = () => {
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signUpValidationSchema),
   });
 
   const handleNavigate = () => {
