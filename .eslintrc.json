@@ -70,7 +70,8 @@
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
-      }]
+      }],
+      "default-param-last": [0]
     },
   "settings": {
     "import/resolver": {

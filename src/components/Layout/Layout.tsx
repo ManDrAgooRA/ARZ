@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import PropTypes from 'prop-types';
 import { Footer } from '../Footer/Footer';
 import { AppBar } from '../AppBar/AppBar';
 import { ILayout } from '../../interfaces/ILayout';
@@ -13,8 +12,4 @@ export const Layout: FC<ILayout> = ({ children }) => {
       <Footer />
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.object,
 };

@@ -1,9 +1,11 @@
+import { IUser } from '../interfaces';
+
 export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;
 };
 
 export class HTTPService {
-  static get(path) {
+  static get(path: string): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         'Content-Type': 'aplication/json',
@@ -18,7 +20,7 @@ export class HTTPService {
       });
   }
 
-  static post(path, requestBody) {
+  static post(path: string, requestBody: IUser): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         Accept: 'application/json',

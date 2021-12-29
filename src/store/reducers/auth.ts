@@ -1,12 +1,13 @@
 import { authActions } from '../actions';
+import { IAuthState } from '../../interfaces';
 
-export const initialState = {
+export const initialState: IAuthState = {
   isLogin: false,
   userName: '',
   authError: '',
 };
 
-export function auth(state = initialState, action = {}) {
+export function auth(state = initialState, action) {
   switch (action.type) {
     case authActions.CHANGE_SIGNUP_STATUS:
       return {
@@ -17,7 +18,7 @@ export function auth(state = initialState, action = {}) {
     case authActions.FETCH_SIGNUP_SUCCESS:
       return {
         ...state,
-        userName: action.payload,
+        userName: action.payload.user.userName,
         isLogin: true,
       };
 

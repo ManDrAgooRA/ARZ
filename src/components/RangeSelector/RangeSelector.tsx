@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Box,
@@ -20,7 +20,7 @@ import {
 import { getMinMaxValue } from '../../utils';
 import './rangeSelector.scss';
 
-export const PriceRange = () => {
+export const PriceRange: FC = () => {
   const allGoods = useSelector(allGoodsSelector);
   const maxPrice = useSelector(goodsMaxPriceSelector);
   const dispatch = useDispatch();

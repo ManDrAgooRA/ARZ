@@ -13,7 +13,7 @@ export const Sort: FC = () => {
     { label: 'Raiting DESC', value: 'Raiting DESC' },
   ];
 
-  const handlerChange = (value) => {
+  const handlerChange = (value: string) => {
     dispatch(setSortSting(value));
   };
 

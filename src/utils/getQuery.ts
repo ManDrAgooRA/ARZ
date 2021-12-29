@@ -1,6 +1,6 @@
-import { IGetQuery } from '../interfaces';
+import { IAllGoods } from '../interfaces';
 
-export const getQuery = (obj: IGetQuery): string => {
+export const getQuery = (obj: IAllGoods): string => {
   let queryString = '';
   Object.keys(obj).reduce((str, key) => {
     if (key === 'countries' || key === 'categories') {

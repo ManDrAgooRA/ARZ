@@ -16,7 +16,7 @@ import { LINKS } from '../../constants';
 import { authIsLogin, authPersonName } from '../../store/selectors';
 import './header.scss';
 
-export var AppBar: FC = function () {
+export const AppBar: FC = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector(authIsLogin);
   const userName = useSelector(authPersonName);

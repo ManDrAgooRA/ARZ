@@ -1,4 +1,4 @@
-export interface IGetQuery {
+export interface IAllGoods {
   limit: number;
   page: number;
   sort: string;

@@ -10,6 +10,7 @@ import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
 import { EmailInput } from '../../components/EmailInput/EmailInput';
 import { fetchLogin } from '../../store/thunks/auth';
 import { loginValidationSchema } from '../../utils/validations';
+import { IUser } from '../../interfaces';
 
 export const Login: FC = () => {
   const error = useSelector(authError);
@@ -38,7 +39,7 @@ export const Login: FC = () => {
     navigate('/');
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IUser) => {
     dispatch(fetchLogin({ requestBody: data, handleNavigate, handleOpen }));
     reset();
   };

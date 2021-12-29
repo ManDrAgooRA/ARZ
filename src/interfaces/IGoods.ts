@@ -1,4 +1,5 @@
 export interface IGoods {
+  title: string;
   price: number;
   categories: string;
   count: number;

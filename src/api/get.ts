@@ -1,5 +1,5 @@
 import { HTTPService } from '../services/httpService';
-import { IGoodId, IGetQuery } from '../interfaces';
+import { IAllGoods } from '../interfaces';
 import { getQuery } from '../utils';
 
 export const getAllGoods = ({
@@ -11,7 +11,7 @@ export const getAllGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-}: IGetQuery) => {
+}: IAllGoods): Promise<Response> => {
   return HTTPService.get(
     `goods?${getQuery({
       limit,
@@ -26,10 +26,10 @@ export const getAllGoods = ({
   );
 };
 
-export const getAllData = () => {
+export const getAllData = (): Promise<Response> => {
   return HTTPService.get('goods');
 };
 
-export const getCurrentGoods = (id: IGoodId) => {
+export const getCurrentGoods = (id: string): Promise<Response> => {
   return HTTPService.get(`goods/${id}`);
 };

@@ -1,4 +1,5 @@
 import { getAllGoods } from '../api';
+import { IAllGoods, IGoods } from '../interfaces';
 
 export const getGoods = async ({
   limit,
@@ -9,7 +10,7 @@ export const getGoods = async ({
   categories,
   minPrice,
   currentMaxPrice,
-}) => {
+}: IAllGoods): Promise<IGoods[]> => {
   const response = await getAllGoods({
     limit,
     page,

@@ -1,28 +1,19 @@
 import { goodsActions } from '../actions';
+import { IGoodsState } from '../../interfaces';
 
-export const initialState = {
+export const initialState: IGoodsState = {
   allGoods: [],
   goods: [],
   selectedGoods: {
     id: 358,
     title: 'Sleek Wooden Car',
     image: 'http://placeimg.com/640/480/nature',
-    category: [
-      {
-        id: 12,
-      },
-    ],
-    price: '998.00',
+    categories: 'categories',
+    price: 998,
     count: 39,
     raiting: 49,
-    country: 'Senegal',
-    ifFavorite: false,
-    specification: [
-      {
-        title: 'phone',
-        brend: 'samsung',
-      },
-    ],
+    countries: 'Senegal',
+    isFavorite: false,
     description:
       'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and',
     isSale: false,
@@ -39,7 +30,7 @@ export const initialState = {
   isLoadGoods: true,
 };
 
-export function goods(state = initialState, action = {}) {
+export function goods(state = initialState, action) {
   switch (action.type) {
     case goodsActions.FETCH_GOODS_SUCCESS:
       return {

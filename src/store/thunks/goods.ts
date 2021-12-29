@@ -30,7 +30,7 @@ export const fetchGoods = ({
       });
       dispatch(fetchGoodsSuccess(goods));
     } catch (e) {
-      console.error(e);
+      throw Error(e);
     }
   };
 };
@@ -41,18 +41,18 @@ export const fetchAllGoods = () => {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
     } catch (e) {
-      console.error(e);
+      throw Error(e);
     }
   };
 };
 
-export const fetchCurrentGoods = (id) => {
+export const fetchCurrentGoods = (id: string) => {
   return async (dispatch) => {
     try {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));
     } catch (e) {
-      console.log(e);
+      throw Error(e);
     }
   };
 };

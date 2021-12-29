@@ -16,7 +16,7 @@ module.exports = () => {
       image: faker.random.image(),
       categories: `${faker.random.word()}`,
       price: +faker.commerce.price(),
-      count: mathRandom(1, 100),
+      count: +mathRandom(1, 100),
       raiting: +mathRandom(0, 100),
       countries: `${faker.address.country()}`,
       ifFavorite: false,

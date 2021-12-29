@@ -14,6 +14,7 @@ import { ConfirmPassword } from './Inputs/ConfirmPassword';
 import { Modal } from '../../components/Modal/Modal';
 import { signUpValidationSchema } from '../../utils/validations';
 import { authError } from '../../store/selectors/auth';
+import { IUser } from '../../interfaces';
 import './signUp.scss';
 
 export const SignUp: FC = () => {
@@ -43,7 +44,7 @@ export const SignUp: FC = () => {
     navigate('/');
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IUser) => {
     dispatch(fetchSignUp({ requestBody: data, handleNavigate, handleOpen }));
     reset();
   };

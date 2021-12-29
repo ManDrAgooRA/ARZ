@@ -3,24 +3,36 @@ import {
   fetchSinUpSuccess,
   fetchLoginSuccess,
 } from '../actions';
+import { IAuth } from '../../interfaces';
 import { getRegistrationData, getLogin } from '../../BusinessLogic';
 
-export const fetchSignUp = ({ requestBody, handleNavigate, handleOpen }) => {
+export const fetchSignUp = ({
+  requestBody,
+  handleNavigate,
+  handleOpen,
+}: IAuth) => {
   return async (dispatch) => {
     try {
-      const { user } = await getRegistrationData({ requestBody });
-      dispatch(fetchSinUpSuccess(user.userName));
-      if (Object.keys(user).length > 0) {
+      const data = await getRegistrationData({ requestBody });
+      if (typeof data === 'string') {
+        throw Error(data);
+      }
+      dispatch(fetchSinUpSuccess(data));
+      if (Object.keys(data.user).length > 0) {
         handleNavigate('/');
       }
     } catch (e) {
-      dispatch(setErrorMessage('Something went wrong... Please try later'));
+      dispatch(setErrorMessage(e.message));
       handleOpen();
     }
   };
 };
 
-export const fetchLogin = ({ requestBody, handleNavigate, handleOpen }) => {
+export const fetchLogin = ({
+  requestBody,
+  handleNavigate,
+  handleOpen,
+}: IAuth) => {
   return async (dispatch) => {
     try {
       const data = await getLogin({ requestBody });

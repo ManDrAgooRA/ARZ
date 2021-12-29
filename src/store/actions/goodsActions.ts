@@ -1,3 +1,5 @@
+import { IGoods } from '../../interfaces';
+
 export const goodsActions = {
   FETCH_CURRENT_GODDS_SUCCESS: '[GOODS] fetch goods success',
   FETCH_GOODS_SUCCESS: '[GOODS] fetch godds success',
@@ -11,17 +13,17 @@ export const goodsActions = {
   SET_MAX_PRICE: '[GOODS] set max price',
 };
 
-export const fetchGoodsSuccess = (goods) => ({
+export const fetchGoodsSuccess = (goods: IGoods[]) => ({
   type: goodsActions.FETCH_GOODS_SUCCESS,
   payload: goods,
 });
 
-export const fetchAllGoodSuccess = (goods) => ({
+export const fetchAllGoodSuccess = (goods: IGoods[]) => ({
   type: goodsActions.FETCH_ALL_GOODS_SUCCESS,
   payload: goods,
 });
 
-export const fetchCurrentGoodsSuccess = (currentGoods) => ({
+export const fetchCurrentGoodsSuccess = (currentGoods: IGoods) => ({
   type: goodsActions.FETCH_CURRENT_GODDS_SUCCESS,
   payload: currentGoods,
 });
@@ -30,32 +32,32 @@ export const clearCurrentUser = () => ({
   type: goodsActions.CLEAR_CURRENT_GOODS,
 });
 
-export const setSortSting = (sortString) => ({
+export const setSortSting = (sortString: string) => ({
   type: goodsActions.SET_SORT_STRING,
   payload: sortString,
 });
 
-export const setCountries = (countries) => ({
+export const setCountries = (countries: string[]) => ({
   type: goodsActions.SET_COUNTRIES,
   payload: countries,
 });
 
-export const setCategories = (categories) => ({
+export const setCategories = (categories: string[]) => ({
   type: goodsActions.SET_CATEGORIES,
   payload: categories,
 });
 
-export const setMinPrice = (minPrice) => ({
+export const setMinPrice = (minPrice: number) => ({
   type: goodsActions.SET_MIN_PRICE,
   payload: minPrice,
 });
 
-export const setMaxPrice = (maxPrice) => ({
+export const setMaxPrice = (maxPrice: number) => ({
   type: goodsActions.SET_MAX_PRICE,
   payload: maxPrice,
 });
 
-export const setCurrentMaxPrice = (currentMaxPrice) => ({
+export const setCurrentMaxPrice = (currentMaxPrice: number) => ({
   type: goodsActions.SET_CURRENT_MAX_PRICE,
   payload: currentMaxPrice,
 });
