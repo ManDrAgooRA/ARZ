@@ -1,6 +1,6 @@
-type IErrorMessage = {
+interface IErrorMessage {
   message: string;
-};
+}
 
 export interface IInput {
   register(message: string): void;
