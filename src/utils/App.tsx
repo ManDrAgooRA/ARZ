@@ -2,7 +2,7 @@ import React from 'react';
 import { Grommet } from 'grommet';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/es/integration/react';
 import { AllRoutes } from '../routes/Routes';
 import { THEME } from '../constants';
 import { store, persistor } from '../store';
