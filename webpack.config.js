@@ -16,7 +16,7 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx'],
   },
   plugins: [
     new HTMLWebPackPlugin({
@@ -34,7 +34,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(ts|tsx|jsx|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -44,7 +44,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(ts|tsx|jsx|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
