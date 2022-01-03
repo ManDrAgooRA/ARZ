@@ -4,15 +4,6 @@
     "es2021": true
   },
   "extends": [
-    // "plugin:react-hooks/recommended",
-    // "plugin:@typescript-eslint/recommended",
-    // "plugin:react/recommended",
-    // "plugin:import/errors",
-    // "plugin:import/warnings",
-    // "plugin:import/typescript",
-    // "prettier/@typescript-eslint",
-    // "airbnb",
-    // "plugin:prettier/recommended"
     "plugin:react/recommended",
     "eslint-config-airbnb-base",
     "airbnb/rules/react",
@@ -34,6 +25,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "@typescript-eslint/no-var-requires": 0,
     "jsx-quotes": ["error", "prefer-double"],
       "quotes": [ 2, "single" ],
       "max-len": [
@@ -66,8 +58,6 @@
       }],
       "import/no-relative-packages": "error",
       "import/extensions": ["error", "ignorePackages", {
-        "js": "never",
-        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }],
@@ -76,7 +66,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".ts", ".tsx"]
       }
     }
   }
