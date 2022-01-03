@@ -1,9 +1,9 @@
 import { IGoods } from '../../interfaces';
 
 export const goodsActions = {
-  FETCH_CURRENT_GODDS_SUCCESS: '[GOODS] fetch goods success',
-  FETCH_GOODS_SUCCESS: '[GOODS] fetch godds success',
-  FETCH_ALL_GOODS_SUCCESS: '[GOODS] fetch all godds success',
+  FETCH_CURRENT_GOODS_SUCCESS: '[GOODS] fetch goods success',
+  FETCH_GOODS_SUCCESS: '[GOODS] fetch goods success',
+  FETCH_ALL_GOODS_SUCCESS: '[GOODS] fetch all goods success',
   CLEAR_CURRENT_GOODS: '[GOODS] clear current goods',
   SET_SORT_STRING: '[GOODS] set sort string',
   SET_COUNTRIES: '[GOODS] set countries',
@@ -24,7 +24,7 @@ export const fetchAllGoodSuccess = (goods: IGoods[]) => ({
 });
 
 export const fetchCurrentGoodsSuccess = (currentGoods: IGoods) => ({
-  type: goodsActions.FETCH_CURRENT_GODDS_SUCCESS,
+  type: goodsActions.FETCH_CURRENT_GOODS_SUCCESS,
   payload: currentGoods,
 });
 

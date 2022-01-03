@@ -45,7 +45,7 @@ export function goods(state = initialState, action) {
         allGoods: [...action.payload],
       };
 
-    case goodsActions.FETCH_CURRENT_GODDS_SUCCESS:
+    case goodsActions.FETCH_CURRENT_GOODS_SUCCESS:
       return {
         ...state,
         selectedGoods: action.payload,
