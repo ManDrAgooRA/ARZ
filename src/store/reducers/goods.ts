@@ -1,7 +1,7 @@
 import { goodsActions } from '../actions';
 import { IGoodsState } from '../../interfaces';
 
-export const initialState: IGoodsState = {
+const initialState: IGoodsState = {
   allGoods: [],
   goods: [],
   selectedGoods: {

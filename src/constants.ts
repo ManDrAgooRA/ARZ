@@ -22,6 +22,8 @@ export const FILTERS = [{ name: 'categories' }, { name: 'countries' }];
 export const LINKS = {
   signUp: '/signUp',
   login: '/login',
+  cart: '/cart',
+  goods: '/goods',
 };
 
 export const EMAIL_MASK = [
@@ -31,3 +33,5 @@ export const EMAIL_MASK = [
   { fixed: '.' },
   { regexp: /^[\w]+$/, placeholder: 'com' },
 ];
+
+export const CART_MASK = [{ regexp: /^[0-9]{1,10}$/ }];

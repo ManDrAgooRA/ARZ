@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentGoods } from '../../store/thunks/goods';
 import { clearCurrentUser } from '../../store/actions';
-import { MySpinner } from '../../components/MySpinner/MySpinner';
+import { CustomSpinner } from '../../components/Spinner/Spinner';
 import {
   selectedGoodsSelector,
   isLoadCurrentGoodsSelector,
@@ -25,7 +25,7 @@ export const SinglePage: FC = () => {
   }, [id]);
 
   if (isLoadCurrentGoods) {
-    return <MySpinner />;
+    return <CustomSpinner />;
   }
 
   return (

@@ -1,7 +1,7 @@
 import { IGoods } from '../../interfaces';
 
 export const goodsActions = {
-  FETCH_CURRENT_GOODS_SUCCESS: '[GOODS] fetch goods success',
+  FETCH_CURRENT_GOODS_SUCCESS: '[GOODS] fetch current goods success',
   FETCH_GOODS_SUCCESS: '[GOODS] fetch goods success',
   FETCH_ALL_GOODS_SUCCESS: '[GOODS] fetch all goods success',
   CLEAR_CURRENT_GOODS: '[GOODS] clear current goods',
@@ -13,6 +13,11 @@ export const goodsActions = {
   SET_MAX_PRICE: '[GOODS] set max price',
 };
 
+export const fetchCurrentGoodsSuccess = (currentGoods) => ({
+  type: goodsActions.FETCH_CURRENT_GOODS_SUCCESS,
+  payload: currentGoods,
+});
+
 export const fetchGoodsSuccess = (goods: IGoods[]) => ({
   type: goodsActions.FETCH_GOODS_SUCCESS,
   payload: goods,
@@ -21,11 +26,6 @@ export const fetchGoodsSuccess = (goods: IGoods[]) => ({
 export const fetchAllGoodSuccess = (goods: IGoods[]) => ({
   type: goodsActions.FETCH_ALL_GOODS_SUCCESS,
   payload: goods,
-});
-
-export const fetchCurrentGoodsSuccess = (currentGoods: IGoods) => ({
-  type: goodsActions.FETCH_CURRENT_GOODS_SUCCESS,
-  payload: currentGoods,
 });
 
 export const clearCurrentUser = () => ({

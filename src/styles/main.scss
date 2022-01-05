@@ -1,6 +1,11 @@
 *{
   font-family: sans-serif;
 }
+
+.wrapper{
+  padding: 12px;
+}
+
 .btn{
   border: none;
   &-back{
@@ -16,6 +21,40 @@
     }
     &:active{
       transform: scale(80%);
+    }
+  }
+  &-card{
+    margin-top: 10px;
+    padding: 10px 0;
+    border-radius: 4px;
+    max-width: 250px;
+    background-color: rgba(56, 24, 118, 0.4);
+    transition: .4s;
+    &:hover{
+      background-color: darken($color: rgba(56, 24, 118, 0.4), $amount: 15);
+      color: #fff;
+    }
+  }
+  &-cart{
+    width: 200px;
+    padding: 10px;
+    border-radius: 14px;
+    color: #fff;
+    background-color: #7D4CDB;
+    transition: .4s;
+    &_trash{
+      background-color: transparent;
+    }
+    &_counter{
+      background-color: #7D4CDB;
+      color: #fff;
+      width: 50px;
+      &:hover{
+        background-color: darken($color: #7D4CDB, $amount: 20);
+      }
+    }
+    &:hover{
+      background-color: darken($color: #7D4CDB, $amount: 20);
     }
   }
   &:hover{

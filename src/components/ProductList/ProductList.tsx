@@ -16,7 +16,7 @@ import {
 import { getCountColumns } from '../../utils';
 import { THEME } from '../../constants';
 import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
-import { MySpinner } from '../MySpinner/MySpinner';
+import { CustomSpinner } from '../Spinner/Spinner';
 import './products.scss';
 
 export const ProductList: FC = () => {
@@ -49,7 +49,7 @@ export const ProductList: FC = () => {
   }, [sort, order, countries, categories, minPrice, currentMaxPrice, isLogin]);
 
   if (isLoadGoods) {
-    return <MySpinner />;
+    return <CustomSpinner />;
   }
 
   return (

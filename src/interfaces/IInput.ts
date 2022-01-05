@@ -13,3 +13,8 @@ export interface IInput {
     confirmPass?: IErrorMessage;
   };
 }
+
+export interface ICartInput {
+  value: number;
+  onChange(value: string): void;
+}

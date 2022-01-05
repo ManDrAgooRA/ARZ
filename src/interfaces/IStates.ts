@@ -20,3 +20,7 @@ export interface IGoodsState {
   isLoadCurrentGoods: boolean;
   isLoadGoods: boolean;
 }
+
+export interface ICartState {
+  cart: IGoods[];
+}
