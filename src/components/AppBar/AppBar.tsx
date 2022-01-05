@@ -37,7 +37,7 @@ export const AppBar: FC = () => {
             label: (
               <Link to={LINKS.cart} className="cart cart-icon">
                 <Cart color="light-1" />
-                <span>{cardGoods.length >= 1 ? cardGoods.length : ''}</span>
+                <span>{cardGoods.length || ''}</span>
               </Link>
             ),
           },
@@ -87,7 +87,7 @@ export const AppBar: FC = () => {
                     className="cart cart-icon"
                   >
                     <Cart color="light-1" />
-                    <span>{cardGoods.length >= 1 ? cardGoods.length : ''}</span>
+                    <span>{cardGoods.length || ''}</span>
                   </Link>
                   <Anchor label={userName} color="light-1" />
                   <Anchor label="Logout" color="light-1" onClick={logOut} />
