@@ -1,5 +1,5 @@
-import { authActions } from '../actions';
-import { IAuthState } from '../../interfaces';
+import { authActions } from '@/store/actions';
+import { IAuthState } from '@/interfaces';
 
 export const initialState: IAuthState = {
   isLogin: false,
@@ -7,7 +7,7 @@ export const initialState: IAuthState = {
   authError: '',
 };
 
-export function auth(state = initialState, action) {
+export function auth(state = initialState, action: any) {
   switch (action.type) {
     case authActions.CHANGE_SIGNUP_STATUS:
       return {

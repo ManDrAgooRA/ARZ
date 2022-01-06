@@ -10,14 +10,10 @@ import {
 } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { priceRangeValidationSchema } from '../../utils/validations';
-import { allGoodsSelector, goodsMaxPriceSelector } from '../../store/selectors';
-import {
-  setMinPrice,
-  setMaxPrice,
-  setCurrentMaxPrice,
-} from '../../store/actions';
-import { getMinMaxValue } from '../../utils';
+import { priceRangeValidationSchema } from '@/utils/validations';
+import { allGoodsSelector, goodsMaxPriceSelector } from '@/store/selectors';
+import { setMinPrice, setMaxPrice, setCurrentMaxPrice } from '@/store/actions';
+import { getMinMaxValue } from '@/utils';
 import './rangeSelector.scss';
 
 export const PriceRange: FC = () => {

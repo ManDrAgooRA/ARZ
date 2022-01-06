@@ -2,9 +2,9 @@ import {
   fetchGoodsSuccess,
   fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
-} from '../actions';
-import { IAllGoods } from '../../interfaces';
-import { getGoods, getData, selectedGoods } from '../../BusinessLogic';
+} from '@/store/actions';
+import { IAllGoods } from '@/interfaces';
+import { getGoods, getData, selectedGoods } from '@/BusinessLogic';
 
 export const fetchGoods = ({
   limit,
@@ -16,7 +16,7 @@ export const fetchGoods = ({
   minPrice,
   currentMaxPrice,
 }: IAllGoods) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
       const goods = await getGoods({
         limit,
@@ -36,7 +36,7 @@ export const fetchGoods = ({
 };
 
 export const fetchAllGoods = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
@@ -47,7 +47,7 @@ export const fetchAllGoods = () => {
 };
 
 export const fetchCurrentGoods = (id: string) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));

@@ -1,6 +1,6 @@
-import { HTTPService } from '../services/httpService';
-import { IAllGoods } from '../interfaces';
-import { getQuery } from '../utils';
+import { HTTPService } from '@/services/httpService';
+import { IAllGoods } from '@/interfaces';
+import { getQuery } from '@/utils';
 
 export const getAllGoods = ({
   limit,

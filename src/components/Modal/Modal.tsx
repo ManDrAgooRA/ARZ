@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Box, Button, Layer, Text } from 'grommet';
-import { IModal } from '../../interfaces/IModal';
+import { IModal } from '@/interfaces/IModal';
 
 export const Modal: FC<IModal> = ({ isOpen, message, handleClose }) => {
   return (

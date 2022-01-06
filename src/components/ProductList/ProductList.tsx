@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '@/components/ProductCard/ProductCard';
 import {
   goodsSelector,
   isLoadGoodsSelector,
@@ -12,12 +12,13 @@ import {
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
   authIsLogin,
-} from '../../store/selectors';
-import { getCountColumns } from '../../utils';
-import { THEME } from '../../constants';
-import { fetchGoods, fetchAllGoods } from '../../store/thunks/goods';
-import { CustomSpinner } from '../Spinner/Spinner';
+} from '@/store/selectors';
+import { getCountColumns } from '@/utils';
+import { THEME } from '@/constants';
+import { fetchGoods, fetchAllGoods } from '@/store/thunks/goods';
+import { CustomSpinner } from '@/components/Spinner/Spinner';
 import './products.scss';
+import { IGoods } from '@/interfaces';
 
 export const ProductList: FC = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ export const ProductList: FC = () => {
     <Grommet theme={THEME}>
       <Box pad="small" className="products__list">
         <Grid gap="small" columns={getCountColumns(size)}>
-          {goods.map((item) => (
+          {goods.map((item: IGoods) => (
             <ProductCard key={item.id} item={item} />
           ))}
         </Grid>

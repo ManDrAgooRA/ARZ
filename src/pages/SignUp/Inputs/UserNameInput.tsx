@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { FormField, MaskedInput } from 'grommet';
 import { User } from 'grommet-icons';
-import { IInput } from '../../../interfaces';
+import { IInput } from '@/interfaces';
 
 export const UserNameInput: FC<IInput> = ({ register, errors }) => {
   return (

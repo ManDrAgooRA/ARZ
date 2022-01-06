@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { FormField, MaskedInput, Button } from 'grommet';
 import { Hide, View } from 'grommet-icons';
-import { IInput } from '../../interfaces';
+import { IInput } from '@/interfaces';
 
 export const PasswordInput: FC<IInput> = ({ register, errors }) => {
   const [passValue, setPassValue] = useState('');

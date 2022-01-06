@@ -1,5 +1,5 @@
-import { goodsActions } from '../actions';
-import { IGoodsState } from '../../interfaces';
+import { goodsActions } from '@/store/actions';
+import { IGoodsState } from '@/interfaces';
 
 const initialState: IGoodsState = {
   allGoods: [],
@@ -30,7 +30,7 @@ const initialState: IGoodsState = {
   isLoadGoods: true,
 };
 
-export function goods(state = initialState, action) {
+export function goods(state = initialState, action: any) {
   switch (action.type) {
     case goodsActions.FETCH_GOODS_SUCCESS:
       return {

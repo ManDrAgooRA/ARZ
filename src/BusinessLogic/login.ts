@@ -1,5 +1,5 @@
-import { login } from '../api';
-import { IAuthData, IAuthResponse } from '../interfaces';
+import { login } from '@/api';
+import { IAuthData, IAuthResponse } from '@/interfaces';
 
 export const getLogin = async ({
   requestBody,

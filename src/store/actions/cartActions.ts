@@ -1,4 +1,4 @@
-import { IGoods } from '../../interfaces';
+import { IGoods } from '@/interfaces';
 
 export const cartAction = {
   ADD_GOODS: '[CART] add goods',

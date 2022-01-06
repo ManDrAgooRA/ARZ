@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Phone } from 'grommet-icons';
 import { FormField, MaskedInput } from 'grommet';
-import { PHONE_MASK } from '../masks';
-import { IInput } from '../../../interfaces';
+import { PHONE_MASK } from '@/pages/SignUp/masks';
+import { IInput } from '@/interfaces';
 
 export const PhoneInput: FC<IInput> = ({ register, errors }) => {
   return (

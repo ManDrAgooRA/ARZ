@@ -59,7 +59,7 @@
         "exceptions": ["input", "FormField"]
       }],
       "import/no-relative-packages": "error",
-      "import/extensions": ["error", "ignorePackages", {
+      "import/extensions": [0, "ignorePackages", {
         "ts": "never",
         "tsx": "never"
       }],

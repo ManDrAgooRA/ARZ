@@ -1,4 +1,4 @@
-import { IAllGoods } from '../interfaces';
+import { IAllGoods } from '@/interfaces';
 
 export const getQuery = (obj: IAllGoods): string => {
   let queryString = '';

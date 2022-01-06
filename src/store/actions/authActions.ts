@@ -1,4 +1,4 @@
-import { IAuthResponse } from '../../interfaces';
+import { IAuthResponse } from '@/interfaces';
 
 export const authActions = {
   FETCH_SIGNUP_SUCCESS: '[AUTH] fetch signup success',

@@ -11,13 +11,13 @@ import {
 } from 'grommet';
 import { Menu as MenuIcon, Cart } from 'grommet-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSinUpStatus } from '../../store/actions';
-import { LINKS } from '../../constants';
+import { changeSinUpStatus } from '@/store/actions';
+import { LINKS } from '@/constants';
 import {
   authIsLogin,
   authPersonName,
   cartGoodsSelector,
-} from '../../store/selectors';
+} from '@/store/selectors';
 import './header.scss';
 
 export const AppBar: FC = () => {
@@ -29,7 +29,6 @@ export const AppBar: FC = () => {
     localStorage.clear();
     dispatch(changeSinUpStatus(false));
   };
-
   const createItems = () =>
     loginStatus
       ? [

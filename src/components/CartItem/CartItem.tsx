@@ -2,10 +2,10 @@ import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Trash } from 'grommet-icons';
-import { LINKS } from '../../constants';
-import { IProductCardItem } from '../../interfaces';
-import { removeFromCart, changeCountCart } from '../../store/actions';
-import CartInput from '../CartInput/CartInput';
+import { LINKS } from '@/constants';
+import { IProductCardItem } from '@/interfaces';
+import { removeFromCart, changeCountCart } from '@/store/actions';
+import CartInput from '@/components/CartInput/CartInput';
 import './cartItem.scss';
 
 export const CartItem: FC<IProductCardItem> = ({ item }) => {
@@ -26,7 +26,7 @@ export const CartItem: FC<IProductCardItem> = ({ item }) => {
     dispatch(removeFromCart(item.id));
   };
 
-  const onChangeHandler = (value) => {
+  const onChangeHandler = (value: string) => {
     setCount(+value <= 0 ? 1 : +value);
     dispatch(changeCountCart(item.id, +value <= 0 ? 1 : +value));
   };

@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 import { FormField, MaskedInput } from 'grommet';
 import { Calendar } from 'grommet-icons';
-import { getDateMask } from '../masks';
-import { IInput } from '../../../interfaces';
+import { getDateMask } from '@/pages/SignUp/masks';
+import { IInput } from '@/interfaces';
 
 export const DateInput: FC<IInput> = ({ register, errors }) => {
   const [value, setValue] = useState('');

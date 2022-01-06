@@ -1,11 +1,11 @@
-import { cartAction } from '../actions';
-import { ICartState } from '../../interfaces';
+import { cartAction } from '@/store/actions';
+import { ICartState } from '@/interfaces';
 
 const initialState: ICartState = {
   cart: [],
 };
 
-export function cart(state = initialState, action) {
+export function cart(state = initialState, action: any) {
   switch (action.type) {
     case cartAction.ADD_GOODS: {
       const inCart = state.cart.find((item) => item.id === action.payload.id);

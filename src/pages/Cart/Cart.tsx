@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Modal } from '../../components/Modal/Modal';
-import { CartItem } from '../../components/CartItem/CartItem';
-import { cartGoodsSelector } from '../../store/selectors';
-import { getTotalPrice } from '../../utils';
+import { Modal } from '@/components/Modal/Modal';
+import { CartItem } from '@/components/CartItem/CartItem';
+import { cartGoodsSelector } from '@/store/selectors';
+import { getTotalPrice } from '@/utils';
+import { IGoods } from '@/interfaces';
 import './cart.scss';
 
 export const Cart: FC = () => {
@@ -25,7 +26,7 @@ export const Cart: FC = () => {
         message={`Total order price: ${getTotalPrice(cartGoods)}`}
         handleClose={handleClose}
       />
-      {cartGoods.map((item) => {
+      {cartGoods.map((item: IGoods) => {
         return <CartItem key={item.id} item={item} />;
       })}
       <div className="cart-total">

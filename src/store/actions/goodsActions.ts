@@ -1,4 +1,4 @@
-import { IGoods } from '../../interfaces';
+import { IGoods } from '@/interfaces';
 
 export const goodsActions = {
   FETCH_CURRENT_GOODS_SUCCESS: '[GOODS] fetch current goods success',
@@ -13,7 +13,7 @@ export const goodsActions = {
   SET_MAX_PRICE: '[GOODS] set max price',
 };
 
-export const fetchCurrentGoodsSuccess = (currentGoods) => ({
+export const fetchCurrentGoodsSuccess = (currentGoods: IGoods) => ({
   type: goodsActions.FETCH_CURRENT_GOODS_SUCCESS,
   payload: currentGoods,
 });

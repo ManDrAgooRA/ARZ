@@ -1,4 +1,4 @@
-import { IUser } from '../interfaces';
+import { IUser } from '@/interfaces';
 
 export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;
