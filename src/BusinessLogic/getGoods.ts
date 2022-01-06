@@ -1,5 +1,5 @@
-import { getAllGoods } from '../api';
-import { IAllGoods, IGoods } from '../interfaces';
+import { getAllGoods } from '@/api';
+import { IAllGoods, IGoods } from '@/interfaces';
 
 export const getGoods = async ({
   limit,

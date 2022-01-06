@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebPackPlugin = require('html-webpack-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -16,7 +17,11 @@ module.exports = {
     historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   plugins: [
     new HTMLWebPackPlugin({

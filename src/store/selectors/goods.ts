@@ -1,16 +1,16 @@
-export const allGoodsSelector = (state) => state.goods.allGoods;
-export const goodsSelector = (state) => state.goods.goods;
-export const goodsMaxSearchPriceSelector = (state) =>
+export const allGoodsSelector = (state: any) => state.goods.allGoods;
+export const goodsSelector = (state: any) => state.goods.goods;
+export const goodsMaxSearchPriceSelector = (state: any) =>
   state.goods.maxSearchPrice;
-export const selectedGoodsSelector = (state) => state.goods.selectedGoods;
-export const isLoadCurrentGoodsSelector = (state) =>
+export const selectedGoodsSelector = (state: any) => state.goods.selectedGoods;
+export const isLoadCurrentGoodsSelector = (state: any) =>
   state.goods.isLoadCurrentGoods;
-export const isLoadGoodsSelector = (state) => state.goods.isLoadGoods;
-export const goodsSortSelector = (state) => state.goods.sort;
-export const goodsOrderSelector = (state) => state.goods.order;
-export const goodsMinPriceSelector = (state) => state.goods.minPrice;
-export const goodsMaxPriceSelector = (state) => state.goods.maxPrice;
-export const goodsCountriesSelector = (state) => state.goods.countries;
-export const goodsCategoriesSelector = (state) => state.goods.categories;
-export const goodsCurrentMaxPriceSelector = (state) =>
+export const isLoadGoodsSelector = (state: any) => state.goods.isLoadGoods;
+export const goodsSortSelector = (state: any) => state.goods.sort;
+export const goodsOrderSelector = (state: any) => state.goods.order;
+export const goodsMinPriceSelector = (state: any) => state.goods.minPrice;
+export const goodsMaxPriceSelector = (state: any) => state.goods.maxPrice;
+export const goodsCountriesSelector = (state: any) => state.goods.countries;
+export const goodsCategoriesSelector = (state: any) => state.goods.categories;
+export const goodsCurrentMaxPriceSelector = (state: any) =>
   state.goods.currentMaxPrice;

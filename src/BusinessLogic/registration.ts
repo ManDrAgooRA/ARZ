@@ -1,5 +1,5 @@
-import { registation } from '../api';
-import { IAuthData, IAuthResponse } from '../interfaces';
+import { registation } from '@/api';
+import { IAuthData, IAuthResponse } from '@/interfaces';
 
 export const getRegistrationData = async ({
   requestBody,

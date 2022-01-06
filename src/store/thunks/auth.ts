@@ -2,16 +2,16 @@ import {
   setErrorMessage,
   fetchSinUpSuccess,
   fetchLoginSuccess,
-} from '../actions';
-import { IAuth } from '../../interfaces';
-import { getRegistrationData, getLogin } from '../../BusinessLogic';
+} from '@/store/actions';
+import { IAuth } from '@/interfaces';
+import { getRegistrationData, getLogin } from '@/BusinessLogic';
 
 export const fetchSignUp = ({
   requestBody,
   handleNavigate,
   handleOpen,
 }: IAuth) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
       const data = await getRegistrationData({ requestBody });
       if (typeof data === 'string') {
@@ -33,7 +33,7 @@ export const fetchLogin = ({
   handleNavigate,
   handleOpen,
 }: IAuth) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     try {
       const data = await getLogin({ requestBody });
       if (typeof data === 'string') {

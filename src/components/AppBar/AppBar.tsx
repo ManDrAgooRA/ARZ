@@ -9,25 +9,37 @@ import {
   Image,
   Nav,
 } from 'grommet';
-import { Menu as MenuIcon } from 'grommet-icons';
+import { Menu as MenuIcon, Cart } from 'grommet-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSinUpStatus } from '../../store/actions';
-import { LINKS } from '../../constants';
-import { authIsLogin, authPersonName } from '../../store/selectors';
+import { changeSinUpStatus } from '@/store/actions';
+import { LINKS } from '@/constants';
+import {
+  authIsLogin,
+  authPersonName,
+  cartGoodsSelector,
+} from '@/store/selectors';
 import './header.scss';
 
 export const AppBar: FC = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector(authIsLogin);
   const userName = useSelector(authPersonName);
+  const cardGoods = useSelector(cartGoodsSelector);
   const logOut = () => {
     localStorage.clear();
     dispatch(changeSinUpStatus(false));
   };
-
   const createItems = () =>
     loginStatus
       ? [
+          {
+            label: (
+              <Link to={LINKS.cart} className="cart cart-icon">
+                <Cart color="light-1" />
+                <span>{cardGoods.length || ''}</span>
+              </Link>
+            ),
+          },
           {
             label: <Box pad="small">{userName}</Box>,
           },
@@ -68,6 +80,14 @@ export const AppBar: FC = () => {
             <Nav justify="end" direction="row" gap="medium">
               {loginStatus ? (
                 <>
+                  <Link
+                    to={LINKS.cart}
+                    color="light-1"
+                    className="cart cart-icon"
+                  >
+                    <Cart color="light-1" />
+                    <span>{cardGoods.length || ''}</span>
+                  </Link>
                   <Anchor label={userName} color="light-1" />
                   <Anchor label="Logout" color="light-1" onClick={logOut} />
                 </>

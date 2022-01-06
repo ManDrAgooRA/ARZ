@@ -37,6 +37,7 @@
       ],
       "import/no-unresolved": [0],
       "import/prefer-default-export": "off",
+      "no-param-reassign": [0, { "props": true, "ignorePropertyModificationsFor": ["bar"] }],
       "no-unexpected-multiline": "error",
       "prettier/prettier": [
         "error",
@@ -58,7 +59,7 @@
         "exceptions": ["input", "FormField"]
       }],
       "import/no-relative-packages": "error",
-      "import/extensions": ["error", "ignorePackages", {
+      "import/extensions": [0, "ignorePackages", {
         "ts": "never",
         "tsx": "never"
       }],

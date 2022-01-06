@@ -1,13 +1,13 @@
-import { IGoods } from '../interfaces';
+import { IGoods } from '@/interfaces';
 
 export const getUniqueData = (
   uniqueData: string,
   goods: IGoods[]
 ): string[] => {
-  const uniqueArr = [];
+  const uniqueArr: string[] = [];
   const uniqueValue = uniqueData;
 
-  goods.forEach((item) => {
+  goods.forEach((item: IGoods) => {
     uniqueArr.push(item[uniqueValue]);
   });
 

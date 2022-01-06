@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box, Select } from 'grommet';
-import { setSortSting } from '../../store/actions';
+import { setSortSting } from '@/store/actions';
 
 export const Sort: FC = () => {
   const dispatch = useDispatch();

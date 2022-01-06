@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Box, Button, Heading, Layer, Text } from 'grommet';
-import { IModal } from '../../interfaces/IModal';
+import { Box, Button, Layer, Text } from 'grommet';
+import { IModal } from '@/interfaces/IModal';
 
 export const Modal: FC<IModal> = ({ isOpen, message, handleClose }) => {
   return (
@@ -13,9 +13,6 @@ export const Modal: FC<IModal> = ({ isOpen, message, handleClose }) => {
           onEsc={handleClose}
         >
           <Box pad="medium" gap="small" width="medium">
-            <Heading level={3} margin="none">
-              Oooops
-            </Heading>
             <Text>{message}</Text>
             <Box
               as="footer"

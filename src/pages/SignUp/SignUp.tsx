@@ -4,17 +4,17 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchSignUp } from '../../store/thunks/auth';
+import { fetchSignUp } from '@/store/thunks/auth';
 import { PhoneInput } from './Inputs/PhoneInput';
 import { DateInput } from './Inputs/DateInput';
 import { UserNameInput } from './Inputs/UserNameInput';
-import { EmailInput } from '../../components/EmailInput/EmailInput';
-import { PasswordInput } from '../../components/PasswordInput/PasswordInput';
+import { EmailInput } from '@/components/EmailInput/EmailInput';
+import { PasswordInput } from '@/components/PasswordInput/PasswordInput';
 import { ConfirmPassword } from './Inputs/ConfirmPassword';
-import { Modal } from '../../components/Modal/Modal';
-import { signUpValidationSchema } from '../../utils/validations';
-import { authError } from '../../store/selectors/auth';
-import { IUser } from '../../interfaces';
+import { Modal } from '@/components/Modal/Modal';
+import { signUpValidationSchema } from '@/utils/validations';
+import { authError } from '@/store/selectors/auth';
+import { IUser } from '@/interfaces';
 import './signUp.scss';
 
 export const SignUp: FC = () => {

@@ -1,4 +1,4 @@
-import { IGetMinMaxReturnValue, IGoods } from '../interfaces';
+import { IGetMinMaxReturnValue, IGoods } from '@/interfaces';
 
 export const getMinMaxValue = (allGoods: IGoods[]): IGetMinMaxReturnValue => {
   const [itemWithValueMin] = allGoods.sort((a, b) => a.price - b.price);

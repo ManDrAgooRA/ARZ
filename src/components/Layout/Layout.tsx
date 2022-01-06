@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { Footer } from '../Footer/Footer';
-import { AppBar } from '../AppBar/AppBar';
-import { ILayout } from '../../interfaces/ILayout';
+import { AppBar } from '@/components/AppBar/AppBar';
+import { Footer } from '@/components/Footer/Footer';
+import { ILayout } from '@/interfaces/ILayout';
 import './layout.scss';
 
 export const Layout: FC<ILayout> = ({ children }) => {

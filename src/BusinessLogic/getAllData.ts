@@ -1,5 +1,5 @@
-import { getAllData } from '../api';
-import { IGoods } from '../interfaces';
+import { getAllData } from '@/api';
+import { IGoods } from '@/interfaces';
 
 export const getData = async (): Promise<IGoods[]> => {
   const response = await getAllData();

@@ -2,13 +2,13 @@ import React, { FC, useEffect } from 'react';
 import { Grommet, Box, ResponsiveContext, Grid } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCurrentGoods } from '../../store/thunks/goods';
-import { clearCurrentUser } from '../../store/actions';
-import { MySpinner } from '../../components/MySpinner/MySpinner';
+import { fetchCurrentGoods } from '@/store/thunks/goods';
+import { clearCurrentUser } from '@/store/actions';
+import { CustomSpinner } from '@/components/Spinner/Spinner';
 import {
   selectedGoodsSelector,
   isLoadCurrentGoodsSelector,
-} from '../../store/selectors';
+} from '@/store/selectors';
 import './singlePage.scss';
 
 export const SinglePage: FC = () => {
@@ -17,15 +17,16 @@ export const SinglePage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
-    dispatch(fetchCurrentGoods(id));
+    dispatch(fetchCurrentGoods(id || '0'));
     return () => {
       dispatch(clearCurrentUser());
     };
-  }, [id]);
+  }, []);
 
   if (isLoadCurrentGoods) {
-    return <MySpinner />;
+    return <CustomSpinner />;
   }
 
   return (

@@ -5,10 +5,10 @@ import {
   goodsSelector,
   goodsCategoriesSelector,
   goodsCountriesSelector,
-} from '../../../store/selectors';
-import { setCategories, setCountries } from '../../../store/actions';
-import { getUniqueData } from '../../../utils';
-import { IFilterBy } from '../../../interfaces/IFIlterBy';
+} from '@/store/selectors';
+import { setCategories, setCountries } from '@/store/actions';
+import { getUniqueData } from '@/utils';
+import { IFilterBy } from '@/interfaces/IFIlterBy';
 import './filter.scss';
 
 export const FilterBy: FC<IFilterBy> = ({ filterName }) => {
