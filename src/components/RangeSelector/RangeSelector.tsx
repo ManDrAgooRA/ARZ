@@ -11,17 +11,37 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priceRangeValidationSchema } from '@/utils/validations';
-import { allGoodsSelector, goodsMaxPriceSelector } from '@/store/selectors';
+import { fetchAllGoods } from '@/store/thunks';
+import {
+  allGoodsSelector,
+  goodsMaxPriceSelector,
+  authError,
+} from '@/store/selectors';
 import { setMinPrice, setMaxPrice, setCurrentMaxPrice } from '@/store/actions';
 import { getMinMaxValue } from '@/utils';
+import { Modal } from '../Modal/Modal';
 import './rangeSelector.scss';
 
 export const PriceRange: FC = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const error = useSelector(authError);
   const allGoods = useSelector(allGoodsSelector);
   const maxPrice = useSelector(goodsMaxPriceSelector);
   const dispatch = useDispatch();
   const { minValue, maxValue } = getMinMaxValue(allGoods);
   const [range, setRange] = useState([minValue, maxValue]);
+
+  const handleOpen = () => {
+    setIsOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setIsOpenModal(false);
+  };
+
+  useEffect(() => {
+    dispatch(fetchAllGoods(handleOpen));
+  }, []);
 
   const {
     register,
@@ -53,6 +73,7 @@ export const PriceRange: FC = () => {
   return (
     <>
       <Stack>
+        <Modal isOpen={isOpenModal} message={error} handleClose={handleClose} />
         <div className="price-range">
           <RangeSelector
             direction="horizontal"

@@ -1,10 +1,7 @@
-import {
-  setErrorMessage,
-  fetchSinUpSuccess,
-  fetchLoginSuccess,
-} from '@/store/actions';
+import { fetchSinUpSuccess, fetchLoginSuccess } from '@/store/actions';
 import { IAuth } from '@/interfaces';
 import { getRegistrationData, getLogin } from '@/BusinessLogic';
+import { ErrorHandler } from '@/components/ErrorHandler/ErrorHandler';
 
 export const fetchSignUp = ({
   requestBody,
@@ -22,7 +19,6 @@ export const fetchSignUp = ({
         handleNavigate('/');
       }
     } catch (e) {
-      dispatch(setErrorMessage(e.message));
       handleOpen();
     }
   };
@@ -37,14 +33,13 @@ export const fetchLogin = ({
     try {
       const data = await getLogin({ requestBody });
       if (typeof data === 'string') {
-        throw Error(data);
+        throw new Error(data);
       }
       dispatch(fetchLoginSuccess(data));
       if (Object.keys(data.user).length > 0) {
         handleNavigate('/');
       }
     } catch (e) {
-      dispatch(setErrorMessage(e.message));
       handleOpen();
     }
   };

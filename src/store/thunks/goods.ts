@@ -3,7 +3,7 @@ import {
   fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
 } from '@/store/actions';
-import { IAllGoods } from '@/interfaces';
+import { IFetchGoods } from '@/interfaces';
 import { getGoods, getData, selectedGoods } from '@/BusinessLogic';
 
 export const fetchGoods = ({
@@ -15,7 +15,8 @@ export const fetchGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-}: IAllGoods) => {
+  handleOpen,
+}: IFetchGoods) => {
   return async (dispatch: any) => {
     try {
       const goods = await getGoods({
@@ -30,29 +31,29 @@ export const fetchGoods = ({
       });
       dispatch(fetchGoodsSuccess(goods));
     } catch (e) {
-      throw Error(e);
+      handleOpen();
     }
   };
 };
 
-export const fetchAllGoods = () => {
+export const fetchAllGoods = (handleOpen?: any) => {
   return async (dispatch: any) => {
     try {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
     } catch (e) {
-      throw Error(e);
+      handleOpen();
     }
   };
 };
 
-export const fetchCurrentGoods = (id: string) => {
+export const fetchCurrentGoods = (id: string, handleOpen?: any) => {
   return async (dispatch: any) => {
     try {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));
     } catch (e) {
-      throw Error(e);
+      handleOpen();
     }
   };
 };
