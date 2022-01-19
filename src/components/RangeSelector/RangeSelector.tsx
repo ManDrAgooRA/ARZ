@@ -46,7 +46,6 @@ export const PriceRange: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchAllGoods());
     dispatch(setMinPrice(+range[0]));
     dispatch(setCurrentMaxPrice(+range[1]));
     dispatch(setMaxPrice(maxValue));
