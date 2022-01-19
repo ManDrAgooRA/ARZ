@@ -11,7 +11,6 @@ import {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { priceRangeValidationSchema } from '@/utils/validations';
-import { fetchAllGoods } from '@/store/thunks';
 import { allGoodsSelector, goodsMaxPriceSelector } from '@/store/selectors';
 import { setMinPrice, setMaxPrice, setCurrentMaxPrice } from '@/store/actions';
 import { getMinMaxValue } from '@/utils';
