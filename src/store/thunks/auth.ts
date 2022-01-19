@@ -1,13 +1,12 @@
-import { fetchSinUpSuccess, fetchLoginSuccess } from '@/store/actions';
+import {
+  fetchSinUpSuccess,
+  fetchLoginSuccess,
+  changeModalState,
+} from '@/store/actions';
 import { IAuth } from '@/interfaces';
 import { getRegistrationData, getLogin } from '@/BusinessLogic';
-import { ErrorHandler } from '@/components/ErrorHandler/ErrorHandler';
 
-export const fetchSignUp = ({
-  requestBody,
-  handleNavigate,
-  handleOpen,
-}: IAuth) => {
+export const fetchSignUp = ({ requestBody, handleNavigate }: IAuth) => {
   return async (dispatch: any) => {
     try {
       const data = await getRegistrationData({ requestBody });
@@ -19,16 +18,12 @@ export const fetchSignUp = ({
         handleNavigate('/');
       }
     } catch (e) {
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchLogin = ({
-  requestBody,
-  handleNavigate,
-  handleOpen,
-}: IAuth) => {
+export const fetchLogin = ({ requestBody, handleNavigate }: IAuth) => {
   return async (dispatch: any) => {
     try {
       const data = await getLogin({ requestBody });
@@ -40,7 +35,7 @@ export const fetchLogin = ({
         handleNavigate('/');
       }
     } catch (e) {
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };

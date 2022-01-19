@@ -1,45 +1,34 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Grommet, Box, ResponsiveContext, Grid } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentGoods } from '@/store/thunks/goods';
 import { CustomSpinner } from '@/components/Spinner/Spinner';
-import { Modal } from '@/components/Modal/Modal';
 import {
   selectedGoodsSelector,
   isLoadCurrentGoodsSelector,
-  authError,
+  errorModalStateSeletor,
 } from '@/store/selectors';
-import './singlePage.scss';
+import './cardPage.scss';
 
-export const SinglePage: FC = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+export const CardPage: FC = () => {
   const selectedGoods = useSelector(selectedGoodsSelector);
   const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
-  const error = useSelector(authError);
+  const modalState = useSelector(errorModalStateSeletor);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleOpen = () => {
-    setIsOpenModal(true);
-  };
-
-  const handleClose = () => {
-    setIsOpenModal(false);
-  };
-
   useEffect(() => {
-    dispatch(fetchCurrentGoods(id || '0', handleOpen));
+    dispatch(fetchCurrentGoods(id || '0'));
   }, []);
 
-  if (isLoadCurrentGoods && !isOpenModal) {
+  if (isLoadCurrentGoods && !modalState) {
     return <CustomSpinner />;
   }
 
   return (
     <Grommet>
-      <Modal isOpen={isOpenModal} message={error} handleClose={handleClose} />
       <ResponsiveContext.Consumer>
         {(size) => (
           <Grid

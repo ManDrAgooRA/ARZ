@@ -12,19 +12,17 @@ import {
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
   authIsLogin,
-  authError,
+  errorModalStateSeletor,
 } from '@/store/selectors';
 import { getCountColumns } from '@/utils';
 import { THEME } from '@/constants';
-import { Modal } from '@/components/Modal/Modal';
-import { fetchGoods, fetchAllGoods } from '@/store/thunks/goods';
+import { fetchGoods } from '@/store/thunks/goods';
 import { CustomSpinner } from '@/components/Spinner/Spinner';
 import './products.scss';
 import { IGoods } from '@/interfaces';
 
 export const ProductList: FC = () => {
   const dispatch = useDispatch();
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const size = useContext(ResponsiveContext);
   const goods = useSelector(goodsSelector);
   const isLoadGoods = useSelector(isLoadGoodsSelector);
@@ -35,18 +33,9 @@ export const ProductList: FC = () => {
   const minPrice = useSelector(goodsMinPriceSelector);
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
   const isLogin = useSelector(authIsLogin);
-  const error = useSelector(authError);
-
-  const handleOpen = () => {
-    setIsOpenModal(true);
-  };
-
-  const handleClose = () => {
-    setIsOpenModal(false);
-  };
+  const modalState = useSelector(errorModalStateSeletor);
 
   useEffect(() => {
-    dispatch(fetchAllGoods());
     dispatch(
       fetchGoods({
         limit: 20,
@@ -57,19 +46,17 @@ export const ProductList: FC = () => {
         categories,
         minPrice,
         currentMaxPrice,
-        handleOpen,
       })
     );
   }, [sort, order, countries, categories, minPrice, currentMaxPrice, isLogin]);
 
-  if (isLoadGoods && !isOpenModal) {
+  if (isLoadGoods && !modalState) {
     return <CustomSpinner />;
   }
 
   return (
     <Grommet theme={THEME}>
       <Box pad="small" className="products__list">
-        <Modal isOpen={isOpenModal} message={error} handleClose={handleClose} />
         <Grid gap="small" columns={getCountColumns(size)}>
           {goods.map((item: IGoods) => (
             <ProductCard key={item.id} item={item} />

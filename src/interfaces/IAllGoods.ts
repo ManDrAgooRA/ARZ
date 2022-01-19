@@ -18,5 +18,4 @@ export interface IFetchGoods {
   categories: string[];
   minPrice: number;
   currentMaxPrice: number;
-  handleOpen(): void;
 }

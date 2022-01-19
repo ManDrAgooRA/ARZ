@@ -2,6 +2,7 @@ import {
   fetchGoodsSuccess,
   fetchAllGoodSuccess,
   fetchCurrentGoodsSuccess,
+  changeModalState,
 } from '@/store/actions';
 import { IFetchGoods } from '@/interfaces';
 import { getGoods, getData, selectedGoods } from '@/BusinessLogic';
@@ -15,7 +16,6 @@ export const fetchGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-  handleOpen,
 }: IFetchGoods) => {
   return async (dispatch: any) => {
     try {
@@ -31,29 +31,29 @@ export const fetchGoods = ({
       });
       dispatch(fetchGoodsSuccess(goods));
     } catch (e) {
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchAllGoods = (handleOpen?: any) => {
+export const fetchAllGoods = () => {
   return async (dispatch: any) => {
     try {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
     } catch (e) {
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchCurrentGoods = (id: string, handleOpen?: any) => {
+export const fetchCurrentGoods = (id: string) => {
   return async (dispatch: any) => {
     try {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));
-    } catch (e) {
-      handleOpen();
+    } catch (e: any) {
+      dispatch(changeModalState(true));
     }
   };
 };

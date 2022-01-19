@@ -26,6 +26,7 @@ const initialState: IGoodsState = {
   currentMaxPrice: 1000,
   maxPrice: 1500,
   isLoadCurrentGoods: true,
+  isLoadAllGoods: true,
   isLoadGoods: true,
 };
 
@@ -42,6 +43,7 @@ export function goods(state = initialState, action: any) {
       return {
         ...state,
         allGoods: [...action.payload],
+        isLoadAllGoods: false,
       };
 
     case goodsActions.FETCH_CURRENT_GOODS_SUCCESS:
