@@ -4,6 +4,7 @@ import { Modal } from '@/components/Modal/Modal';
 import { CartItem } from '@/components/CartItem/CartItem';
 import { cartGoodsSelector } from '@/store/selectors';
 import { getTotalPrice } from '@/utils';
+import { PaymentForm } from '@/components/PaymentForm/PaymentForm';
 import { IGoods } from '@/interfaces';
 import './cart.scss';
 
@@ -40,6 +41,7 @@ export const Cart: FC = () => {
         </button>
         <span>Total: {getTotalPrice(cartGoods)}₴</span>
       </div>
+      <PaymentForm />
     </div>
   );
 };

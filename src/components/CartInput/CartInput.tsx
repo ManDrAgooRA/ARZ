@@ -3,7 +3,7 @@ import { MaskedInput, Grommet } from 'grommet';
 import { ICartInput } from '@/interfaces';
 import { CART_MASK } from '@/constants';
 
-const CartInput: FC<ICartInput> = ({ value, onChange }) => {
+export const CartInput: FC<ICartInput> = ({ value, onChange }) => {
   return (
     <Grommet>
       <MaskedInput
@@ -14,5 +14,3 @@ const CartInput: FC<ICartInput> = ({ value, onChange }) => {
     </Grommet>
   );
 };
-
-export default CartInput;

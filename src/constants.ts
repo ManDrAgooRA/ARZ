@@ -35,3 +35,6 @@ export const EMAIL_MASK = [
 ];
 
 export const CART_MASK = [{ regexp: /^[0-9]{1,10}$/ }];
+
+export const STRIPE_PUBCLICK_KEY = process.env.STRIPE_PUBLISH_KEY || '';
+export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || '';
