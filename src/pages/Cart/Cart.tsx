@@ -1,32 +1,27 @@
 import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Modal } from '@/components/Modal/Modal';
+import { PaymentModal } from '@/components/PaymentModal/PaymentModal';
 import { CartItem } from '@/components/CartItem/CartItem';
 import { cartGoodsSelector } from '@/store/selectors';
 import { getTotalPrice } from '@/utils';
-import { PaymentForm } from '@/components/PaymentForm/PaymentForm';
 import { IGoods } from '@/interfaces';
 import './cart.scss';
 
 export const Cart: FC = () => {
   const cartGoods = useSelector(cartGoodsSelector);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isPaymentModal, setIsOpenPaymentModal] = useState(false);
 
   const handleOpen = () => {
-    setIsOpenModal(true);
+    setIsOpenPaymentModal(true);
   };
 
   const handleClose = () => {
-    setIsOpenModal(false);
+    setIsOpenPaymentModal(false);
   };
 
   return (
     <div className="wrapper">
-      <Modal
-        isOpen={isOpenModal}
-        message={`Total order price: ${getTotalPrice(cartGoods)}`}
-        handleClose={handleClose}
-      />
+      <PaymentModal paymentModal={isPaymentModal} handleClose={handleClose} />
       {cartGoods.map((item: IGoods) => {
         return <CartItem key={item.id} item={item} />;
       })}
@@ -41,7 +36,6 @@ export const Cart: FC = () => {
         </button>
         <span>Total: {getTotalPrice(cartGoods)}₴</span>
       </div>
-      <PaymentForm />
     </div>
   );
 };

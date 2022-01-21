@@ -1,41 +1,82 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   CardCvcElement,
   CardExpiryElement,
   CardNumberElement,
-  useElements,
 } from '@stripe/react-stripe-js';
-import { useDispatch } from 'react-redux';
-import { setErrorMessage } from '@/store/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { cartGoodsSelector } from '@/store/selectors';
+import { getTotalPrice } from '@/utils';
+import { setErrorMessage, changeModalState } from '@/store/actions';
+import './payment.scss';
 
 export const PaymentForm: FC = () => {
-  // const stripe = useStripe();
-  const elements = useElements();
+  const dispatch = useDispatch();
+  const cartGoods = useSelector(cartGoodsSelector);
+  const [isCardCompleted, setIsCardCompleted] = useState({
+    cardNumber: false,
+    cardExpiry: false,
+    cardCvc: false,
+  });
 
-  const handleSubmit = async (e: any) => {
+  const isDisabled = Object.values(isCardCompleted).every(
+    (elem) => elem === true
+  );
+
+  const handleSubmit = async (e: any): Promise<void> => {
     e.preventDefault();
-    console.log(e);
+    dispatch(setErrorMessage('Payment was success'));
+    dispatch(changeModalState(true));
   };
 
-  const handleCardElementChange = async ({ elementType, error, complete }) => {
-    console.log(elementType);
-    console.log(error);
-    console.log(complete);
+  const handleCardElementChange = async ({
+    elementType,
+    error,
+    complete,
+  }: {
+    complete: boolean;
+    elementType: string;
+    error: { code: string; message: string; type: string } | undefined;
+  }): Promise<void> => {
     if (error) {
-      alert(error.message);
+      dispatch(setErrorMessage(error.message));
     }
-    if (complete) {
-      alert('Payment was success');
+
+    if (elementType === 'cardNumber') {
+      setIsCardCompleted({ ...isCardCompleted, cardNumber: complete });
+    }
+
+    if (elementType === 'cardCvc') {
+      setIsCardCompleted({ ...isCardCompleted, cardCvc: complete });
+    }
+
+    if (elementType === 'cardExpiry') {
+      setIsCardCompleted({ ...isCardCompleted, cardExpiry: complete });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardCvcElement />
-      <CardExpiryElement />
-      <CardNumberElement onChange={handleCardElementChange} />
-      {/* <PaymentElement /> */}
-      <button type="submit">pay</button>
+    <form onSubmit={handleSubmit} className="payment-form">
+      <div className="card-wrapper">
+        <div className="card">
+          <span>Total: {getTotalPrice(cartGoods)}₴</span>
+        </div>
+        <div className="card card-number">
+          <span>Card Number:</span>
+          <CardNumberElement onChange={handleCardElementChange} />
+        </div>
+        <div className="card">
+          <span>Expiry time:</span>
+          <CardExpiryElement onChange={handleCardElementChange} />
+        </div>
+      </div>
+      <div className="card">
+        <span>CVC:</span>
+        <CardCvcElement onChange={handleCardElementChange} />
+      </div>
+      <button type="submit" disabled={!isDisabled} className="btn-pay">
+        Pay
+      </button>
     </form>
   );
 };

@@ -3,7 +3,6 @@ import { IGoods } from '.';
 export interface IAuthState {
   isLogin: boolean;
   userName: string;
-  authError: string;
 }
 
 export interface IGoodsState {
@@ -18,9 +17,15 @@ export interface IGoodsState {
   maxPrice: number;
   currentMaxPrice: number;
   isLoadCurrentGoods: boolean;
+  isLoadAllGoods: boolean;
   isLoadGoods: boolean;
 }
 
 export interface ICartState {
   cart: IGoods[];
+}
+
+export interface IErrorState {
+  isOpenModal: boolean;
+  error: string;
 }

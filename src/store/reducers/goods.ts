@@ -5,17 +5,16 @@ const initialState: IGoodsState = {
   allGoods: [],
   goods: [],
   selectedGoods: {
-    id: 358,
-    title: 'Sleek Wooden Car',
-    image: 'http://placeimg.com/640/480/nature',
-    categories: 'categories',
+    id: 0,
+    title: 'mok',
+    image: 'mok',
+    categories: 'mok',
     price: 998,
     count: 39,
     raiting: 49,
-    countries: 'Senegal',
+    countries: 'mok',
     isFavorite: false,
-    description:
-      'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and',
+    description: 'mok',
     isSale: false,
     salePrice: 1881,
   },
@@ -27,6 +26,7 @@ const initialState: IGoodsState = {
   currentMaxPrice: 1000,
   maxPrice: 1500,
   isLoadCurrentGoods: true,
+  isLoadAllGoods: true,
   isLoadGoods: true,
 };
 
@@ -43,6 +43,7 @@ export function goods(state = initialState, action: any) {
       return {
         ...state,
         allGoods: [...action.payload],
+        isLoadAllGoods: false,
       };
 
     case goodsActions.FETCH_CURRENT_GOODS_SUCCESS:

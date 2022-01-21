@@ -14,7 +14,6 @@ export interface IAuthData {
 export interface IAuth {
   requestBody: IUser;
   handleNavigate(params: string): void;
-  handleOpen(): void;
 }
 
 export interface IAuthResponseUser {

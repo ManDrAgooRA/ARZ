@@ -8,9 +8,8 @@ export const getLogin = async ({
     const response = await login({ requestBody });
     const data = await response.json();
     localStorage.setItem('token', data.accessToken);
-
     return data;
-  } catch (err) {
-    throw Error(err);
+  } catch (err: any) {
+    throw new Error(err);
   }
 };

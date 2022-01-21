@@ -1,0 +1,23 @@
+import React, { FC } from 'react';
+import { Box, Layer } from 'grommet';
+import { PaymentForm } from '@/components/PaymentForm/PaymentForm';
+
+interface IPaymentModal {
+  paymentModal: boolean;
+  handleClose(): void;
+}
+
+export const PaymentModal: FC<IPaymentModal> = ({
+  paymentModal,
+  handleClose,
+}) => {
+  return (
+    <Box>
+      {paymentModal && (
+        <Layer onClickOutside={handleClose}>
+          <PaymentForm />
+        </Layer>
+      )}
+    </Box>
+  );
+};
