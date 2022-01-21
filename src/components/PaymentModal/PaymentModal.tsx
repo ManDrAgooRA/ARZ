@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 import { Box, Layer } from 'grommet';
+import { IPaymentModal } from '@/interfaces/IModal';
 import { PaymentForm } from '@/components/PaymentForm/PaymentForm';
-
-interface IPaymentModal {
-  paymentModal: boolean;
-  handleClose(): void;
-}
 
 export const PaymentModal: FC<IPaymentModal> = ({
   paymentModal,

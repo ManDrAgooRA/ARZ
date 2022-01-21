@@ -11,16 +11,20 @@ export const getGoods = async ({
   minPrice,
   currentMaxPrice,
 }: IAllGoods): Promise<IGoods[]> => {
-  const response = await getAllGoods({
-    limit,
-    page,
-    sort,
-    order,
-    countries,
-    categories,
-    minPrice,
-    currentMaxPrice,
-  });
-  const data = await response.json();
-  return data;
+  try {
+    const response = await getAllGoods({
+      limit,
+      page,
+      sort,
+      order,
+      countries,
+      categories,
+      minPrice,
+      currentMaxPrice,
+    });
+    const data = await response.json();
+    return data;
+  } catch (e: any) {
+    throw new Error(e);
+  }
 };

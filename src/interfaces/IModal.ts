@@ -3,3 +3,8 @@ export interface IModal {
   message: string;
   handleClose(): void;
 }
+
+export interface IPaymentModal {
+  paymentModal: boolean;
+  handleClose(): void;
+}

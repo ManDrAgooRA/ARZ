@@ -9,7 +9,7 @@ export const getLogin = async ({
     const data = await response.json();
     localStorage.setItem('token', data.accessToken);
     return data;
-  } catch (err: any) {
-    throw new Error(err);
+  } catch (e: any) {
+    throw new Error(e);
   }
 };
