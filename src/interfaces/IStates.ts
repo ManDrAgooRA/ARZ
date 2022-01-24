@@ -3,6 +3,7 @@ import { IGoods } from '.';
 export interface IAuthState {
   isLogin: boolean;
   userName: string;
+  role: string;
 }
 
 export interface IGoodsState {

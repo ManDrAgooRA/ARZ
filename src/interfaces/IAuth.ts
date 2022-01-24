@@ -5,6 +5,7 @@ export interface IUser {
   email?: string;
   password?: string;
   confirmPass?: string;
+  role: string;
 }
 
 export interface IAuthData {

@@ -7,7 +7,20 @@ const mathRandom = (min, max) => {
 module.exports = () => {
   const data = {
     goods: [],
-    users: [],
+    users: [
+      {
+        email: 'admin@gmail.com',
+        password:
+          '$2a$10$Lbc4pqIRW0LCGksEHhkNjeDar.RAPQEz.n4XDem4DpkOxcRlunP/K',
+        firstname: 'Olivier',
+        lastname: 'Monge',
+        age: '32',
+        confirmPass: '1234567890',
+        userName: 'Ivan',
+        role: 'admin',
+        id: 1,
+      },
+    ],
   };
   for (let i = 0; i < 500; i++) {
     data.goods.push({

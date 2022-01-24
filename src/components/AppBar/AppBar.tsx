@@ -9,14 +9,16 @@ import {
   Image,
   Nav,
 } from 'grommet';
-import { Menu as MenuIcon, Cart } from 'grommet-icons';
+import { Menu as MenuIcon, Cart, UserManager } from 'grommet-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSinUpStatus } from '@/store/actions';
 import { LINKS } from '@/constants';
+import { ADMIN_LINKS } from '@/admin/constants/adminLinks';
 import {
   authIsLogin,
   authPersonName,
   cartGoodsSelector,
+  authRole,
 } from '@/store/selectors';
 import './header.scss';
 
@@ -25,6 +27,8 @@ export const AppBar: FC = () => {
   const loginStatus = useSelector(authIsLogin);
   const userName = useSelector(authPersonName);
   const cardGoods = useSelector(cartGoodsSelector);
+  const userRole = useSelector(authRole);
+
   const logOut = () => {
     localStorage.clear();
     dispatch(changeSinUpStatus(false));
@@ -32,14 +36,22 @@ export const AppBar: FC = () => {
   const createItems = () =>
     loginStatus
       ? [
-          {
-            label: (
-              <Link to={LINKS.cart} className="cart cart-icon">
-                <Cart color="light-1" />
-                <span>{cardGoods.length || ''}</span>
-              </Link>
-            ),
-          },
+          userRole === 'admin'
+            ? {
+                label: (
+                  <Link to={ADMIN_LINKS.admin}>
+                    <UserManager color="light-1" />
+                  </Link>
+                ),
+              }
+            : {
+                label: (
+                  <Link to={LINKS.cart} className="cart cart-icon">
+                    <Cart color="light-1" />
+                    <span>{cardGoods.length || ''}</span>
+                  </Link>
+                ),
+              },
           {
             label: <Box pad="small">{userName}</Box>,
           },
@@ -80,14 +92,20 @@ export const AppBar: FC = () => {
             <Nav justify="end" direction="row" gap="medium">
               {loginStatus ? (
                 <>
-                  <Link
-                    to={LINKS.cart}
-                    color="light-1"
-                    className="cart cart-icon"
-                  >
-                    <Cart color="light-1" />
-                    <span>{cardGoods.length || ''}</span>
-                  </Link>
+                  {userRole === 'admin' ? (
+                    <Link to={ADMIN_LINKS.admin}>
+                      <UserManager color="light-1" />
+                    </Link>
+                  ) : (
+                    <Link
+                      to={LINKS.cart}
+                      color="light-1"
+                      className="cart cart-icon"
+                    >
+                      <Cart color="light-1" />
+                      <span>{cardGoods.length || ''}</span>
+                    </Link>
+                  )}
                   <Anchor label={userName} color="light-1" />
                   <Anchor label="Logout" color="light-1" onClick={logOut} />
                 </>

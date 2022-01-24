@@ -4,6 +4,7 @@ import { IAuthState } from '@/interfaces';
 export const initialState: IAuthState = {
   isLogin: false,
   userName: '',
+  role: '',
 };
 
 export function auth(state = initialState, action: any) {
@@ -18,6 +19,7 @@ export function auth(state = initialState, action: any) {
       return {
         ...state,
         userName: action.payload.user.userName,
+        role: action.payload.user.role,
         isLogin: true,
       };
 
@@ -25,6 +27,7 @@ export function auth(state = initialState, action: any) {
       return {
         ...state,
         userName: action.payload.user.userName,
+        role: action.payload.user.role,
         isLogin: true,
       };
 

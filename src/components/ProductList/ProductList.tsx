@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useContext } from 'react';
+import React, { FC, useEffect, useContext } from 'react';
 import { Box, Grid, Grommet, ResponsiveContext } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import { ProductCard } from '@/components/ProductCard/ProductCard';

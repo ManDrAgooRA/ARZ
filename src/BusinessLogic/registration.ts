@@ -10,7 +10,7 @@ export const getRegistrationData = async ({
     localStorage.setItem('token', data.accessToken);
 
     return data;
-  } catch (err) {
+  } catch (err: any) {
     throw Error(err);
   }
 };
