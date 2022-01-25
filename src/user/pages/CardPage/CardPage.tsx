@@ -7,14 +7,15 @@ import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import {
   selectedGoodsSelector,
   isLoadCurrentGoodsSelector,
-  errorModalStateSeletor,
+  modalStateSeletor,
 } from '@/user/store/selectors';
+
 import './cardPage.scss';
 
 export const CardPage: FC = () => {
   const selectedGoods = useSelector(selectedGoodsSelector);
   const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
-  const modalState = useSelector(errorModalStateSeletor);
+  const modalState = useSelector(modalStateSeletor);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();

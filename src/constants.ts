@@ -51,3 +51,4 @@ export const ROLES = {
   admin: 'admin',
   user: 'user',
 };
+export const STRIPE_PUBCLICK_KEY = process.env.STRIPE_PUBLISH_KEY || '';
