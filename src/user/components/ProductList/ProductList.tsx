@@ -11,7 +11,7 @@ import {
   goodsCategoriesSelector,
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
-  authIsLogin,
+  userIsLogin,
   modalStateSeletor,
 } from '@/user/store/selectors';
 import { getCountColumns } from '@/utils';
@@ -32,7 +32,7 @@ export const ProductList: FC = () => {
   const categories = useSelector(goodsCategoriesSelector);
   const minPrice = useSelector(goodsMinPriceSelector);
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
-  const isLogin = useSelector(authIsLogin);
+  const isLogin = useSelector(userIsLogin);
   const modalState = useSelector(modalStateSeletor);
 
   useEffect(() => {

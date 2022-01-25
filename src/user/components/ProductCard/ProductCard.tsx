@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addGoodsToCart } from '@/user/store/actions';
 import { IGoods, IProductCardItem } from '@/interfaces';
-import { authUserCart, authRole } from '@/user/store/selectors';
+import { userUserCart, userRoleSelector } from '@/user/store/selectors';
 import './productCard.scss';
 
 export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userRole = useSelector(authRole);
-  const cartGoods = useSelector(authUserCart);
+  const userRole = useSelector(userRoleSelector);
+  const cartGoods = useSelector(userUserCart);
 
   const goCardPage = () => {
     navigate(`goods/${item.id}`);

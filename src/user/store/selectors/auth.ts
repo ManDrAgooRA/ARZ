@@ -1,5 +1,5 @@
-export const authIsLogin = (state: any) => state.auth.isLogin;
-export const authPersonName = (state: any) => state.auth.userName;
-export const authRole = (state: any) => state.auth.role;
-export const authUserId = (state: any) => state.auth.userId;
-export const authUserCart = (state: any) => state.auth.userCart;
+export const userIsLogin = (state: any) => state.user.isLogin;
+export const userPersonName = (state: any) => state.user.userName;
+export const userRoleSelector = (state: any) => state.user.role;
+export const userUserId = (state: any) => state.user.userId;
+export const userUserCart = (state: any) => state.user.userCart;

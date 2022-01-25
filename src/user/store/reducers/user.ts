@@ -9,7 +9,7 @@ export const initialState: IAuthState = {
   role: '',
 };
 
-export function auth(state = initialState, action: any) {
+export function user(state = initialState, action: any) {
   switch (action.type) {
     case authActions.CHANGE_SIGNUP_STATUS:
       return {
