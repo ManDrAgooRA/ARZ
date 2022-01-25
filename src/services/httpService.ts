@@ -1,5 +1,5 @@
 import { IUser } from '@/interfaces';
-import { ErrorHandler } from '@/components/ErrorHandler/ErrorHandler';
+import { ErrorHandler } from '@/sharedComponents/ErrorHandler/ErrorHandler';
 
 export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;

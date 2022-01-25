@@ -5,8 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import { AllRoutes } from '@/routes/Routes';
 import { THEME } from '@/constants';
-import { store, persistor } from '@/store';
-import { Layout } from '@/components/Layout/Layout';
+import { store, persistor } from '@/user/store';
+import { Layout } from '@/sharedComponents/layout/Layout/Layout';
 import '@/styles/style.scss';
 
 export const App = () => {

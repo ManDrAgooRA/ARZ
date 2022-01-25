@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { CardPage } from '@/pages/CardPage/CardPage';
-import { MainPage } from '@/pages/MainPage/MainPage';
-import { SignUp } from '@/pages/SignUp/SignUp';
-import { Cart } from '@/pages/Cart/Cart';
-import { Login } from '@/pages/Login/Login';
-import { Error } from '@/pages/Error/Error';
+import { CardPage } from '@/user/pages/CardPage/CardPage';
+import { MainPage } from '@/user/pages/MainPage/MainPage';
+import { SignUp } from '@/user/pages/SignUp/SignUp';
+import { Cart } from '@/user/pages/Cart/Cart';
+import { Login } from '@/user/pages/Login/Login';
+import { Error } from '@/user/pages/Error/Error';
 import { AdminPage } from '@/admin/pages/AdminPage/AdminPage';
 import { OnlyAdminRoute } from '@/admin/routes/OnlyAdminRoute';
 import { CLIENT_PATHS } from '@/constants';
