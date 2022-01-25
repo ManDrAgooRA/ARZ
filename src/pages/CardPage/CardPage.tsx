@@ -3,29 +3,27 @@ import { Grommet, Box, ResponsiveContext, Grid } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentGoods } from '@/store/thunks/goods';
-import { clearCurrentUser } from '@/store/actions';
 import { CustomSpinner } from '@/components/Spinner/Spinner';
 import {
   selectedGoodsSelector,
   isLoadCurrentGoodsSelector,
+  modalStateSeletor,
 } from '@/store/selectors';
-import './singlePage.scss';
+import './cardPage.scss';
 
-export const SinglePage: FC = () => {
+export const CardPage: FC = () => {
   const selectedGoods = useSelector(selectedGoodsSelector);
   const isLoadCurrentGoods = useSelector(isLoadCurrentGoodsSelector);
+  const modalState = useSelector(modalStateSeletor);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(fetchCurrentGoods(id || '0'));
-    return () => {
-      dispatch(clearCurrentUser());
-    };
   }, []);
 
-  if (isLoadCurrentGoods) {
+  if (isLoadCurrentGoods && !modalState) {
     return <CustomSpinner />;
   }
 

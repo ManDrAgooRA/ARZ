@@ -12,10 +12,11 @@ import {
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
   authIsLogin,
+  modalStateSeletor,
 } from '@/store/selectors';
 import { getCountColumns } from '@/utils';
 import { THEME } from '@/constants';
-import { fetchGoods, fetchAllGoods } from '@/store/thunks/goods';
+import { fetchGoods } from '@/store/thunks/goods';
 import { CustomSpinner } from '@/components/Spinner/Spinner';
 import './products.scss';
 import { IGoods } from '@/interfaces';
@@ -32,9 +33,9 @@ export const ProductList: FC = () => {
   const minPrice = useSelector(goodsMinPriceSelector);
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
   const isLogin = useSelector(authIsLogin);
+  const modalState = useSelector(modalStateSeletor);
 
   useEffect(() => {
-    dispatch(fetchAllGoods());
     dispatch(
       fetchGoods({
         limit: 20,
@@ -49,7 +50,7 @@ export const ProductList: FC = () => {
     );
   }, [sort, order, countries, categories, minPrice, currentMaxPrice, isLogin]);
 
-  if (isLoadGoods) {
+  if (isLoadGoods && !modalState) {
     return <CustomSpinner />;
   }
 

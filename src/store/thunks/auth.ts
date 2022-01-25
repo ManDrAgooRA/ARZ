@@ -1,16 +1,12 @@
 import {
-  setErrorMessage,
   fetchSinUpSuccess,
   fetchLoginSuccess,
+  changeModalState,
 } from '@/store/actions';
 import { IAuth } from '@/interfaces';
 import { getRegistrationData, getLogin } from '@/BusinessLogic';
 
-export const fetchSignUp = ({
-  requestBody,
-  handleNavigate,
-  handleOpen,
-}: IAuth) => {
+export const fetchSignUp = ({ requestBody, handleNavigate }: IAuth) => {
   return async (dispatch: any) => {
     try {
       const data = await getRegistrationData({ requestBody });
@@ -22,30 +18,24 @@ export const fetchSignUp = ({
         handleNavigate('/');
       }
     } catch (e) {
-      dispatch(setErrorMessage(e.message));
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchLogin = ({
-  requestBody,
-  handleNavigate,
-  handleOpen,
-}: IAuth) => {
+export const fetchLogin = ({ requestBody, handleNavigate }: IAuth) => {
   return async (dispatch: any) => {
     try {
       const data = await getLogin({ requestBody });
       if (typeof data === 'string') {
-        throw Error(data);
+        throw new Error(data);
       }
       dispatch(fetchLoginSuccess(data));
       if (Object.keys(data.user).length > 0) {
         handleNavigate('/');
       }
     } catch (e) {
-      dispatch(setErrorMessage(e.message));
-      handleOpen();
+      dispatch(changeModalState(true));
     }
   };
 };

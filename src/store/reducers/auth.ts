@@ -4,7 +4,6 @@ import { IAuthState } from '@/interfaces';
 export const initialState: IAuthState = {
   isLogin: false,
   userName: '',
-  authError: '',
 };
 
 export function auth(state = initialState, action: any) {
@@ -27,12 +26,6 @@ export function auth(state = initialState, action: any) {
         ...state,
         userName: action.payload.user.userName,
         isLogin: true,
-      };
-
-    case authActions.SET_ERROR_MESSAGE:
-      return {
-        ...state,
-        authError: action.payload,
       };
 
     default:

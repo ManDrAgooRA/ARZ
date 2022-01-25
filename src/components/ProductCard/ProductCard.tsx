@@ -11,7 +11,8 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartGoods = useSelector(cartGoodsSelector);
-  const goSinglePage = () => {
+
+  const goCardPage = () => {
     navigate(`goods/${item.id}`);
   };
 
@@ -21,7 +22,7 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   };
 
   return (
-    <Card pad="large" onClick={goSinglePage} className="product-card">
+    <Card pad="large" onClick={goCardPage} className="product-card">
       <Box className="card-img">
         <img src={item.image} alt={item.title} />
       </Box>

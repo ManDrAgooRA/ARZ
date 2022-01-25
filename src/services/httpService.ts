@@ -1,7 +1,14 @@
 import { IUser } from '@/interfaces';
+import { ErrorHandler } from '@/components/ErrorHandler/ErrorHandler';
 
 export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;
+};
+const parseResponse = async (response: any): Promise<Response> => {
+  if (response.status > 299) {
+    throw new Error(response.status);
+  }
+  return response;
 };
 
 export class HTTPService {
@@ -13,10 +20,10 @@ export class HTTPService {
       },
     })
       .then((response) => {
-        return response;
+        return parseResponse(response);
       })
-      .catch((err) => {
-        throw Error(err);
+      .catch((e) => {
+        throw new ErrorHandler(e.message);
       });
   }
 
@@ -31,10 +38,10 @@ export class HTTPService {
       body: JSON.stringify(requestBody),
     })
       .then((response) => {
-        return response;
+        return parseResponse(response);
       })
-      .catch((err) => {
-        throw Error(err);
+      .catch((e) => {
+        throw new ErrorHandler(e.message);
       });
   }
 }

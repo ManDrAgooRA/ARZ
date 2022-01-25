@@ -5,7 +5,7 @@ import { Trash } from 'grommet-icons';
 import { LINKS } from '@/constants';
 import { IProductCardItem } from '@/interfaces';
 import { removeFromCart, changeCountCart } from '@/store/actions';
-import CartInput from '@/components/CartInput/CartInput';
+import { CartInput } from '@/components/CartInput/CartInput';
 import './cartItem.scss';
 
 export const CartItem: FC<IProductCardItem> = ({ item }) => {
