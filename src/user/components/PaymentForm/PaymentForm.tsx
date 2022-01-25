@@ -5,14 +5,14 @@ import {
   CardNumberElement,
 } from '@stripe/react-stripe-js';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartGoodsSelector } from '@/user/store/selectors';
+import { authUserCart } from '@/user/store/selectors';
 import { getTotalPrice } from '@/utils';
 import { setErrorMessage, changeModalState } from '@/user/store/actions';
 import './payment.scss';
 
 export const PaymentForm: FC = () => {
   const dispatch = useDispatch();
-  const cartGoods = useSelector(cartGoodsSelector);
+  const cartGoods = useSelector(authUserCart);
   const [isCardCompleted, setIsCardCompleted] = useState({
     cardNumber: false,
     cardExpiry: false,

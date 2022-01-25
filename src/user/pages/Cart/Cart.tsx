@@ -1,14 +1,16 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { PaymentModal } from '@/user/components/PaymentModal/PaymentModal';
 import { CartItem } from '@/user/components/CartItem/CartItem';
-import { cartGoodsSelector } from '@/user/store/selectors';
+import { authUserCart, authUserId } from '@/user/store/selectors';
 import { getTotalPrice } from '@/utils';
 import { IGoods } from '@/interfaces';
+import { changeUserCart } from '@/api/changeUserCart';
 import './cart.scss';
 
 export const Cart: FC = () => {
-  const cartGoods = useSelector(cartGoodsSelector);
+  const userCart = useSelector(authUserCart);
+  const userId = useSelector(authUserId);
   const [isPaymentModal, setIsOpenPaymentModal] = useState(false);
 
   const handleOpen = () => {
@@ -19,22 +21,30 @@ export const Cart: FC = () => {
     setIsOpenPaymentModal(false);
   };
 
+  useEffect(() => {
+    const newCartValue = {
+      cart: userCart,
+    };
+
+    changeUserCart({ id: userId, requestBody: newCartValue });
+  }, [userCart]);
+
   return (
     <div className="wrapper">
       <PaymentModal paymentModal={isPaymentModal} handleClose={handleClose} />
-      {cartGoods.map((item: IGoods) => {
+      {userCart.map((item: IGoods) => {
         return <CartItem key={item.id} item={item} />;
       })}
       <div className="cart-total">
         <button
           type="button"
           className="btn btn-cart"
-          disabled={cartGoods.length <= 0}
+          disabled={userCart.length <= 0}
           onClick={handleOpen}
         >
           Buy
         </button>
-        <span>Total: {getTotalPrice(cartGoods)}₴</span>
+        <span>Total: {getTotalPrice(userCart)}₴</span>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ import { ADMIN_LINKS } from '@/admin/constants/adminLinks';
 import {
   authIsLogin,
   authPersonName,
-  cartGoodsSelector,
+  authUserCart,
   authRole,
 } from '@/user/store/selectors';
 import './header.scss';
@@ -26,13 +26,14 @@ export const AppBar: FC = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector(authIsLogin);
   const userName = useSelector(authPersonName);
-  const cardGoods = useSelector(cartGoodsSelector);
+  const cardGoods = useSelector(authUserCart);
   const userRole = useSelector(authRole);
 
   const logOut = () => {
     localStorage.clear();
     dispatch(changeSinUpStatus(false));
   };
+
   const createItems = () =>
     loginStatus
       ? [
