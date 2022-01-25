@@ -46,3 +46,8 @@ export const EMAIL_MASK = [
 ];
 
 export const CART_MASK = [{ regexp: /^[0-9]{1,10}$/ }];
+
+export const ROLES = {
+  admin: 'admin',
+  user: 'user',
+};
