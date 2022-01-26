@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,11 +7,7 @@ import { STRIPE_PUBCLICK_KEY } from '@/constants';
 import { Footer } from '@/sharedComponents/layout/Footer/Footer';
 import { ILayout } from '@/interfaces/ILayout';
 import { Modal } from '@/sharedComponents/Modal/Modal';
-import {
-  changeModalState,
-  changeSinUpStatus,
-  clearCart,
-} from '@/user/store/actions';
+import { changeModalState } from '@/user/store/actions';
 import {
   errorMessageSelector,
   modalStateSeletor,
@@ -28,12 +24,6 @@ export const Layout: FC<ILayout> = ({ children }) => {
   const handleClose = () => {
     dispatch(changeModalState(false));
   };
-
-  // useEffect(() => {
-  //   localStorage.clear();
-  //   dispatch(clearCart());
-  //   dispatch(changeSinUpStatus(false));
-  // }, []);
 
   return (
     <>
