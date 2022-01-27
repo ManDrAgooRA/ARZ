@@ -2,15 +2,15 @@ import React, { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { PaymentModal } from '@/user/components/PaymentModal/PaymentModal';
 import { CartItem } from '@/user/components/CartItem/CartItem';
-import { userUserCart, userUserId } from '@/user/store/selectors';
+import { userCartSelector, userIdSelector } from '@/user/store/selectors';
 import { getTotalPrice } from '@/utils';
 import { IGoods } from '@/interfaces';
 import { changeUserCart } from '@/api/changeUserCart';
 import './cart.scss';
 
 export const Cart: FC = () => {
-  const userCart = useSelector(userUserCart);
-  const userId = useSelector(userUserId);
+  const userCart = useSelector(userCartSelector);
+  const userId = useSelector(userIdSelector);
   const [isPaymentModal, setIsOpenPaymentModal] = useState(false);
 
   const handleOpen = () => {

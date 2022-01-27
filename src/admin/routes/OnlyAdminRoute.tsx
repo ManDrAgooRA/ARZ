@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Login } from '@/user/pages/Login/Login';
 import { ROLES } from '@/constants';
-import { userRoleSelector, userIsLogin } from '@/user/store/selectors';
+import { userRoleSelector, userIsLoginSelector } from '@/user/store/selectors';
 
 export const OnlyAdminRoute: FC = () => {
   const userRole = useSelector(userRoleSelector);
-  const isLogin = useSelector(userIsLogin);
+  const isLogin = useSelector(userIsLoginSelector);
   return userRole === ROLES.admin && isLogin ? <Outlet /> : <Login />;
 };
