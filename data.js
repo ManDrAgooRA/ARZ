@@ -34,7 +34,6 @@ module.exports = () => {
       ifFavorite: false,
       description: faker.commerce.productDescription(),
       isSale: false,
-      salePrice: mathRandom(1, 10000),
     });
   }
   return data;

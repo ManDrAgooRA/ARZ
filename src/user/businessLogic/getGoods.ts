@@ -1,5 +1,5 @@
 import { getAllGoods } from '@/api';
-import { IAllGoods, IGoods } from '@/interfaces';
+import { IFetchGoods, IGoods } from '@/interfaces';
 
 export const getGoods = async ({
   limit,
@@ -10,7 +10,7 @@ export const getGoods = async ({
   categories,
   minPrice,
   currentMaxPrice,
-}: IAllGoods): Promise<IGoods[]> => {
+}: IFetchGoods): Promise<IGoods[]> => {
   try {
     const response = await getAllGoods({
       limit,
