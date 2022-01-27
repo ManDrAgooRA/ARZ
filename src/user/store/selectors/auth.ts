@@ -1,3 +1,5 @@
-export const authIsLogin = (state: any) => state.auth.isLogin;
-export const authPersonName = (state: any) => state.auth.userName;
-export const authRole = (state: any) => state.auth.role;
+export const userIsLoginSelector = (state: any) => state.user.isLogin;
+export const userPersonNameSelector = (state: any) => state.user.userName;
+export const userRoleSelector = (state: any) => state.user.role;
+export const userIdSelector = (state: any) => state.user.userId;
+export const userCartSelector = (state: any) => state.user.userCart;

@@ -1,6 +1,8 @@
 import { IGoods } from '.';
 
 export interface IAuthState {
+  userId: string;
+  userCart: IGoods[];
   isLogin: boolean;
   userName: string;
   role: string;
