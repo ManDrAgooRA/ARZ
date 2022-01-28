@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addGoodsToCart } from '@/user/store/actions';
 import { IGoods, IProductCardItem } from '@/interfaces';
-import { cartGoodsSelector } from '@/user/store/selectors';
+import { userCartSelector, userRoleSelector } from '@/user/store/selectors';
 import './productCard.scss';
 
 export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartGoods = useSelector(cartGoodsSelector);
+  const userRole = useSelector(userRoleSelector);
+  const cartGoods = useSelector(userCartSelector);
 
   const goCardPage = () => {
     navigate(`goods/${item.id}`);
@@ -29,7 +30,12 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
       <span>{item.title}</span>
       <span>{item.price}₴</span>
       <span>{item.raiting}</span>
-      <button type="button" className="btn btn-card" onClick={addToCard}>
+      <button
+        type="button"
+        className="btn btn-card"
+        onClick={addToCard}
+        disabled={userRole === 'admin'}
+      >
         {cartGoods.find((goods: IGoods) => goods.id === item.id)
           ? 'Added to cart'
           : 'Add to Cart'}

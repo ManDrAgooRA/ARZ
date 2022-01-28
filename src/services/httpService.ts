@@ -44,4 +44,22 @@ export class HTTPService {
         throw new ErrorHandler(e.message);
       });
   }
+
+  static patch(path: string, requestBody: any): Promise<Response> {
+    return fetch(`${baseUrl(path)}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      method: 'PATCH',
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => {
+        return response;
+      })
+      .catch((e: any) => {
+        throw new ErrorHandler(e.message);
+      });
+  }
 }

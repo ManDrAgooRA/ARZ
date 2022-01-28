@@ -15,24 +15,25 @@ import { changeSinUpStatus } from '@/user/store/actions';
 import { LINKS } from '@/constants';
 import { ADMIN_LINKS } from '@/admin/constants/adminLinks';
 import {
-  authIsLogin,
-  authPersonName,
-  cartGoodsSelector,
-  authRole,
+  userIsLoginSelector,
+  userPersonNameSelector,
+  userCartSelector,
+  userRoleSelector,
 } from '@/user/store/selectors';
 import './header.scss';
 
 export const AppBar: FC = () => {
   const dispatch = useDispatch();
-  const loginStatus = useSelector(authIsLogin);
-  const userName = useSelector(authPersonName);
-  const cardGoods = useSelector(cartGoodsSelector);
-  const userRole = useSelector(authRole);
+  const loginStatus = useSelector(userIsLoginSelector);
+  const userName = useSelector(userPersonNameSelector);
+  const cartGoods = useSelector(userCartSelector);
+  const userRole = useSelector(userRoleSelector);
 
   const logOut = () => {
     localStorage.clear();
     dispatch(changeSinUpStatus(false));
   };
+
   const createItems = () =>
     loginStatus
       ? [
@@ -48,7 +49,7 @@ export const AppBar: FC = () => {
                 label: (
                   <Link to={LINKS.cart} className="cart cart-icon">
                     <Cart color="light-1" />
-                    <span>{cardGoods.length || ''}</span>
+                    <span>{cartGoods.length || ''}</span>
                   </Link>
                 ),
               },
@@ -103,7 +104,7 @@ export const AppBar: FC = () => {
                       className="cart cart-icon"
                     >
                       <Cart color="light-1" />
-                      <span>{cardGoods.length || ''}</span>
+                      <span>{cartGoods.length || ''}</span>
                     </Link>
                   )}
                   <Anchor label={userName} color="light-1" />

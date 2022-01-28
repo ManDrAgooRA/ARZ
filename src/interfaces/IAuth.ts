@@ -1,3 +1,5 @@
+import { IGoods } from '.';
+
 export interface IUser {
   userName?: string;
   phone?: string;
@@ -6,6 +8,7 @@ export interface IUser {
   password?: string;
   confirmPass?: string;
   role: string;
+  cart: IGoods[];
 }
 
 export interface IAuthData {

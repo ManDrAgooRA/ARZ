@@ -34,7 +34,10 @@ export const SignUp: FC = () => {
 
   const onSubmit = (data: IUser) => {
     dispatch(
-      fetchSignUp({ requestBody: { ...data, role: 'user' }, handleNavigate })
+      fetchSignUp({
+        requestBody: { ...data, role: 'user', cart: [] },
+        handleNavigate,
+      })
     );
     reset();
   };
