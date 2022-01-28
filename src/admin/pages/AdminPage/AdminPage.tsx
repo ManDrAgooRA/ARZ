@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Grommet, Grid, ResponsiveContext } from 'grommet';
 import { Sidebar } from '@/sharedComponents/Sidebar/Sidebar';
 import { ADMIN_PATHS } from '@/admin/constants/routes';
@@ -7,14 +7,11 @@ import { AllAdminRoutes } from '@/admin/routes/AllAdminRoutes';
 import './admin.scss';
 
 export const AdminPage = () => {
-  const params = useParams();
   const [activeLink, setActiveLink] = useState(0);
   const allTabs = [
     { title: 'Users', path: ADMIN_PATHS.adminUsers },
     { title: 'Goods', path: `${ADMIN_PATHS.adminGoods}/1` },
   ];
-
-  console.log(Object.values(params).join().split('/')[0]);
 
   return (
     <Grommet>
