@@ -1,34 +1,35 @@
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Trash } from 'grommet-icons';
 import { LINKS } from '@/constants';
 import { IProductCardItem } from '@/interfaces';
-import { removeFromCart, changeCountCart } from '@/user/store/actions';
 import { CartInput } from '@/user/components/CartInput/CartInput';
 import './cartItem.scss';
 
-export const CartItem: FC<IProductCardItem> = ({ item }) => {
+export const CartItem: FC<IProductCardItem> = ({
+  item,
+  changeCart,
+  handleDelete,
+}) => {
   const [count, setCount] = useState(item.count);
-  const dispatch = useDispatch();
 
   const incrementCount = () => {
     setCount(count + 1);
-    dispatch(changeCountCart(item.id, +count + 1));
+    changeCart(item.id, count + 1);
   };
 
   const decrementCount = () => {
     setCount(count - 1);
-    dispatch(changeCountCart(item.id, +count - 1));
+    changeCart(item.id, count - 1);
   };
 
   const handlerDelete = () => {
-    dispatch(removeFromCart(item.id));
+    handleDelete(item.id);
   };
 
   const onChangeHandler = (value: string) => {
     setCount(+value <= 0 ? 1 : +value);
-    dispatch(changeCountCart(item.id, +value <= 0 ? 1 : +value));
+    changeCart(item.id, +value <= 0 ? 1 : +value);
   };
 
   return (
