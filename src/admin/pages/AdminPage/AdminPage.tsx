@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Grommet, Grid, ResponsiveContext } from 'grommet';
 import { Sidebar } from '@/sharedComponents/Sidebar/Sidebar';
 import { ADMIN_PATHS } from '@/admin/constants/routes';
 import { AllAdminRoutes } from '@/admin/routes/AllAdminRoutes';
+import { getAminTabs } from '@/admin/utlis/getAdminTabs';
 import './admin.scss';
 
 export const AdminPage = () => {
-  const [activeLink, setActiveLink] = useState(0);
+  const params = useParams();
+  const [activeLink, setActiveLink] = useState(getAminTabs(params));
+
   const allTabs = [
-    { title: 'Users', path: ADMIN_PATHS.adminUsers },
+    { title: 'Users', path: `${ADMIN_PATHS.adminUsers}/1` },
     { title: 'Goods', path: `${ADMIN_PATHS.adminGoods}/1` },
   ];
 

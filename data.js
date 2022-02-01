@@ -31,7 +31,7 @@ module.exports = () => {
       price: +faker.commerce.price(),
       raiting: +mathRandom(0, 100),
       countries: `${faker.address.country()}`,
-      ifFavorite: false,
+      isFavorite: false,
       description: faker.commerce.productDescription(),
       isSale: false,
     });

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Box, DataTable, Pagination } from 'grommet';
+import { Box, DataTable, Pagination, Heading } from 'grommet';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTableColumns } from '@/utils';
+import { getTableColumns } from '@/admin/utlis';
 import {
   goodsSelector,
   isLoadGoodsSelector,
@@ -14,9 +14,10 @@ import {
   goodsCurrentMaxPriceSelector,
 } from '@/user/store/selectors';
 import { fetchGoods } from '@/user/store/thunks';
-import './userTabel.scss';
+import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
+import '../tabel.scss';
 
-export const Tabel = () => {
+export const GoodsTable = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const navigate = useNavigate();
@@ -31,11 +32,10 @@ export const Tabel = () => {
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
 
   useEffect(() => {
-    console.log(params);
     dispatch(
       fetchGoods({
         limit: 10,
-        page: currentPage,
+        page: +currentPage,
         sort,
         order,
         countries,
@@ -51,8 +51,13 @@ export const Tabel = () => {
     navigate(`/admin/goods/page/${page}`);
   };
 
+  if (isLoadGoods) {
+    return <CustomSpinner />;
+  }
+
   return (
     <Box align="center" className="table-wrapper">
+      <Heading level={2}>All Goods</Heading>
       <Box overflow="auto">
         <DataTable sortable data={goods} columns={getTableColumns(goods)} pin />
       </Box>

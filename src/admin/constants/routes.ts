@@ -1,5 +1,5 @@
 export const ADMIN_PATHS = {
   admin: 'admin/*',
-  adminUsers: 'users',
+  adminUsers: 'users/page',
   adminGoods: 'goods/page',
 };
