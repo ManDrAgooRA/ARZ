@@ -9,6 +9,7 @@ module.exports = () => {
     goods: [],
     users: [
       {
+        id: 1,
         email: 'admin@gmail.com',
         password:
           '$2a$10$Lbc4pqIRW0LCGksEHhkNjeDar.RAPQEz.n4XDem4DpkOxcRlunP/K',
@@ -18,7 +19,6 @@ module.exports = () => {
         confirmPass: '1234567890',
         userName: 'Ivan',
         role: 'admin',
-        id: 1,
       },
     ],
   };
