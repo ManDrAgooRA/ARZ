@@ -16,15 +16,6 @@ export const THEME = {
       },
     },
   },
-  pagination: {
-    button: {
-      hover: {
-        background: {
-          color: 'active-background',
-        },
-      },
-    },
-  },
 };
 
 export const FILTERS = [{ name: 'categories' }, { name: 'countries' }];
