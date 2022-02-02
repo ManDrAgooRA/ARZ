@@ -1,4 +1,4 @@
-import { IUser } from '@/interfaces';
+import { IUser, IGoods } from '@/interfaces';
 import { ErrorHandler } from '@/sharedComponents/ErrorHandler/ErrorHandler';
 
 export const baseUrl = (path: string): string => {
@@ -45,7 +45,10 @@ export class HTTPService {
       });
   }
 
-  static patch(path: string, requestBody: any): Promise<Response> {
+  static patch(
+    path: string,
+    requestBody: { cart: IGoods[] }
+  ): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         Accept: 'application/json',
@@ -58,7 +61,7 @@ export class HTTPService {
       .then((response) => {
         return response;
       })
-      .catch((e: any) => {
+      .catch((e) => {
         throw new ErrorHandler(e.message);
       });
   }
