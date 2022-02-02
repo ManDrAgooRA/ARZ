@@ -8,18 +8,31 @@ import {
 } from '@/user/store/selectors';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { getTableColumns } from '@/admin/utlis';
+import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPAgination';
 import { allUsers } from '@/user/store/thunks/allUsers';
+import '../tabel.scss';
 
 export const UsersTabel = () => {
-  const params = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+  const [currentPage, setCurrentPage] = useState(params.page || 1);
+  const [postsPerPage] = useState(2);
   const isLoadGoods = useSelector(adminIsLoadingSelector);
   const allTabelUsers = useSelector(adminAllUserSelector);
-  const dispatch = useDispatch();
+  const indexOfLastPost = +currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = allTabelUsers.slice(indexOfFirstPost, indexOfLastPost);
+  const pagesCount = Math.ceil(allTabelUsers.length / postsPerPage);
 
   useEffect(() => {
     dispatch(allUsers());
   }, []);
+
+  const handleChange = ({ page }: { page: number }) => {
+    navigate(`/admin/users/page/${page}`);
+    setCurrentPage(page);
+  };
 
   if (isLoadGoods) {
     return <CustomSpinner />;
@@ -31,12 +44,18 @@ export const UsersTabel = () => {
       <Box overflow="auto">
         <DataTable
           sortable
-          data={allTabelUsers}
+          data={currentPosts}
           columns={getTableColumns(allTabelUsers)}
           resizeable
           pin
         />
       </Box>
+      <TabelPagination
+        pagesCount={pagesCount}
+        items={allTabelUsers}
+        currentPage={+currentPage}
+        handleChange={handleChange}
+      />
     </Box>
   );
 };
