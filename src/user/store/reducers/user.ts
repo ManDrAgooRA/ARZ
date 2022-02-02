@@ -37,7 +37,7 @@ export function user(state = initialState, action: any) {
         isLogin: true,
       };
 
-    case userActions.ADD_GOODS: {
+    case userActions.ADD_GOODS_SUCCESS: {
       const inCart = state.userCart.find(
         (item) => item.id === action.payload.id
       );
@@ -56,11 +56,7 @@ export function user(state = initialState, action: any) {
     case userActions.CHANGE_COUNT_CART:
       return {
         ...state,
-        userCart: state.userCart.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, count: +action.payload.value }
-            : item
-        ),
+        userCart: [...action.payload.cart],
       };
 
     case userActions.REMOVE_FROM_CART:

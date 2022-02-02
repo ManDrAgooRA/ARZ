@@ -1,11 +1,9 @@
 import { HTTPService } from '@/services/httpService';
+import { ICartRequest } from '@/interfaces';
 
 export const changeUserCart = ({
   id,
   requestBody,
-}: {
-  id: string;
-  requestBody: object;
-}): Promise<Response> => {
+}: ICartRequest): Promise<Response> => {
   return HTTPService.patch(`users/${id}`, requestBody);
 };

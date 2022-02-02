@@ -4,7 +4,7 @@ export const userActions = {
   FETCH_SIGNUP_SUCCESS: '[AUTH] fetch signup success',
   FETCH_LOGIN_SUCCESS: '[AUTH] fetch loihn success',
   CHANGE_SIGNUP_STATUS: '[AUTH] change login status',
-  ADD_GOODS: '[AUTH] add goods',
+  ADD_GOODS_SUCCESS: '[AUTH] add goods success',
   REMOVE_FROM_CART: '[AUTH] remove from cart',
   CHANGE_COUNT_CART: '[AUTH] change count cart',
   CLEAR_CART: '[AUTH] clear cart',
@@ -25,8 +25,8 @@ export const fetchLoginSuccess = (user: IAuthResponse) => ({
   payload: user,
 });
 
-export const addGoodsToCart = (currentGoods: IGoods) => ({
-  type: userActions.ADD_GOODS,
+export const addGoodsToCartSuccess = (currentGoods: IGoods) => ({
+  type: userActions.ADD_GOODS_SUCCESS,
   payload: currentGoods,
 });
 
@@ -35,11 +35,10 @@ export const removeFromCart = (id: number) => ({
   payload: id,
 });
 
-export const changeCountCart = (id: number, value: number) => ({
+export const changeCountCart = (cart: IGoods[]) => ({
   type: userActions.CHANGE_COUNT_CART,
   payload: {
-    id,
-    value,
+    cart,
   },
 });
 

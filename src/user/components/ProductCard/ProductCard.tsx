@@ -2,9 +2,13 @@ import React, { FC } from 'react';
 import { Card, Box } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addGoodsToCart } from '@/user/store/actions';
+import { addToCart } from '@/user/store/thunks';
 import { IGoods, IProductCardItem } from '@/interfaces';
-import { userCartSelector, userRoleSelector } from '@/user/store/selectors';
+import {
+  userCartSelector,
+  userRoleSelector,
+  userIdSelector,
+} from '@/user/store/selectors';
 import './productCard.scss';
 
 export const ProductCard: FC<IProductCardItem> = ({ item }) => {
@@ -12,14 +16,14 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   const navigate = useNavigate();
   const userRole = useSelector(userRoleSelector);
   const cartGoods = useSelector(userCartSelector);
-
+  const userId = useSelector(userIdSelector);
   const goCardPage = () => {
     navigate(`goods/${item.id}`);
   };
 
   const addToCard = (e: React.MouseEvent) => {
     e.stopPropagation();
-    dispatch(addGoodsToCart(item));
+    dispatch(addToCart({ id: userId, item, cart: cartGoods }));
   };
 
   return (
