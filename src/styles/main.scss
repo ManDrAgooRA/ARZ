@@ -31,3 +31,10 @@
       padding: $padding-content;
   }
 }
+
+.pagination{
+  &-wrapper{
+    align-items: center;
+    margin: 10px 0;
+  }
+}

@@ -4,7 +4,7 @@ import {
   fetchCurrentGoodsSuccess,
   changeModalState,
 } from '@/user/store/actions';
-import { IFetchGoods } from '@/interfaces';
+import { IFetchGoods, AppThunk } from '@/interfaces';
 import { getGoods, getData, selectedGoods } from '@/user/businessLogic';
 
 export const fetchGoods = ({
@@ -16,8 +16,8 @@ export const fetchGoods = ({
   categories,
   minPrice,
   currentMaxPrice,
-}: IFetchGoods) => {
-  return async (dispatch: any) => {
+}: IFetchGoods): AppThunk => {
+  return async (dispatch) => {
     try {
       const goods = await getGoods({
         limit,
@@ -30,29 +30,29 @@ export const fetchGoods = ({
         currentMaxPrice,
       });
       dispatch(fetchGoodsSuccess(goods));
-    } catch (e) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchAllGoods = () => {
-  return async (dispatch: any) => {
+export const fetchAllGoods = (): AppThunk => {
+  return async (dispatch) => {
     try {
       const allGoods = await getData();
       dispatch(fetchAllGoodSuccess(allGoods));
-    } catch (e) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchCurrentGoods = (id: string) => {
-  return async (dispatch: any) => {
+export const fetchCurrentGoods = (id: string): AppThunk => {
+  return async (dispatch) => {
     try {
       const currentGoods = await selectedGoods(id);
       dispatch(fetchCurrentGoodsSuccess(currentGoods));
-    } catch (e: any) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };

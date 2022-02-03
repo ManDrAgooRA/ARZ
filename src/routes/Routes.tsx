@@ -20,7 +20,7 @@ export const AllRoutes: FC = () => {
       <Route path={CLIENT_PATHS.cartPage} element={<Cart />} />
       <Route path={CLIENT_PATHS.loginPage} element={<Login />} />
       <Route element={<OnlyAdminRoute />}>
-        <Route path={ADMIN_PATHS.admin} element={<AdminPage />} />;
+        <Route path={ADMIN_PATHS.admin} element={<AdminPage />} />
       </Route>
       <Route path={CLIENT_PATHS.errorPage} element={<Error />} />
     </Routes>
