@@ -16,12 +16,18 @@ import {
 } from '@/user/store/selectors';
 import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
+import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
 import '../tabel.scss';
 
 export const GoodsTable = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(params.page || 1);
+  const [itemId, setItemId] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState({
+    editModal: false,
+    addModal: false,
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goods = useSelector(goodsSelector);
@@ -55,15 +61,54 @@ export const GoodsTable = () => {
     navigate(`/admin/goods/${page}`);
   };
 
+  const handleAddModalClose = () => {
+    setIsOpenModal({ ...isOpenModal, addModal: false });
+  };
+
+  const handleEditModalClose = () => {
+    setIsOpenModal({ ...isOpenModal, editModal: false });
+  };
+
   if (isLoadGoods) {
     return <CustomSpinner />;
   }
 
   return (
     <Box align="center" className="table-wrapper">
+      <AdminModal
+        isOpen={isOpenModal.addModal}
+        handleClose={handleAddModalClose}
+      >
+        add modal
+      </AdminModal>
+
+      <AdminModal
+        isOpen={isOpenModal.editModal}
+        handleClose={handleEditModalClose}
+      >
+        edit modal
+      </AdminModal>
       <Heading level={2}>All Goods</Heading>
+
+      <button
+        className="btn btn-form"
+        type="button"
+        onClick={() => setIsOpenModal({ ...isOpenModal, addModal: true })}
+      >
+        Add new Product
+      </button>
+
       <Box overflow="auto">
-        <DataTable sortable data={goods} columns={getTableColumns(goods)} pin />
+        <DataTable
+          sortable
+          data={goods}
+          columns={getTableColumns(goods)}
+          pin
+          onClickRow={({ datum }) => {
+            setItemId(datum.id);
+            setIsOpenModal({ ...isOpenModal, editModal: true });
+          }}
+        />
       </Box>
       <TabelPagination
         items={allGoods}

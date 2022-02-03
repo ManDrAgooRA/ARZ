@@ -1,0 +1,13 @@
+.modal{
+  &-wrapper{
+    position: relative;
+    padding: 25px 30px;
+  }
+  &-close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+  }
+}
