@@ -52,7 +52,7 @@ export const GoodsTable = () => {
 
   const handleChange = ({ page }: { page: number }) => {
     setCurrentPage(page);
-    navigate(`/admin/goods/page/${page}`);
+    navigate(`/admin/goods/${page}`);
   };
 
   if (isLoadGoods) {

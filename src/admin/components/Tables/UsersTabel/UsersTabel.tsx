@@ -30,7 +30,7 @@ export const UsersTabel = () => {
   }, []);
 
   const handleChange = ({ page }: { page: number }) => {
-    navigate(`/admin/users/page/${page}`);
+    navigate(`/admin/users/${page}`);
     setCurrentPage(page);
   };
 
