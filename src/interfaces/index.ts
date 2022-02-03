@@ -5,3 +5,5 @@ export * from './IAllGoods';
 export * from './IAuth';
 export * from './IStates';
 export * from './ICart';
+export * from './IAdmin';
+export * from './IDispatch';

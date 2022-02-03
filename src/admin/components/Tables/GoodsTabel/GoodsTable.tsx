@@ -16,7 +16,7 @@ import {
 } from '@/user/store/selectors';
 import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
-import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPAgination';
+import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
 import '../tabel.scss';
 
 export const GoodsTable = () => {

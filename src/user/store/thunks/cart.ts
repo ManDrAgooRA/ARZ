@@ -1,16 +1,16 @@
 import { changeModalState, addGoodsToCartSuccess } from '@/user/store/actions';
 import { changeUserCart } from '@/api/changeUserCart';
-import { IAddToCart } from '@/interfaces';
+import { IAddToCart, AppThunk } from '@/interfaces';
 
-export const addToCart = ({ id, item, cart }: IAddToCart) => {
+export const addToCart = ({ id, item, cart }: IAddToCart): AppThunk => {
   const newCartValue = {
     cart: [...cart, item],
   };
-  return async (dispatch: any) => {
+  return async (dispatch) => {
     try {
       dispatch(addGoodsToCartSuccess(item));
       changeUserCart({ id, requestBody: newCartValue });
-    } catch (e) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };

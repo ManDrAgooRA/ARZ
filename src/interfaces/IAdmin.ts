@@ -1,6 +1,6 @@
 import { IGoods } from '.';
 
-export interface IUSers {
+export interface IUsers {
   email: string;
   password: string;
   userName: string;

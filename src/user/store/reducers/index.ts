@@ -10,3 +10,5 @@ export const rootReducer = combineReducers({
   errors,
   admin,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;

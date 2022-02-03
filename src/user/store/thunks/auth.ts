@@ -3,11 +3,14 @@ import {
   fetchLoginSuccess,
   changeModalState,
 } from '@/user/store/actions';
-import { IAuth } from '@/interfaces';
+import { IAuth, AppThunk } from '@/interfaces';
 import { getRegistrationData, getLogin } from '@/user/businessLogic';
 
-export const fetchSignUp = ({ requestBody, handleNavigate }: IAuth) => {
-  return async (dispatch: any) => {
+export const fetchSignUp = ({
+  requestBody,
+  handleNavigate,
+}: IAuth): AppThunk => {
+  return async (dispatch) => {
     try {
       const data = await getRegistrationData({ requestBody });
       if (typeof data === 'string') {
@@ -17,14 +20,17 @@ export const fetchSignUp = ({ requestBody, handleNavigate }: IAuth) => {
       if (Object.keys(data.user).length > 0) {
         handleNavigate('/');
       }
-    } catch (e) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };
 };
 
-export const fetchLogin = ({ requestBody, handleNavigate }: IAuth) => {
-  return async (dispatch: any) => {
+export const fetchLogin = ({
+  requestBody,
+  handleNavigate,
+}: IAuth): AppThunk => {
+  return async (dispatch) => {
     try {
       const data = await getLogin({ requestBody });
       if (typeof data === 'string') {
@@ -34,7 +40,7 @@ export const fetchLogin = ({ requestBody, handleNavigate }: IAuth) => {
       if (Object.keys(data.user).length > 0) {
         handleNavigate('/');
       }
-    } catch (e) {
+    } catch {
       dispatch(changeModalState(true));
     }
   };

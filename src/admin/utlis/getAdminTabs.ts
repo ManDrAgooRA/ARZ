@@ -1,4 +1,4 @@
-export const getAminTabs = (params: object): number => {
+export const getAdminTabs = (params: object): number => {
   const param = Object.values(params).join().split('/')[0];
 
   if (param === 'users') {
