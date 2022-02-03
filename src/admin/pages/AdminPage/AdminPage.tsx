@@ -12,8 +12,8 @@ export const AdminPage = () => {
   const [activeLink, setActiveLink] = useState(getAdminTabs(params));
 
   const allTabs = [
-    { title: 'Users', path: `${ADMIN_PATHS.getAdminTabs}/1` },
-    { title: 'Goods', path: `${ADMIN_PATHS.getAdminTabs}/1` },
+    { title: 'Users', path: `${ADMIN_PATHS.adminUsers}/1` },
+    { title: 'Goods', path: `${ADMIN_PATHS.adminGoods}/1` },
   ];
 
   return (
