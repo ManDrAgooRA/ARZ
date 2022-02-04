@@ -1,5 +1,6 @@
 import { IUser, IGoods } from '@/interfaces';
 import { ErrorHandler } from '@/sharedComponents/ErrorHandler/ErrorHandler';
+import { IRequestBodyAdmin } from '@/admin/interfaces';
 
 export const baseUrl = (path: string): string => {
   return `${process.env.API_KEY}${path}`;
@@ -27,7 +28,7 @@ export class HTTPService {
       });
   }
 
-  static post(path: string, requestBody: IUser): Promise<Response> {
+  static post(path: string, requestBody: IRequetBodyAdmin): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         Accept: 'application/json',

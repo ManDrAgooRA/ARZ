@@ -29,7 +29,7 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   return (
     <Card pad="large" onClick={goCardPage} className="product-card">
       <Box className="card-img">
-        <img src={item.image} alt={item.title} />
+        <img src={item.productImage} alt={item.title} />
       </Box>
       <span>{item.title}</span>
       <span>{item.price}₴</span>

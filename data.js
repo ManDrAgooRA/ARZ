@@ -25,7 +25,7 @@ module.exports = () => {
     data.goods.push({
       id: i,
       title: faker.commerce.productName(),
-      image: faker.random.image(),
+      productImage: faker.random.image(),
       categories: `${faker.random.word()}`,
       price: +faker.commerce.price(),
       raiting: +mathRandom(0, 100),

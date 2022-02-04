@@ -18,6 +18,7 @@ import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
+import { AdminForm } from '@/admin/components/AdminForm/AdminForm';
 import '../tabel.scss';
 
 export const GoodsTable = () => {
@@ -75,6 +76,7 @@ export const GoodsTable = () => {
 
   return (
     <Box align="center" className="table-wrapper">
+      <AdminForm />
       <AdminModal
         isOpen={isOpenModal.addModal}
         handleClose={handleAddModalClose}

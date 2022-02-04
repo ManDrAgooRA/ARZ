@@ -7,7 +7,7 @@ export interface IGoods {
   description: string;
   id: number;
   isFavorite: boolean;
-  image: string;
+  productImage: string;
   isSale: boolean;
   raiting: number;
   salePrice: number;

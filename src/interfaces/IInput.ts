@@ -11,6 +11,8 @@ export interface IInput {
     email?: IErrorMessage;
     password?: IErrorMessage;
     confirmPass?: IErrorMessage;
+    image?: IErrorMessage;
+    price?: IErrorMessage;
   };
 }
 

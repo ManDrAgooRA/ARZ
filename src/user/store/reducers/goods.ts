@@ -7,7 +7,7 @@ const initialState: IGoodsState = {
   selectedGoods: {
     id: 0,
     title: 'mok',
-    image: 'mok',
+    productImage: 'mok',
     categories: 'mok',
     price: 998,
     count: 39,
