@@ -7,3 +7,4 @@ export * from './IStates';
 export * from './ICart';
 export * from './IAdmin';
 export * from './IDispatch';
+export * from './IServices';

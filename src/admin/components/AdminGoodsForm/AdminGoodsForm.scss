@@ -38,3 +38,19 @@
     transform: scale(1);
   }
 }
+
+.admin{
+  &-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 600px;
+  }
+}
+
+.form{
+  &-img{
+    max-width: 300px;
+  }
+}

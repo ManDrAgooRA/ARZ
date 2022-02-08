@@ -56,7 +56,20 @@ export function goods(state = initialState, action: any) {
     case goodsActions.CLEAR_CURRENT_GOODS:
       return {
         ...state,
-        selectedGoods: null,
+        selectedGoods: {
+          id: 0,
+          title: '',
+          productImage: '',
+          categories: '',
+          price: 0,
+          count: 0,
+          raiting: 0,
+          countries: '',
+          isFavorite: false,
+          description: '',
+          isSale: false,
+          salePrice: 0,
+        },
         isLoadCurrentGoods: true,
       };
 

@@ -14,12 +14,12 @@ export const getTableColumns = (array: any) => {
             `${datum.password.slice(datum.password.length - 5)}...`,
         };
       }
-      if (item === 'image') {
+      if (item === 'productImage') {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
           render: (datum: any) =>
-            `${datum.image.slice(datum.image.length - 5)}...`,
+            `${datum.productImage.slice(datum.productImage.length - 5)}...`,
         };
       }
       return {

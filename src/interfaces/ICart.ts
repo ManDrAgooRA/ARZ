@@ -13,4 +13,6 @@ export interface IAddToCart {
 
 export interface IProductCardItem {
   item: IGoods;
+  changeCart(id: number, count: number): void;
+  handleDelete(id: number): void;
 }

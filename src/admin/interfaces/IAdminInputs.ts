@@ -1,26 +1,28 @@
 interface IErrorMessage {
-  message: string;
+  message: string | unknown;
+}
+
+interface IErrorInputs {
+  categories?: IErrorMessage;
+  title?: IErrorMessage;
+  productImage?: IErrorMessage;
+  price?: IErrorMessage;
+  raiting?: IErrorMessage;
+  countires?: IErrorMessage;
+  description?: IErrorMessage;
+  isSale?: IErrorMessage;
 }
 
 export interface IAdminInputs {
   register(message: string): void;
-  errors: {
-    categories?: IErrorMessage;
-    title?: IErrorMessage;
-    productImage?: IErrorMessage;
-    price?: IErrorMessage;
-    raiting?: IErrorMessage;
-    countires?: IErrorMessage;
-    description?: IErrorMessage;
-    isSale?: IErrorMessage;
-  };
+  errors: IErrorInputs;
+  value: string | number | readonly string[] | undefined;
 }
 
 export interface IImageInput {
   register(message: string): void;
-  errors: {
-    productImage?: IErrorMessage;
-  };
+  errors: IErrorInputs;
   productImage: string;
   setProductImage(base64: string | unknown): void;
+  value: string | number | readonly string[] | undefined;
 }

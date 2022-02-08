@@ -10,7 +10,7 @@ export const AdminModal: FC<IAdminModal> = ({
   children,
 }) => {
   return (
-    <Box>
+    <Box className="modal-admin">
       {isOpen && (
         <Layer className="modal-wrapper" onClickOutside={() => handleClose()}>
           {children}

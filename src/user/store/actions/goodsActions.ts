@@ -28,7 +28,7 @@ export const fetchAllGoodSuccess = (goods: IGoods[]) => ({
   payload: goods,
 });
 
-export const clearCurrentUser = () => ({
+export const clearCurrentGoods = () => ({
   type: goodsActions.CLEAR_CURRENT_GOODS,
 });
 

@@ -30,6 +30,6 @@ export const getAllData = (): Promise<Response> => {
   return HTTPService.get('goods');
 };
 
-export const getCurrentGoods = (id: string): Promise<Response> => {
+export const getCurrentGoods = (id: number): Promise<Response> => {
   return HTTPService.get(`goods/${id}`);
 };

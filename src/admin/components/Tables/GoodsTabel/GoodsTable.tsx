@@ -18,13 +18,14 @@ import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
-import { AdminForm } from '@/admin/components/AdminForm/AdminForm';
+import { AdminGoodsForm } from '@/admin/components/AdminGoodsForm/AdminGoodsForm';
 import '../tabel.scss';
 
 export const GoodsTable = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(params.page || 1);
-  const [itemId, setItemId] = useState(0);
+  const [productId, setProductId] = useState(0);
+  const [curentForm, setCurrentForm] = useState('add');
   const [isOpenModal, setIsOpenModal] = useState({
     editModal: false,
     addModal: false,
@@ -76,26 +77,28 @@ export const GoodsTable = () => {
 
   return (
     <Box align="center" className="table-wrapper">
-      <AdminForm />
       <AdminModal
         isOpen={isOpenModal.addModal}
         handleClose={handleAddModalClose}
       >
-        add modal
+        <AdminGoodsForm curentForm={curentForm} productId={productId} />
       </AdminModal>
 
       <AdminModal
         isOpen={isOpenModal.editModal}
         handleClose={handleEditModalClose}
       >
-        edit modal
+        <AdminGoodsForm curentForm={curentForm} productId={productId} />
       </AdminModal>
       <Heading level={2}>All Goods</Heading>
 
       <button
-        className="btn btn-form"
+        className="btn btn-form btn-form__admin"
         type="button"
-        onClick={() => setIsOpenModal({ ...isOpenModal, addModal: true })}
+        onClick={() => {
+          setIsOpenModal({ ...isOpenModal, addModal: true });
+          setCurrentForm('add');
+        }}
       >
         Add new Product
       </button>
@@ -107,8 +110,9 @@ export const GoodsTable = () => {
           columns={getTableColumns(goods)}
           pin
           onClickRow={({ datum }) => {
-            setItemId(datum.id);
+            setProductId(datum.id);
             setIsOpenModal({ ...isOpenModal, editModal: true });
+            setCurrentForm('edit');
           }}
         />
       </Box>

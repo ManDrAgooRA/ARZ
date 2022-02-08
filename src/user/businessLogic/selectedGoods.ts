@@ -1,7 +1,7 @@
 import { getCurrentGoods } from '@/api';
 import { IGoods } from '@/interfaces';
 
-export const selectedGoods = async (id: string): Promise<IGoods> => {
+export const selectedGoods = async (id: number): Promise<IGoods> => {
   try {
     const response = await getCurrentGoods(id);
     const data = await response.json();

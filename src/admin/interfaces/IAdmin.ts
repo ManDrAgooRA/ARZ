@@ -15,3 +15,8 @@ export interface IAdminModal {
   isOpen: boolean;
   handleClose(): void;
 }
+
+export interface IAdminForm {
+  curentForm: string;
+  productId?: number;
+}

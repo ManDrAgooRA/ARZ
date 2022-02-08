@@ -47,7 +47,7 @@ export const fetchAllGoods = (): AppThunk => {
   };
 };
 
-export const fetchCurrentGoods = (id: string): AppThunk => {
+export const fetchCurrentGoods = (id: number): AppThunk => {
   return async (dispatch) => {
     try {
       const currentGoods = await selectedGoods(id);
