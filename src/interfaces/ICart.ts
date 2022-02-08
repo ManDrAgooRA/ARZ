@@ -11,7 +11,7 @@ export interface IAddToCart {
   cart: IGoods[];
 }
 
-export interface IProductCardItem {
+export interface IProductCartItem {
   item: IGoods;
   changeCart(id: number, count: number): void;
   handleDelete(id: number): void;

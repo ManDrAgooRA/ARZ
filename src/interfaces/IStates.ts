@@ -1,4 +1,4 @@
-import { IGoods } from '.';
+import { IGoods, IUser } from '.';
 
 export interface IAuthState {
   userId: string;
@@ -31,4 +31,11 @@ export interface ICartState {
 export interface IErrorState {
   isOpenModal: boolean;
   error: string;
+}
+
+export interface IAdminState {
+  allUsers: IUser[];
+  adminEditModalState: boolean;
+  adminAddModalState: boolean;
+  isAdminLoading: boolean;
 }

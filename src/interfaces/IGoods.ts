@@ -10,5 +10,4 @@ export interface IGoods {
   productImage: string;
   isSale: boolean;
   raiting: number;
-  salePrice: number;
 }

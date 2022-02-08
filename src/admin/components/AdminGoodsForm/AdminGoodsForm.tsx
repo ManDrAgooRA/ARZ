@@ -2,13 +2,21 @@ import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, FormField, MaskedInput, TextArea, FileInput } from 'grommet';
 import { allGoodsSelector } from '@/user/store/selectors';
-import { addProduct } from '@/admin/api';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
-import { mask } from '@/admin/components/AdminGoodsForm/masks';
+import {
+  changeAminAddModalState,
+  changeAminEditModalState,
+} from '@/user/store/actions';
+import { editProduct } from '@/user/store/thunks/editProduct';
+import { addNewProduct } from '@/user/store/thunks/addProduct';
+import {
+  priceMask,
+  raitingMask,
+} from '@/admin/components/AdminGoodsForm/masks';
 import './AdminGoodsForm.scss';
 
 const schema = yup.object({
@@ -23,10 +31,12 @@ const schema = yup.object({
 });
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
+  const dispatch = useDispatch();
   const allGoods = useSelector(allGoodsSelector);
   const [productImage, setProductImage] = useState(
     curentForm === 'edit' ? allGoods[productId || 0].productImage : ''
   );
+
   const {
     register,
     handleSubmit,
@@ -50,11 +60,6 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
     resolver: yupResolver(schema),
   });
 
-  const handlerAddProduct = (data: IGoods) => {
-    const formData = { ...data, isFavorite: false, productImage };
-    addProduct({ requestBody: formData });
-  };
-
   const convertBase64 = (file: any) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -75,13 +80,19 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
     const base64 = await convertBase64(file);
     setProductImage(base64);
   };
-
   const onSubmit = (data: IGoods) => {
     if (curentForm === 'add') {
-      handlerAddProduct(data);
+      const formData = { ...data, isFavorite: false, productImage };
+      dispatch(
+        addNewProduct({
+          requestBody: formData,
+        })
+      );
+      dispatch(changeAminAddModalState(false));
     } else {
-      console.log(curentForm);
-      console.log(data);
+      const formData = { ...data, isFavorite: false, productImage };
+      dispatch(editProduct({ id: productId, requestBody: formData }));
+      dispatch(changeAminEditModalState(false));
     }
     reset();
   };
@@ -98,6 +109,11 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
             >
               <FileInput
                 {...register('productImage')}
+                value={
+                  curentForm === 'edit'
+                    ? allGoods[productId || 0].productImage
+                    : ''
+                }
                 onChange={(e: any) => {
                   uploadImage(e);
                 }}
@@ -131,16 +147,15 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
           error={errors.price?.message}
           {...register('price')}
         >
-          <MaskedInput name="price" placeholder="Price" mask={mask} />
+          <MaskedInput name="price" placeholder="Price" mask={priceMask} />
         </FormField>
 
         <FormField
           label="Raiting"
-          placeholder="Raiting"
           error={errors.raiting?.message}
           {...register('raiting')}
         >
-          <MaskedInput name="raiting" placeholder="Raiting" mask={mask} />
+          <MaskedInput name="raiting" mask={raitingMask} />
         </FormField>
 
         <FormField
@@ -170,7 +185,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
           </label>
 
           <label className="radio">
-            <input type="radio" value="false" checked {...register('isSale')} />
+            <input type="radio" value="false" {...register('isSale')} />
             <span className="radio__round" />
             False
           </label>

@@ -1,4 +1,3 @@
-import { IGoods, IRequestBody } from '@/interfaces';
 import { ErrorHandler } from '@/sharedComponents/ErrorHandler/ErrorHandler';
 
 export const baseUrl = (path: string): string => {
@@ -27,7 +26,7 @@ export class HTTPService {
       });
   }
 
-  static post(path: string, requestBody: IRequestBody): Promise<Response> {
+  static post(path: string, requestBody: any): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         Accept: 'application/json',
@@ -45,10 +44,7 @@ export class HTTPService {
       });
   }
 
-  static patch(
-    path: string,
-    requestBody: { cart: IGoods[] }
-  ): Promise<Response> {
+  static patch(path: string, requestBody: any): Promise<Response> {
     return fetch(`${baseUrl(path)}`, {
       headers: {
         Accept: 'application/json',
