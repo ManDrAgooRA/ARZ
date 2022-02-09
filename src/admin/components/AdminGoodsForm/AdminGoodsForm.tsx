@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, FormField, MaskedInput, TextArea, FileInput } from 'grommet';
+import { Box } from 'grommet';
 import { allGoodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
+import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
 import {
   changeAminAddModalState,
   changeAminEditModalState,
@@ -14,21 +14,16 @@ import {
 import { editProduct } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
 import {
-  priceMask,
-  raitingMask,
-} from '@/admin/components/AdminGoodsForm/masks';
+  TitleInput,
+  ImageInput,
+  IsSaleInput,
+  CategoryInput,
+  PriceInput,
+  RaitnigInput,
+  CountryInput,
+  DescriptionInput,
+} from '@/admin/components/AdminGoodsForm/inputs';
 import './AdminGoodsForm.scss';
-
-const schema = yup.object({
-  productImage: yup.string().required(),
-  title: yup.string().required(),
-  categories: yup.string().required(),
-  raiting: yup.number().required(),
-  price: yup.number().required(),
-  countries: yup.string().required(),
-  description: yup.string().required(),
-  isSale: yup.string().required(),
-});
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
   const dispatch = useDispatch();
@@ -57,29 +52,9 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
         curentForm === 'edit' ? allGoods[productId || 0].description : '',
       isSale: curentForm === 'edit' ? allGoods[productId || 0].isSale : '',
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(adminGoodsForm),
   });
 
-  const convertBase64 = (file: any) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const uploadImage = async (e: any) => {
-    const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setProductImage(base64);
-  };
   const onSubmit = (data: IGoods) => {
     if (curentForm === 'add') {
       const formData = { ...data, isFavorite: false, productImage };
@@ -100,98 +75,38 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
   return (
     <Box className="admin-form-wrapper">
       <form onSubmit={handleSubmit(onSubmit)} className="admin-form">
-        <Box align="center" justify="start" pad="small">
-          <Box width="medium">
-            Picture:
-            <FormField
-              placeholder="Product Image"
-              error={errors.productImage?.message}
-            >
-              <FileInput
-                {...register('productImage')}
-                value={
-                  curentForm === 'edit'
-                    ? allGoods[productId || 0].productImage
-                    : ''
-                }
-                onChange={(e: any) => {
-                  uploadImage(e);
-                }}
-              />
-            </FormField>
-          </Box>
-          <img src={productImage} className="form-img" />
-        </Box>
+        <ImageInput
+          register={register}
+          errorMessage={errors.productImage?.message}
+          productImage={productImage}
+          setProductImage={setProductImage}
+        />
+        <TitleInput register={register} errorMessage={errors.title?.message} />
+        <CategoryInput
+          register={register}
+          errorMessage={errors.categories?.message}
+        />
+        <CountryInput
+          register={register}
+          errorMessage={errors.countries?.message}
+        />
+        <PriceInput register={register} errorMessage={errors.price?.message} />
+        <RaitnigInput
+          register={register}
+          errorMessage={errors.raiting?.message}
+        />
 
-        <FormField
-          label="Title"
-          placeholder="Title"
-          error={errors.title?.message}
-          {...register('title')}
-        >
-          <MaskedInput name="title" placeholder="Title" />
-        </FormField>
+        <DescriptionInput
+          register={register}
+          errorMessage={errors.description?.message}
+        />
 
-        <FormField
-          label="Categories"
-          placeholder="Categories"
-          error={errors.categories?.message}
-          {...register('categories')}
-        >
-          <MaskedInput name="categories" placeholder="Categories" />
-        </FormField>
-
-        <FormField
-          label="Price"
-          placeholder="Price"
-          error={errors.price?.message}
-          {...register('price')}
-        >
-          <MaskedInput name="price" placeholder="Price" mask={priceMask} />
-        </FormField>
-
-        <FormField
-          label="Raiting"
-          error={errors.raiting?.message}
-          {...register('raiting')}
-        >
-          <MaskedInput name="raiting" mask={raitingMask} />
-        </FormField>
-
-        <FormField
-          label="Сountries"
-          placeholder="Сountries"
-          error={errors.countries?.message}
-          {...register('countries')}
-        >
-          <MaskedInput name="countries" placeholder="Сountries" />
-        </FormField>
-
-        <FormField
-          label="Description"
-          placeholder="Description"
-          error={errors.description?.message}
-          {...register('description')}
-        >
-          <TextArea name="description" placeholder="Description" />
-        </FormField>
-
-        <Box className="radio-wrapper">
-          <label>IsSale:</label>
-          <label className="radio">
-            <input type="radio" value="true" {...register('isSale')} />
-            <span className="radio__round" />
-            True
-          </label>
-
-          <label className="radio">
-            <input type="radio" value="false" {...register('isSale')} />
-            <span className="radio__round" />
-            False
-          </label>
-        </Box>
+        <IsSaleInput
+          register={register}
+          errorMessage={errors.isSale?.message}
+        />
         <button type="submit" className="btn btn-form">
-          Add product
+          {curentForm === 'edit' ? 'Edit product' : 'Add product'}
         </button>
       </form>
     </Box>

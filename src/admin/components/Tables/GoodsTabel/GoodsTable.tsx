@@ -19,7 +19,6 @@ import {
 import {
   changeAminEditModalState,
   changeAminAddModalState,
-  setCurrentMaxPrice,
 } from '@/user/store/actions';
 import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
@@ -27,7 +26,6 @@ import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
 import { AdminGoodsForm } from '@/admin/components/AdminGoodsForm/AdminGoodsForm';
 import '../tabel.scss';
-import { getMinMaxValue } from '@/utils';
 
 export const GoodsTable = () => {
   const params = useParams();
@@ -47,7 +45,6 @@ export const GoodsTable = () => {
   const minPrice = useSelector(goodsMinPriceSelector);
   const currentMaxPrice = useSelector(goodsCurrentMaxPriceSelector);
   const allGoods = useSelector(allGoodsSelector);
-  const { maxValue } = getMinMaxValue(allGoods);
 
   useEffect(() => {
     dispatch(fetchAllGoods());
@@ -63,7 +60,6 @@ export const GoodsTable = () => {
         currentMaxPrice,
       })
     );
-    dispatch(setCurrentMaxPrice(maxValue));
   }, [currentPage]);
 
   const handleChange = ({ page }: { page: number }) => {
