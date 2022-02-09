@@ -22,11 +22,28 @@ export const getTableColumns = (array: any) => {
             `${datum.productImage.slice(datum.productImage.length - 5)}...`,
         };
       }
+      if (item === 'isSale') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item}`),
+          render: (datum: any) => `${datum.isSale}`,
+        };
+      }
+
+      if (item === 'isFavorite') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item}`),
+          render: (datum: any) => `${datum.isFavorite}`,
+        };
+      }
+
       return {
         property: `${item}`,
         header: capitalizeFirstLetter(`${item}`),
       };
     });
   }
+
   return columns;
 };

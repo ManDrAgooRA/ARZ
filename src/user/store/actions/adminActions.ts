@@ -10,7 +10,7 @@ export const allUsersSuccess = (users: IUser) => ({
   payload: users,
 });
 
-export const changeAminModalState = (state: boolean) => ({
+export const changeAdminModalState = (isOpen: boolean) => ({
   type: ADMIN_ACTIONS.CHAGE_ADMIN_MODAL_STATE,
-  payload: state,
+  payload: isOpen,
 });

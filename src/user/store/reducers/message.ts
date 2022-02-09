@@ -1,20 +1,20 @@
-import { errorsActions } from '@/user/store/actions';
+import { messageActions } from '@/user/store/actions';
 import { IErrorState } from '@/interfaces';
 
 const initialState: IErrorState = {
   isOpenModal: false,
-  error: '',
+  message: '',
 };
 
-export function errors(state = initialState, action: any) {
+export function message(state = initialState, action: any) {
   switch (action.type) {
-    case errorsActions.SET_ERROR_MESSAGE:
+    case messageActions.SET_MESSAGE:
       return {
         ...state,
-        error: action.payload,
+        message: action.payload,
       };
 
-    case errorsActions.CHANGE_MODAL_STATE:
+    case messageActions.CHANGE_MODAL_STATE:
       return {
         ...state,
         isOpenModal: action.payload,

@@ -1,18 +1,18 @@
 .radio{
   position: relative;
-  &-wrapper{
-    & label{
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      margin-bottom: 10px;
-      &:hover{
-        cursor: pointer;
-      }
-      & input{
-        display: none;
-      }
-    }
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+  &-button{
+    display: none;
+  }
+
+  &-title{
+    margin-bottom: 10px;
   }
 
   &-error{

@@ -15,7 +15,7 @@ import {
   allGoodsSelector,
   adminModalStateSelector,
 } from '@/user/store/selectors';
-import { changeAminModalState } from '@/user/store/actions';
+import { changeAdminModalState } from '@/user/store/actions';
 import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
@@ -28,7 +28,7 @@ export const GoodsTable = () => {
   const adminModalState = useSelector(adminModalStateSelector);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const [productId, setProductId] = useState(0);
-  const [curentForm, setCurrentForm] = useState('add');
+  const [currentForm, setCurrentForm] = useState('add');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goods = useSelector(goodsSelector);
@@ -63,7 +63,7 @@ export const GoodsTable = () => {
   };
 
   const handleModalClose = () => {
-    dispatch(changeAminModalState(false));
+    dispatch(changeAdminModalState(false));
   };
 
   if (isLoadGoods) {
@@ -73,7 +73,7 @@ export const GoodsTable = () => {
   return (
     <Box align="center" className="table-wrapper">
       <AdminModal isOpen={adminModalState} handleClose={handleModalClose}>
-        <AdminGoodsForm curentForm={curentForm} productId={productId} />
+        <AdminGoodsForm currentForm={currentForm} productId={productId} />
       </AdminModal>
 
       <Heading level={2}>All Goods</Heading>
@@ -82,7 +82,7 @@ export const GoodsTable = () => {
         className="btn btn-form btn-form__admin"
         type="button"
         onClick={() => {
-          dispatch(changeAminModalState(true));
+          dispatch(changeAdminModalState(true));
           setCurrentForm('add');
         }}
       >
@@ -97,7 +97,7 @@ export const GoodsTable = () => {
           pin
           onClickRow={({ datum }) => {
             setProductId(datum.id);
-            dispatch(changeAminModalState(true));
+            dispatch(changeAdminModalState(true));
             setCurrentForm('edit');
           }}
         />

@@ -7,8 +7,8 @@ import { allGoodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
 import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
-import { changeAminModalState } from '@/user/store/actions';
-import { editProduct } from '@/user/store/thunks/editProduct';
+import { changeAdminModalState } from '@/user/store/actions';
+import { editProductData } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
 import {
   TitleInput,
@@ -20,14 +20,19 @@ import {
   CountryInput,
   DescriptionInput,
 } from '@/admin/components/AdminGoodsForm/inputs';
+import { getDefaultValues } from '@/admin/utlis';
 import './AdminGoodsForm.scss';
 
-export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
+export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
   const dispatch = useDispatch();
   const allGoods = useSelector(allGoodsSelector);
   const [productImage, setProductImage] = useState(
-    curentForm === 'edit' ? allGoods[productId || 0].productImage : ''
+    currentForm === 'edit' ? allGoods[productId || 0].productImage : ''
   );
+  const [radioValue, setRadioValue] = useState(
+    currentForm === 'edit' ? allGoods[productId || 0].isSale : ''
+  );
+  const defaultValue = getDefaultValues(currentForm, allGoods, productId || 0);
 
   const {
     register,
@@ -36,35 +41,42 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      productImage:
-        curentForm === 'edit' ? allGoods[productId || 0].productImage : '',
-      title: curentForm === 'edit' ? allGoods[productId || 0].title : '',
-      categories:
-        curentForm === 'edit' ? allGoods[productId || 0].categories : '',
-      price: curentForm === 'edit' ? allGoods[productId || 0].price : '',
-      raiting: curentForm === 'edit' ? allGoods[productId || 0].raiting : '',
-      countries:
-        curentForm === 'edit' ? allGoods[productId || 0].countries : '',
-      description:
-        curentForm === 'edit' ? allGoods[productId || 0].description : '',
-      isSale: curentForm === 'edit' ? allGoods[productId || 0].isSale : '',
+      productImage: defaultValue?.productImage,
+      title: defaultValue?.title,
+      categories: defaultValue?.categories,
+      price: defaultValue?.price,
+      raiting: defaultValue?.raiting,
+      countries: defaultValue?.countries,
+      description: defaultValue?.description,
+      isSale: defaultValue?.isSale,
     },
     resolver: yupResolver(adminGoodsForm),
   });
 
   const onSubmit = (data: IGoods) => {
-    if (curentForm === 'add') {
-      const formData = { ...data, isFavorite: false, productImage };
+    if (currentForm === 'add') {
+      const formData = {
+        ...data,
+        isFavorite: false,
+        productImage,
+        isSale: radioValue,
+      };
       dispatch(
         addNewProduct({
           requestBody: formData,
         })
       );
-      dispatch(changeAminModalState(false));
+      dispatch(changeAdminModalState(false));
     } else {
-      const formData = { ...data, isFavorite: false, productImage };
-      dispatch(editProduct({ id: productId, requestBody: formData }));
-      dispatch(changeAminModalState(false));
+      const formData = {
+        ...data,
+        isFavorite: false,
+        productImage,
+        isSale: radioValue,
+      };
+
+      dispatch(editProductData({ id: productId || 0, requestBody: formData }));
+      dispatch(changeAdminModalState(false));
     }
     reset();
   };
@@ -101,9 +113,11 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
         <IsSaleInput
           register={register}
           errorMessage={errors.isSale?.message}
+          setRadioValue={setRadioValue}
+          radioValue={radioValue}
         />
         <button type="submit" className="btn btn-form">
-          {curentForm === 'edit' ? 'Edit product' : 'Add product'}
+          {currentForm === 'edit' ? 'Edit product' : 'Add product'}
         </button>
       </form>
     </Box>

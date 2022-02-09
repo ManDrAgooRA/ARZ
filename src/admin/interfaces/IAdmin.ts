@@ -1,6 +1,6 @@
 import { IGoods } from '@/interfaces';
 
-export interface IUSers {
+export interface IUsers {
   email: string;
   password: string;
   userName: string;
@@ -17,12 +17,12 @@ export interface IAdminModal {
 }
 
 export interface IAdminForm {
-  curentForm: string;
+  currentForm: string;
   productId?: number;
 }
 
 export interface IEditRequest {
-  id?: number | undefined;
+  id: number;
   requestBody: {
     title: string;
     price: number;

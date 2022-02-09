@@ -8,5 +8,5 @@ export const adminGoodsForm = yup.object({
   price: yup.number().required(),
   countries: yup.string().required(),
   description: yup.string().required(),
-  isSale: yup.string().required(),
+  isSale: yup.boolean().required(),
 });

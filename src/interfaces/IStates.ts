@@ -30,7 +30,7 @@ export interface ICartState {
 
 export interface IErrorState {
   isOpenModal: boolean;
-  error: string;
+  message: string;
 }
 
 export interface IAdminState {

@@ -1,21 +1,21 @@
 import { AppThunk } from '@/interfaces';
-import { changeModalState, setErrorMessage } from '@/user/store/actions';
-import { getEditProduct } from '@/admin/api';
+import { changeModalState, setMessage } from '@/user/store/actions';
+import { editProduct } from '@/admin/api';
 import { IRequestBodyAdmin } from '@/admin/interfaces';
 
-export const editProduct = ({
-  id,
+export const editProductData = ({
+  id = 0,
   requestBody,
 }: IRequestBodyAdmin): AppThunk => {
   return async (dispatch) => {
     try {
-      const data = await getEditProduct({ id, requestBody });
+      const data = await editProduct({ id, requestBody });
       if (data.ok) {
-        dispatch(setErrorMessage('Product was eddet'));
+        dispatch(setMessage('Product was edited'));
         dispatch(changeModalState(true));
       }
     } catch (e: any) {
-      dispatch(setErrorMessage(e.message));
+      dispatch(setMessage(e.message));
       dispatch(changeModalState(true));
     }
   };

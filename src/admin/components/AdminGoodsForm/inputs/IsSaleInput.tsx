@@ -1,19 +1,45 @@
 import React, { FC } from 'react';
 import { Box } from 'grommet';
-import { IAdminInput } from '@/admin/interfaces';
+import { IAdminRadio } from '@/admin/interfaces';
 
-export const IsSaleInput: FC<IAdminInput> = ({ register, errorMessage }) => {
+export const IsSaleInput: FC<IAdminRadio> = ({
+  register,
+  errorMessage,
+  setRadioValue,
+  radioValue,
+}) => {
+  const hanleChange = (value: string) => {
+    if (value === 'true') {
+      setRadioValue(true);
+    } else {
+      setRadioValue(false);
+    }
+  };
   return (
     <Box className="radio-wrapper">
-      <label>IsSale:</label>
+      <label className="radio-title">IsSale:</label>
       <label className="radio">
-        <input type="radio" value="true" {...register('isSale')} />
+        <input
+          type="radio"
+          value="true"
+          checked={radioValue === true}
+          {...register('isSale')}
+          className="radio-button"
+          onChange={(e: any) => hanleChange(e.target.value)}
+        />
         <span className="radio__round" />
         True
       </label>
 
       <label className="radio">
-        <input type="radio" value="false" {...register('isSale')} />
+        <input
+          type="radio"
+          value="false"
+          checked={radioValue === false}
+          {...register('isSale')}
+          onChange={(e: any) => hanleChange(e.target.value)}
+          className="radio-button"
+        />
         <span className="radio__round" />
         False
       </label>
