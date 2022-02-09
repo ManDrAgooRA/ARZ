@@ -3,8 +3,7 @@ import { ADMIN_ACTIONS } from '@/user/store/actions';
 
 const initialState: IAdminState = {
   allUsers: [],
-  adminEditModalState: false,
-  adminAddModalState: false,
+  adminModalState: false,
   isAdminLoading: true,
 };
 
@@ -17,16 +16,10 @@ export function admin(state = initialState, action: any) {
         isAdminLoading: false,
       };
 
-    case ADMIN_ACTIONS.CHAGE_ADMIN_EDIT_MODAL_STATE:
+    case ADMIN_ACTIONS.CHAGE_ADMIN_MODAL_STATE:
       return {
         ...state,
-        adminEditModalState: action.payload,
-      };
-
-    case ADMIN_ACTIONS.CHAGE_ADMIN_ADD_MODAL_STATE:
-      return {
-        ...state,
-        adminAddModalState: action.payload,
+        adminModalState: action.payload,
       };
 
     default:

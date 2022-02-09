@@ -35,7 +35,6 @@ export interface IErrorState {
 
 export interface IAdminState {
   allUsers: IUser[];
-  adminEditModalState: boolean;
-  adminAddModalState: boolean;
+  adminModalState: boolean;
   isAdminLoading: boolean;
 }

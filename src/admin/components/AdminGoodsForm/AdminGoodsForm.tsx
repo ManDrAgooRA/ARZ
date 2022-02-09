@@ -7,10 +7,7 @@ import { allGoodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
 import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
-import {
-  changeAminAddModalState,
-  changeAminEditModalState,
-} from '@/user/store/actions';
+import { changeAminModalState } from '@/user/store/actions';
 import { editProduct } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
 import {
@@ -63,11 +60,11 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ curentForm, productId }) => {
           requestBody: formData,
         })
       );
-      dispatch(changeAminAddModalState(false));
+      dispatch(changeAminModalState(false));
     } else {
       const formData = { ...data, isFavorite: false, productImage };
       dispatch(editProduct({ id: productId, requestBody: formData }));
-      dispatch(changeAminEditModalState(false));
+      dispatch(changeAminModalState(false));
     }
     reset();
   };

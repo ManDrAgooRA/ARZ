@@ -13,13 +13,9 @@ import {
   goodsMinPriceSelector,
   goodsCurrentMaxPriceSelector,
   allGoodsSelector,
-  adminModaAddlStateSelector,
-  adminModaEditlStateSelector,
+  adminModalStateSelector,
 } from '@/user/store/selectors';
-import {
-  changeAminEditModalState,
-  changeAminAddModalState,
-} from '@/user/store/actions';
+import { changeAminModalState } from '@/user/store/actions';
 import { fetchGoods, fetchAllGoods } from '@/user/store/thunks';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
@@ -29,8 +25,7 @@ import '../tabel.scss';
 
 export const GoodsTable = () => {
   const params = useParams();
-  const adminAddModalState = useSelector(adminModaAddlStateSelector);
-  const adminEditModalState = useSelector(adminModaEditlStateSelector);
+  const adminModalState = useSelector(adminModalStateSelector);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const [productId, setProductId] = useState(0);
   const [curentForm, setCurrentForm] = useState('add');
@@ -67,12 +62,8 @@ export const GoodsTable = () => {
     navigate(`/admin/goods/${page}`);
   };
 
-  const handleAddModalClose = () => {
-    dispatch(changeAminAddModalState(false));
-  };
-
-  const handleEditModalClose = () => {
-    dispatch(changeAminEditModalState(false));
+  const handleModalClose = () => {
+    dispatch(changeAminModalState(false));
   };
 
   if (isLoadGoods) {
@@ -81,23 +72,17 @@ export const GoodsTable = () => {
 
   return (
     <Box align="center" className="table-wrapper">
-      <AdminModal isOpen={adminAddModalState} handleClose={handleAddModalClose}>
+      <AdminModal isOpen={adminModalState} handleClose={handleModalClose}>
         <AdminGoodsForm curentForm={curentForm} productId={productId} />
       </AdminModal>
 
-      <AdminModal
-        isOpen={adminEditModalState}
-        handleClose={handleEditModalClose}
-      >
-        <AdminGoodsForm curentForm={curentForm} productId={productId} />
-      </AdminModal>
       <Heading level={2}>All Goods</Heading>
 
       <button
         className="btn btn-form btn-form__admin"
         type="button"
         onClick={() => {
-          dispatch(changeAminAddModalState(true));
+          dispatch(changeAminModalState(true));
           setCurrentForm('add');
         }}
       >
@@ -112,7 +97,7 @@ export const GoodsTable = () => {
           pin
           onClickRow={({ datum }) => {
             setProductId(datum.id);
-            dispatch(changeAminEditModalState(true));
+            dispatch(changeAminModalState(true));
             setCurrentForm('edit');
           }}
         />
