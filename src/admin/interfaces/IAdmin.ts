@@ -1,16 +1,3 @@
-import { IGoods } from '@/interfaces';
-
-export interface IUsers {
-  email: string;
-  password: string;
-  userName: string;
-  phone: string;
-  dateOfBirthDay: string;
-  confirmPass: string;
-  role: string;
-  cart?: IGoods[];
-}
-
 export interface IAdminModal {
   isOpen: boolean;
   handleClose(): void;
@@ -19,6 +6,7 @@ export interface IAdminModal {
 export interface IAdminForm {
   currentForm: string;
   productId?: number;
+  userId?: number;
 }
 
 export interface IEditRequest {

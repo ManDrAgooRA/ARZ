@@ -4,14 +4,14 @@ import { Calendar } from 'grommet-icons';
 import { getDateMask } from '@/user/pages/SignUp/masks';
 import { IInput } from '@/interfaces';
 
-export const DateInput: FC<IInput> = ({ register, errors }) => {
+export const DateInput: FC<IInput> = ({ register, errorMessage }) => {
   const [value, setValue] = useState('');
 
   return (
     <FormField
       label="Date of birthday"
       name="dateOfBirthDay"
-      error={errors.dateOfBirth?.message}
+      error={errorMessage}
       {...register('dateOfBirthDay')}
     >
       <MaskedInput

@@ -4,12 +4,12 @@ import { MailOption } from 'grommet-icons';
 import { EMAIL_MASK } from '@/constants';
 import { IInput } from '@/interfaces';
 
-export const EmailInput: FC<IInput> = ({ register, errors }) => {
+export const EmailInput: FC<IInput> = ({ register, errorMessage }) => {
   return (
     <FormField
       label="Email"
       name="email"
-      error={errors.email?.message}
+      error={errorMessage}
       {...register('email')}
     >
       <MaskedInput icon={<MailOption />} name="email" mask={EMAIL_MASK} />

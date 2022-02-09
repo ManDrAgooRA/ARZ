@@ -46,12 +46,24 @@ export const SignUp: FC = () => {
     <div className="container">
       <Heading level={2}>SignUp</Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-        <UserNameInput register={register} errors={errors} />
-        <PhoneInput register={register} errors={errors} />
-        <DateInput register={register} errors={errors} />
-        <EmailInput register={register} errors={errors} />
-        <PasswordInput register={register} errors={errors} />
-        <ConfirmPassword register={register} errors={errors} />
+        <UserNameInput
+          register={register}
+          errorMessage={errors.userName?.message}
+        />
+        <PhoneInput register={register} errorMessage={errors.phone?.message} />
+        <DateInput
+          register={register}
+          errorMessage={errors.dateOfBirthDay?.message}
+        />
+        <EmailInput register={register} errorMessage={errors.email?.message} />
+        <PasswordInput
+          register={register}
+          errorMessage={errors.password?.message}
+        />
+        <ConfirmPassword
+          register={register}
+          errorMessage={errors.confirmPass?.message}
+        />
         <button type="submit" className="btn btn-form">
           SignUp
         </button>

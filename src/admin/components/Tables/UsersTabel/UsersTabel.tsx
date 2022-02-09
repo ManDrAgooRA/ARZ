@@ -5,18 +5,24 @@ import { Box, DataTable, Heading } from 'grommet';
 import {
   adminAllUserSelector,
   adminIsLoadingSelector,
+  adminModalStateSelector,
 } from '@/user/store/selectors';
+import { changeAdminModalState } from '@/user/store/actions';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { getTableColumns } from '@/admin/utlis';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
+import { AdminModal } from '../../AdminModal/AdminModal';
 import { allUsers } from '@/user/store/thunks/allUsers';
 import '../tabel.scss';
 
 export const UsersTabel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const adminModalState = useSelector(adminModalStateSelector);
   const params = useParams();
+  const [userId, setUserId] = useState(0);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
+  const [currentForm, setCurrentForm] = useState('');
   const [postsPerPage] = useState(2);
   const isLoadUsers = useSelector(adminIsLoadingSelector);
   const allTabelUsers = useSelector(adminAllUserSelector);
@@ -34,13 +40,31 @@ export const UsersTabel = () => {
     setCurrentPage(page);
   };
 
+  const handleModalClose = () => {
+    dispatch(changeAdminModalState(false));
+  };
+
   if (isLoadUsers) {
     return <CustomSpinner />;
   }
 
   return (
     <Box align="center" className="table-wrapper">
+      <AdminModal isOpen={adminModalState} handleClose={handleModalClose}>
+        <span>{currentForm}</span>
+      </AdminModal>
       <Heading level={2}>All Users</Heading>
+
+      <button
+        className="btn btn-form btn-form__admin"
+        type="button"
+        onClick={() => {
+          dispatch(changeAdminModalState(true));
+          setCurrentForm('add');
+        }}
+      >
+        Add new User
+      </button>
       <Box overflow="auto">
         <DataTable
           sortable
@@ -48,6 +72,11 @@ export const UsersTabel = () => {
           columns={getTableColumns(allTabelUsers)}
           resizeable
           pin
+          onClickRow={({ datum }) => {
+            setUserId(datum.id);
+            dispatch(changeAdminModalState(true));
+            setCurrentForm('edit');
+          }}
         />
       </Box>
       <TabelPagination
