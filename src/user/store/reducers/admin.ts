@@ -3,6 +3,7 @@ import { ADMIN_ACTIONS } from '@/user/store/actions';
 
 const initialState: IAdminState = {
   allUsers: [],
+  allRoles: ['admin', 'user', 'anoter'],
   adminModalState: false,
   isAdminLoading: true,
 };

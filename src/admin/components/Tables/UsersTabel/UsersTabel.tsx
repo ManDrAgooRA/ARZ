@@ -11,7 +11,8 @@ import { changeAdminModalState } from '@/user/store/actions';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { getTableColumns } from '@/admin/utlis';
 import { TabelPagination } from '@/admin/components/Tables/TabelPagination/TabelPagination';
-import { AdminModal } from '../../AdminModal/AdminModal';
+import { AdminModal } from '@/admin/components/AdminModal/AdminModal';
+import { AdminUserForm } from '@/admin/components/AdminUserForm/AdminUserForm';
 import { allUsers } from '@/user/store/thunks/allUsers';
 import '../tabel.scss';
 
@@ -23,7 +24,7 @@ export const UsersTabel = () => {
   const [userId, setUserId] = useState(0);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const [currentForm, setCurrentForm] = useState('');
-  const [postsPerPage] = useState(2);
+  const [postsPerPage] = useState(20);
   const isLoadUsers = useSelector(adminIsLoadingSelector);
   const allTabelUsers = useSelector(adminAllUserSelector);
   const indexOfLastPost = +currentPage * postsPerPage;
@@ -51,7 +52,7 @@ export const UsersTabel = () => {
   return (
     <Box align="center" className="table-wrapper">
       <AdminModal isOpen={adminModalState} handleClose={handleModalClose}>
-        <span>{currentForm}</span>
+        <AdminUserForm currentForm={currentForm} userId={userId} />
       </AdminModal>
       <Heading level={2}>All Users</Heading>
 

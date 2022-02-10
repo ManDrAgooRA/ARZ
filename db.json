@@ -1133,6 +1133,50 @@
       "role": "user",
       "cart": [],
       "id": 2
+    },
+    {
+      "email": "user3@gmail.com",
+      "password": "$2a$10$yYl5qNCCbVZvfmkFrUTmXerULeDPe5pwwOMfBZ/Tv69KImkku5GQ2",
+      "userName": "user3",
+      "phone": "(222) 222-2222",
+      "dateOfBirthDay": "7/7/2015",
+      "confirmPass": "1234567890",
+      "role": "user",
+      "cart": [],
+      "id": 3
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "$2a$10$YaA7XaW3ckuxTO.B32h6ROUuJ4Y66/6Gi9KkMDdf4K8Hcv7c6oANO",
+      "userName": "user4",
+      "phone": "(111) 111-1111",
+      "dateOfBirthDay": "8/2/2014",
+      "confirmPass": "1234567890",
+      "role": "user",
+      "cart": [],
+      "id": 4
+    },
+    {
+      "email": "user5@gmail.com",
+      "password": "$2a$10$CzmRIdXjRML6lFLMy6AcF.nopbOowEW0Z8hNp1hjf/bwFiWszTeqa",
+      "userName": "user5",
+      "phone": "(111) 111-1111",
+      "dateOfBirthDay": "3/3/2012",
+      "confirmPass": "1234567890",
+      "role": "user",
+      "cart": [],
+      "id": 5
+    },
+    {
+      "email": "user6@gmail.com",
+      "password": "$2a$10$x4CrgwIhx5pTBOJLe/iqZuI50QIYyX9D.j3Nw7ukQ7NTAyvjskAuG",
+      "userName": "user6",
+      "phone": "(111) 111-1111",
+      "dateOfBirthDay": "7/2/2017",
+      "confirmPass": "1234567890",
+      "role": "user",
+      "cart": [],
+      "id": 6
     }
   ]
 }

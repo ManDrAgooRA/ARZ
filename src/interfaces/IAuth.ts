@@ -7,8 +7,8 @@ export interface IUser {
   email?: string;
   password?: string;
   confirmPass?: string;
-  role: string;
-  cart: IGoods[];
+  role?: string;
+  cart?: IGoods[];
 }
 
 export interface IAuthData {
