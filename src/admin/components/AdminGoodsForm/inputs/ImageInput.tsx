@@ -26,7 +26,7 @@ export const ImageInput: FC<IProductImageInput> = ({
           reject(error);
         };
       } else {
-        dispatch(setMessage('File must to be jpg/png/gif/jpeg'));
+        dispatch(setMessage('File must be jpg/png/gif/jpeg'));
         dispatch(changeModalState(true));
       }
     });
