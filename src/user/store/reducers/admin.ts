@@ -3,7 +3,7 @@ import { ADMIN_ACTIONS } from '@/user/store/actions';
 
 const initialState: IAdminState = {
   allUsers: [],
-  allRoles: ['admin', 'user', 'anoter'],
+  roles: ['admin', 'user', 'anoter'],
   adminModalState: false,
   isAdminLoading: true,
 };
@@ -21,6 +21,12 @@ export function admin(state = initialState, action: any) {
       return {
         ...state,
         adminModalState: action.payload,
+      };
+
+    case ADMIN_ACTIONS.ADD_NEW_ROLE:
+      return {
+        ...state,
+        roles: [...state.roles, action.payload],
       };
 
     default:

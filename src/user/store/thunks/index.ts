@@ -5,3 +5,4 @@ export * from './addUser';
 export * from './addProduct';
 export * from './allUsers';
 export * from './editProduct';
+export * from './editUser';

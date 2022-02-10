@@ -38,6 +38,14 @@ export const getTableColumns = (array: any) => {
         };
       }
 
+      if (item === 'cart') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item} value`),
+          render: (datum: any) => `${datum.cart.length}`,
+        };
+      }
+
       return {
         property: `${item}`,
         header: capitalizeFirstLetter(`${item}`),

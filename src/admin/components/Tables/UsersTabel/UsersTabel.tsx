@@ -7,6 +7,7 @@ import {
   adminIsLoadingSelector,
   adminModalStateSelector,
 } from '@/user/store/selectors';
+import { AddRoleForm } from '@/admin/components/AddRoleForm/AddRoleForm';
 import { changeAdminModalState } from '@/user/store/actions';
 import { CustomSpinner } from '@/sharedComponents/Spinner/Spinner';
 import { getTableColumns } from '@/admin/utlis';
@@ -21,6 +22,7 @@ export const UsersTabel = () => {
   const navigate = useNavigate();
   const adminModalState = useSelector(adminModalStateSelector);
   const params = useParams();
+  const [isOpenRoleModal, setIsOpenRoleModal] = useState(false);
   const [userId, setUserId] = useState(0);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const [currentForm, setCurrentForm] = useState('');
@@ -45,6 +47,10 @@ export const UsersTabel = () => {
     dispatch(changeAdminModalState(false));
   };
 
+  const handleRoleClose = () => {
+    setIsOpenRoleModal(false);
+  };
+
   if (isLoadUsers) {
     return <CustomSpinner />;
   }
@@ -53,6 +59,10 @@ export const UsersTabel = () => {
     <Box align="center" className="table-wrapper">
       <AdminModal isOpen={adminModalState} handleClose={handleModalClose}>
         <AdminUserForm currentForm={currentForm} userId={userId} />
+      </AdminModal>
+
+      <AdminModal isOpen={isOpenRoleModal} handleClose={handleRoleClose}>
+        <AddRoleForm handleClose={handleRoleClose} />
       </AdminModal>
       <Heading level={2}>All Users</Heading>
 
@@ -66,6 +76,17 @@ export const UsersTabel = () => {
       >
         Add new User
       </button>
+
+      <button
+        className="btn btn-form btn-form__admin"
+        type="button"
+        onClick={() => {
+          setIsOpenRoleModal(true);
+        }}
+      >
+        Add role
+      </button>
+
       <Box overflow="auto">
         <DataTable
           sortable

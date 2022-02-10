@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -20,6 +20,7 @@ import './signUp.scss';
 export const SignUp: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [dateValue, setDateValue] = useState('');
 
   const {
     register,
@@ -56,6 +57,8 @@ export const SignUp: FC = () => {
         <DateInput
           register={register}
           errorMessage={errors.dateOfBirthDay?.message}
+          dateValue={dateValue}
+          setDateValue={setDateValue}
         />
         <EmailInput register={register} errorMessage={errors.email?.message} />
         <PasswordInput

@@ -1,3 +1,5 @@
+import { IUser } from '@/interfaces';
+
 export interface IAdminModal {
   isOpen: boolean;
   handleClose(): void;
@@ -22,4 +24,9 @@ export interface IEditRequest {
     isSale: boolean;
     raiting: number;
   };
+}
+
+export interface IEditUserRequest {
+  id?: number;
+  requestBody: IUser;
 }
