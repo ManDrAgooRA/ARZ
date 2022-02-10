@@ -30,7 +30,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     currentForm === 'edit' ? allGoods[productId || 0].productImage : ''
   );
   const [radioValue, setRadioValue] = useState(
-    currentForm === 'edit' ? allGoods[productId || 0].isSale : ''
+    currentForm === 'edit' ? allGoods[productId || 0].isSale : false
   );
   const defaultValue = getDefaultValues(currentForm, allGoods, productId || 0);
 
@@ -74,7 +74,6 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
         productImage,
         isSale: radioValue,
       };
-
       dispatch(editProductData({ id: productId || 0, requestBody: formData }));
       dispatch(changeAdminModalState(false));
     }

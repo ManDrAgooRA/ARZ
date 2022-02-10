@@ -22,6 +22,7 @@ export const IsSaleInput: FC<IAdminRadio> = ({
         <input
           type="radio"
           value="true"
+          name="isSale"
           checked={radioValue === true}
           {...register('isSale')}
           className="radio-button"
@@ -35,6 +36,7 @@ export const IsSaleInput: FC<IAdminRadio> = ({
         <input
           type="radio"
           value="false"
+          name="isSale"
           checked={radioValue === false}
           {...register('isSale')}
           onChange={(e: any) => hanleChange(e.target.value)}
