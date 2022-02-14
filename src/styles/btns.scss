@@ -8,6 +8,9 @@
     background-color: #7d4cdb66;
     padding: 12px;
     border-radius: 4px;
+    &__admin{
+      margin-bottom: 20px;
+    }
     &:hover{
       background-color: darken($color: #7d4cdb66, $amount: 30);
     }

@@ -37,7 +37,7 @@ export const CardPage: FC = () => {
             gap="small"
           >
             <Box className="card-img">
-              <img src={selectedGoods.image} alt={selectedGoods.title} />
+              <img src={selectedGoods.productImage} alt={selectedGoods.title} />
             </Box>
             <Box className="card-content">
               <button

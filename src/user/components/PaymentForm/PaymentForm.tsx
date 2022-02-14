@@ -7,7 +7,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { userCartSelector } from '@/user/store/selectors';
 import { getTotalPrice } from '@/utils';
-import { setErrorMessage, changeModalState } from '@/user/store/actions';
+import { setMessage, changeModalState } from '@/user/store/actions';
 import './payment.scss';
 
 export const PaymentForm: FC = () => {
@@ -25,7 +25,7 @@ export const PaymentForm: FC = () => {
 
   const handleSubmit = async (e: any): Promise<void> => {
     e.preventDefault();
-    dispatch(setErrorMessage('Payment was success'));
+    dispatch(setMessage('Payment was success'));
     dispatch(changeModalState(true));
   };
 
@@ -39,7 +39,7 @@ export const PaymentForm: FC = () => {
     error: { code: string; message: string; type: string } | undefined;
   }): Promise<void> => {
     if (error) {
-      dispatch(setErrorMessage(error.message));
+      dispatch(setMessage(error.message));
     }
 
     if (elementType === 'cardNumber') {

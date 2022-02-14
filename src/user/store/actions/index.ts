@@ -1,4 +1,4 @@
 export * from './goodsActions';
 export * from './userActions';
-export * from './errorsActions';
+export * from './messageActions';
 export * from './adminActions';

@@ -2,13 +2,12 @@ export interface IGoods {
   title: string;
   price: number;
   categories: string;
-  count: number;
+  count?: number;
   countries: string;
   description: string;
-  id: number;
+  id?: number;
   isFavorite: boolean;
-  image: string;
+  productImage: string;
   isSale: boolean;
   raiting: number;
-  salePrice: number;
 }

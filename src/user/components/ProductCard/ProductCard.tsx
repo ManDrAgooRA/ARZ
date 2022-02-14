@@ -3,7 +3,7 @@ import { Card, Box } from 'grommet';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToCart } from '@/user/store/thunks';
-import { IGoods, IProductCardItem } from '@/interfaces';
+import { IGoods } from '@/interfaces';
 import {
   userCartSelector,
   userRoleSelector,
@@ -11,7 +11,7 @@ import {
 } from '@/user/store/selectors';
 import './productCard.scss';
 
-export const ProductCard: FC<IProductCardItem> = ({ item }) => {
+export const ProductCard: FC<{ item: IGoods }> = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userRole = useSelector(userRoleSelector);
@@ -29,7 +29,7 @@ export const ProductCard: FC<IProductCardItem> = ({ item }) => {
   return (
     <Card pad="large" onClick={goCardPage} className="product-card">
       <Box className="card-img">
-        <img src={item.image} alt={item.title} />
+        <img src={item.productImage} alt={item.title} />
       </Box>
       <span>{item.title}</span>
       <span>{item.price}₴</span>

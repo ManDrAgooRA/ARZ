@@ -12,7 +12,7 @@
     "prettier": "prettier src/**/*.{ts,tsx}",
     "prettier:fix": "prettier src/**/*.{ts,tsx} --write",
     "prepare": "husky install",
-    "server": "json-server --watch data.js -m ./node_modules/json-server-auth -r routes.json --port 3004"
+    "server": "json-server --watch db.json -m ./node_modules/json-server-auth -r routes.json --port 3004"
   },
   "author": "",
   "license": "ISC",

@@ -36,7 +36,7 @@ export const CartItem: FC<IProductCardItem> = ({
     <div className="cart-item">
       <div className="cart-description">
         <div className="cart-img">
-          <img src={item.image} alt="#" />
+          <img src={item.productImage} alt="#" />
         </div>
         <div className="cart-content">
           <p>id: {item.id}</p>

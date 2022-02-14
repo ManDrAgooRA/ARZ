@@ -1,7 +1,9 @@
+import { IAdminState } from '@/interfaces';
 import { ADMIN_ACTIONS } from '@/user/store/actions';
 
-const initialState = {
+const initialState: IAdminState = {
   allUsers: [],
+  adminModalState: false,
   isAdminLoading: true,
 };
 
@@ -12,6 +14,12 @@ export function admin(state = initialState, action: any) {
         ...state,
         allUsers: [...action.payload],
         isAdminLoading: false,
+      };
+
+    case ADMIN_ACTIONS.CHAGE_ADMIN_MODAL_STATE:
+      return {
+        ...state,
+        adminModalState: action.payload,
       };
 
     default:

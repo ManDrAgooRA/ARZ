@@ -1,32 +1,52 @@
+import { TGoodsUser } from '@/admin/interfaces';
+
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const getTableColumns = (array: any) => {
+export const getTableColumns = (firstItem: TGoodsUser) => {
   let columns;
-  if (array[0]) {
-    columns = Object.keys(array[0]).map((item) => {
+
+  if (firstItem) {
+    columns = Object.keys(firstItem).map((item) => {
       if (item === 'password') {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) =>
+          render: (datum: TGoodsUser) =>
             `${datum.password.slice(datum.password.length - 5)}...`,
         };
       }
-      if (item === 'image') {
+      if (item === 'productImage') {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) =>
-            `${datum.image.slice(datum.image.length - 5)}...`,
+          render: (datum: TGoodsUser) =>
+            `${datum.productImage.slice(datum.productImage.length - 5)}...`,
         };
       }
+      if (item === 'isSale') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item}`),
+          render: (datum: TGoodsUser) => `${datum.isSale}`,
+        };
+      }
+
+      if (item === 'isFavorite') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item}`),
+          render: (datum: TGoodsUser) => `${datum.isFavorite}`,
+        };
+      }
+
       return {
         property: `${item}`,
         header: capitalizeFirstLetter(`${item}`),
       };
     });
   }
+
   return columns;
 };

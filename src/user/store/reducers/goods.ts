@@ -7,7 +7,7 @@ const initialState: IGoodsState = {
   selectedGoods: {
     id: 0,
     title: 'mok',
-    image: 'mok',
+    productImage: 'mok',
     categories: 'mok',
     price: 998,
     count: 39,
@@ -16,14 +16,13 @@ const initialState: IGoodsState = {
     isFavorite: false,
     description: 'mok',
     isSale: false,
-    salePrice: 1881,
   },
   sort: 'Price',
   order: 'ASC',
   countries: [],
   categories: [],
   minPrice: 1,
-  currentMaxPrice: 1000,
+  currentMaxPrice: 10e6,
   maxPrice: 1500,
   isLoadCurrentGoods: true,
   isLoadAllGoods: true,
@@ -56,7 +55,20 @@ export function goods(state = initialState, action: any) {
     case goodsActions.CLEAR_CURRENT_GOODS:
       return {
         ...state,
-        selectedGoods: null,
+        selectedGoods: {
+          id: 0,
+          title: '',
+          productImage: '',
+          categories: '',
+          price: 0,
+          count: 0,
+          raiting: 0,
+          countries: '',
+          isFavorite: false,
+          description: '',
+          isSale: false,
+          salePrice: 0,
+        },
         isLoadCurrentGoods: true,
       };
 
@@ -96,6 +108,21 @@ export function goods(state = initialState, action: any) {
         ...state,
         maxPrice: action.payload,
       };
+
+    case goodsActions.EDIT_PRODUCT:
+      return {
+        ...state,
+        goods: state.goods.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+      };
+
+    case goodsActions.ADD_PRODUCT:
+      return {
+        ...state,
+        goods: [...state.goods, action.payload],
+      };
+
     default:
       return state;
   }
