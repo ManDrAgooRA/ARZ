@@ -1,3 +1,3 @@
-export * from './addProduct';
+export * from './addProductApi';
 export * from './getUsers';
-export * from './editProduct';
+export * from './editProductApi';

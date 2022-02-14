@@ -15,6 +15,7 @@ export const IsSaleInput: FC<IAdminRadio> = ({
       setRadioValue(false);
     }
   };
+
   return (
     <Box className="radio-wrapper">
       <label className="radio-title">IsSale:</label>

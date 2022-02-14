@@ -1,16 +1,19 @@
+import { TGoodsUser } from '@/admin/interfaces';
+
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const getTableColumns = (array: any) => {
+export const getTableColumns = (firstItem: TGoodsUser) => {
   let columns;
-  if (array[0]) {
-    columns = Object.keys(array[0]).map((item) => {
+
+  if (firstItem) {
+    columns = Object.keys(firstItem).map((item) => {
       if (item === 'password') {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) =>
+          render: (datum: TGoodsUser) =>
             `${datum.password.slice(datum.password.length - 5)}...`,
         };
       }
@@ -18,7 +21,7 @@ export const getTableColumns = (array: any) => {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) =>
+          render: (datum: TGoodsUser) =>
             `${datum.productImage.slice(datum.productImage.length - 5)}...`,
         };
       }
@@ -26,7 +29,7 @@ export const getTableColumns = (array: any) => {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) => `${datum.isSale}`,
+          render: (datum: TGoodsUser) => `${datum.isSale}`,
         };
       }
 
@@ -34,7 +37,7 @@ export const getTableColumns = (array: any) => {
         return {
           property: `${item}`,
           header: capitalizeFirstLetter(`${item}`),
-          render: (datum: any) => `${datum.isFavorite}`,
+          render: (datum: TGoodsUser) => `${datum.isFavorite}`,
         };
       }
 

@@ -11,16 +11,12 @@ import { changeAdminModalState } from '@/user/store/actions';
 import { editProductData } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
 import {
-  TitleInput,
   ImageInput,
   IsSaleInput,
-  CategoryInput,
-  PriceInput,
-  RaitnigInput,
-  CountryInput,
-  DescriptionInput,
 } from '@/admin/components/AdminGoodsForm/inputs';
-import { getDefaultValues } from '@/admin/utlis';
+import { CastomInput } from '@/sharedComponents/CustomInputs/CastomInput/CastomInput';
+import { CastomTextArea } from '@/sharedComponents/CustomInputs/CastomTextArea/CastomTextArea';
+import { getDefaultValues, getAdminInputs } from '@/admin/utlis';
 import './AdminGoodsForm.scss';
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
@@ -30,8 +26,9 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     currentForm === 'edit' ? allGoods[productId || 0].productImage : ''
   );
   const [radioValue, setRadioValue] = useState(
-    currentForm === 'edit' ? allGoods[productId || 0].isSale : false
+    currentForm === 'edit' ? allGoods[productId || 0].isSale : ''
   );
+
   const defaultValue = getDefaultValues(currentForm, allGoods, productId || 0);
 
   const {
@@ -57,6 +54,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     if (currentForm === 'add') {
       const formData = {
         ...data,
+        id: productId,
         isFavorite: false,
         productImage,
         isSale: radioValue,
@@ -70,6 +68,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     } else {
       const formData = {
         ...data,
+        id: productId,
         isFavorite: false,
         productImage,
         isSale: radioValue,
@@ -85,36 +84,40 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="admin-form">
         <ImageInput
           register={register}
-          errorMessage={errors.productImage?.message}
+          errorMessage={errors.productImage?.message || ''}
           productImage={productImage}
           setProductImage={setProductImage}
         />
-        <TitleInput register={register} errorMessage={errors.title?.message} />
-        <CategoryInput
-          register={register}
-          errorMessage={errors.categories?.message}
-        />
-        <CountryInput
-          register={register}
-          errorMessage={errors.countries?.message}
-        />
-        <PriceInput register={register} errorMessage={errors.price?.message} />
-        <RaitnigInput
-          register={register}
-          errorMessage={errors.raiting?.message}
-        />
 
-        <DescriptionInput
+        {getAdminInputs(errors).map((item) => {
+          return (
+            <CastomInput
+              key={item.name}
+              label={item.label}
+              name={item.name}
+              placeholder={item.label}
+              errorMessage={item.errorMessage}
+              register={register}
+              mask={item.mask}
+            />
+          );
+        })}
+
+        <CastomTextArea
+          label="Description"
+          name="description"
+          placeholder="Description"
           register={register}
-          errorMessage={errors.description?.message}
+          errorMessage={errors.description?.message || ''}
         />
 
         <IsSaleInput
           register={register}
-          errorMessage={errors.isSale?.message}
+          errorMessage={errors.isSale?.message || ''}
           setRadioValue={setRadioValue}
           radioValue={radioValue}
         />
+
         <button type="submit" className="btn btn-form">
           {currentForm === 'edit' ? 'Edit product' : 'Add product'}
         </button>

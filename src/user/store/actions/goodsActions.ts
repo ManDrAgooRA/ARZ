@@ -11,6 +11,8 @@ export const goodsActions = {
   SET_MIN_PRICE: '[GOODS] set min price',
   SET_CURRENT_MAX_PRICE: '[GOODS] set current max price',
   SET_MAX_PRICE: '[GOODS] set max price',
+  EDIT_PRODUCT: '[GOODS] edit product',
+  ADD_PRODUCT: '[GOODS] add product',
 };
 
 export const fetchCurrentGoodsSuccess = (currentGoods: IGoods) => ({
@@ -60,4 +62,14 @@ export const setMaxPrice = (maxPrice: number) => ({
 export const setCurrentMaxPrice = (currentMaxPrice: number) => ({
   type: goodsActions.SET_CURRENT_MAX_PRICE,
   payload: currentMaxPrice,
+});
+
+export const editProduct = (newProduct: IGoods) => ({
+  type: goodsActions.EDIT_PRODUCT,
+  payload: newProduct,
+});
+
+export const addProduct = (newProduct: IGoods) => ({
+  type: goodsActions.ADD_PRODUCT,
+  payload: newProduct,
 });

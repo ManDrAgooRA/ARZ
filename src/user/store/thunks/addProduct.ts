@@ -1,13 +1,14 @@
 import { AppThunk } from '@/interfaces';
-import { changeModalState, setMessage } from '@/user/store/actions';
-import { addProduct } from '@/admin/api';
+import { changeModalState, setMessage, addProduct } from '@/user/store/actions';
+import { addProductApi } from '@/admin/api';
 import { IRequestBodyAdmin } from '@/admin/interfaces';
 
 export const addNewProduct = ({ requestBody }: IRequestBodyAdmin): AppThunk => {
   return async (dispatch) => {
     try {
-      const data = await addProduct({ requestBody });
+      const data = await addProductApi({ requestBody });
       if (data.ok) {
+        dispatch(addProduct(requestBody));
         dispatch(setMessage('Product was added'));
         dispatch(changeModalState(true));
       }

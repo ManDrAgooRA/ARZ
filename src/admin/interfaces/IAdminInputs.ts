@@ -1,18 +1,13 @@
-export interface IAdminInput {
-  register(name: string): void;
-  errorMessage: string | undefined;
-}
-
 export interface IAdminRadio {
   register(name: string): void;
-  errorMessage: string | undefined;
-  setRadioValue(value: boolean | unknown): void;
-  radioValue: boolean | unknown;
+  errorMessage: string;
+  setRadioValue(value: boolean): void;
+  radioValue: boolean;
 }
 
 export interface IProductImageInput {
   register(name: string): void;
-  errorMessage: string | undefined;
+  errorMessage: string;
   productImage: string;
-  setProductImage(image: string | unknown): void;
+  setProductImage(image: string): void;
 }

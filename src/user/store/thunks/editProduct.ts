@@ -1,6 +1,10 @@
 import { AppThunk } from '@/interfaces';
-import { changeModalState, setMessage } from '@/user/store/actions';
-import { editProduct } from '@/admin/api';
+import {
+  changeModalState,
+  setMessage,
+  editProduct,
+} from '@/user/store/actions';
+import { editProductApi } from '@/admin/api';
 import { IRequestBodyAdmin } from '@/admin/interfaces';
 
 export const editProductData = ({
@@ -9,8 +13,9 @@ export const editProductData = ({
 }: IRequestBodyAdmin): AppThunk => {
   return async (dispatch) => {
     try {
-      const data = await editProduct({ id, requestBody });
+      const data = await editProductApi({ id, requestBody });
       if (data.ok) {
+        dispatch(editProduct(requestBody));
         dispatch(setMessage('Product was edited'));
         dispatch(changeModalState(true));
       }
