@@ -21,7 +21,7 @@ export const CardPage: FC = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(fetchCurrentGoods(+id || 0));
+    dispatch(fetchCurrentGoods(id || '0'));
   }, []);
 
   if (isLoadCurrentGoods && !modalState) {

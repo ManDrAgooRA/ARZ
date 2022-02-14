@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from 'grommet';
-import { allGoodsSelector, goodsSelector } from '@/user/store/selectors';
+import { goodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
 import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
@@ -28,7 +28,6 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
   const [isSaleValue, setIsSaleValue] = useState(
     currentForm === 'edit' ? goods[productId || 0].isSale : false
   );
-
   const defaultValue = getDefaultValues(currentForm, goods, productId || 0);
 
   const {
