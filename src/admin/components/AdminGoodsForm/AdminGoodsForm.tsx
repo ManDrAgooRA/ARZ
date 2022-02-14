@@ -25,8 +25,8 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
   const [productImage, setProductImage] = useState(
     currentForm === 'edit' ? allGoods[productId || 0].productImage : ''
   );
-  const [radioValue, setRadioValue] = useState(
-    currentForm === 'edit' ? allGoods[productId || 0].isSale : ''
+  const [isSaleValue, setIsSaleValue] = useState(
+    currentForm === 'edit' ? allGoods[productId || 0].isSale : false
   );
 
   const defaultValue = getDefaultValues(currentForm, allGoods, productId || 0);
@@ -57,7 +57,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
         id: productId,
         isFavorite: false,
         productImage,
-        isSale: radioValue,
+        isSale: isSaleValue,
       };
       dispatch(
         addNewProduct({
@@ -71,7 +71,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
         id: productId,
         isFavorite: false,
         productImage,
-        isSale: radioValue,
+        isSale: isSaleValue,
       };
       dispatch(editProductData({ id: productId || 0, requestBody: formData }));
       dispatch(changeAdminModalState(false));
@@ -114,8 +114,8 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
         <IsSaleInput
           register={register}
           errorMessage={errors.isSale?.message || ''}
-          setRadioValue={setRadioValue}
-          radioValue={radioValue}
+          setIsSaleValue={setIsSaleValue}
+          isSaleValue={isSaleValue}
         />
 
         <button type="submit" className="btn btn-form">

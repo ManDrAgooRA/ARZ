@@ -1,8 +1,8 @@
 export interface IAdminRadio {
   register(name: string): void;
   errorMessage: string;
-  setRadioValue(value: boolean): void;
-  radioValue: boolean;
+  setIsSaleValue(value: boolean): void;
+  isSaleValue: boolean;
 }
 
 export interface IProductImageInput {
