@@ -25,13 +25,13 @@ import '../tabel.scss';
 
 export const GoodsTable = () => {
   const params = useParams();
+  const goods = useSelector(goodsSelector);
   const adminModalState = useSelector(adminModalStateSelector);
   const [currentPage, setCurrentPage] = useState(params.page || 1);
   const [productId, setProductId] = useState(0);
   const [currentForm, setCurrentForm] = useState('add');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const goods = useSelector(goodsSelector);
   const isLoadGoods = useSelector(isLoadGoodsSelector);
   const sort = useSelector(goodsSortSelector);
   const order = useSelector(goodsOrderSelector);
@@ -93,9 +93,9 @@ export const GoodsTable = () => {
         <DataTable
           sortable
           data={goods}
-          columns={getTableColumns(goods)}
+          columns={getTableColumns(goods[0])}
           pin
-          onClickRow={({ datum }) => {
+          onClickRow={({ datum }: any) => {
             setProductId(datum.id);
             dispatch(changeAdminModalState(true));
             setCurrentForm('edit');

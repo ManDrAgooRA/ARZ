@@ -1,5 +1,5 @@
 export interface IRequestBodyAdmin {
-  id?: number | undefined;
+  id?: number;
   requestBody: {
     title: string;
     productImage: string;

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from 'grommet';
-import { allGoodsSelector } from '@/user/store/selectors';
+import { allGoodsSelector, goodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
 import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
@@ -11,28 +11,25 @@ import { changeAdminModalState } from '@/user/store/actions';
 import { editProductData } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
 import {
-  TitleInput,
   ImageInput,
   IsSaleInput,
-  CategoryInput,
-  PriceInput,
-  RaitnigInput,
-  CountryInput,
-  DescriptionInput,
 } from '@/admin/components/AdminGoodsForm/inputs';
-import { getDefaultValues } from '@/admin/utlis';
+import { CastomInput } from '@/sharedComponents/CustomInputs/CastomInput/CastomInput';
+import { CastomTextArea } from '@/sharedComponents/CustomInputs/CastomTextArea/CastomTextArea';
+import { getDefaultValues, getAdminInputs } from '@/admin/utlis';
 import './AdminGoodsForm.scss';
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
   const dispatch = useDispatch();
-  const allGoods = useSelector(allGoodsSelector);
+  const goods = useSelector(goodsSelector);
   const [productImage, setProductImage] = useState(
-    currentForm === 'edit' ? allGoods[productId || 0].productImage : ''
+    currentForm === 'edit' ? goods[productId || 0].productImage : ''
   );
-  const [radioValue, setRadioValue] = useState(
-    currentForm === 'edit' ? allGoods[productId || 0].isSale : ''
+  const [isSaleValue, setIsSaleValue] = useState(
+    currentForm === 'edit' ? goods[productId || 0].isSale : false
   );
-  const defaultValue = getDefaultValues(currentForm, allGoods, productId || 0);
+
+  const defaultValue = getDefaultValues(currentForm, goods, productId || 0);
 
   const {
     register,
@@ -57,9 +54,10 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     if (currentForm === 'add') {
       const formData = {
         ...data,
+        id: productId,
         isFavorite: false,
         productImage,
-        isSale: radioValue,
+        isSale: isSaleValue,
       };
       dispatch(
         addNewProduct({
@@ -70,11 +68,11 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     } else {
       const formData = {
         ...data,
+        id: productId,
         isFavorite: false,
         productImage,
-        isSale: radioValue,
+        isSale: isSaleValue,
       };
-
       dispatch(editProductData({ id: productId || 0, requestBody: formData }));
       dispatch(changeAdminModalState(false));
     }
@@ -86,36 +84,40 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
       <form onSubmit={handleSubmit(onSubmit)} className="admin-form">
         <ImageInput
           register={register}
-          errorMessage={errors.productImage?.message}
+          errorMessage={errors.productImage?.message || ''}
           productImage={productImage}
           setProductImage={setProductImage}
         />
-        <TitleInput register={register} errorMessage={errors.title?.message} />
-        <CategoryInput
-          register={register}
-          errorMessage={errors.categories?.message}
-        />
-        <CountryInput
-          register={register}
-          errorMessage={errors.countries?.message}
-        />
-        <PriceInput register={register} errorMessage={errors.price?.message} />
-        <RaitnigInput
-          register={register}
-          errorMessage={errors.raiting?.message}
-        />
 
-        <DescriptionInput
+        {getAdminInputs(errors).map((item) => {
+          return (
+            <CastomInput
+              key={item.name}
+              label={item.label}
+              name={item.name}
+              placeholder={item.label}
+              errorMessage={item.errorMessage}
+              register={register}
+              mask={item.mask}
+            />
+          );
+        })}
+
+        <CastomTextArea
+          label="Description"
+          name="description"
+          placeholder="Description"
           register={register}
-          errorMessage={errors.description?.message}
+          errorMessage={errors.description?.message || ''}
         />
 
         <IsSaleInput
           register={register}
-          errorMessage={errors.isSale?.message}
-          setRadioValue={setRadioValue}
-          radioValue={radioValue}
+          errorMessage={errors.isSale?.message || ''}
+          setIsSaleValue={setIsSaleValue}
+          isSaleValue={isSaleValue}
         />
+
         <button type="submit" className="btn btn-form">
           {currentForm === 'edit' ? 'Edit product' : 'Add product'}
         </button>

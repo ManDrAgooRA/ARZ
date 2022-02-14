@@ -108,6 +108,21 @@ export function goods(state = initialState, action: any) {
         ...state,
         maxPrice: action.payload,
       };
+
+    case goodsActions.EDIT_PRODUCT:
+      return {
+        ...state,
+        goods: state.goods.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+      };
+
+    case goodsActions.ADD_PRODUCT:
+      return {
+        ...state,
+        goods: [...state.goods, action.payload],
+      };
+
     default:
       return state;
   }

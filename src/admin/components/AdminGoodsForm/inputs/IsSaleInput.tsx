@@ -5,16 +5,17 @@ import { IAdminRadio } from '@/admin/interfaces';
 export const IsSaleInput: FC<IAdminRadio> = ({
   register,
   errorMessage,
-  setRadioValue,
-  radioValue,
+  setIsSaleValue,
+  isSaleValue,
 }) => {
   const hanleChange = (value: string) => {
     if (value === 'true') {
-      setRadioValue(true);
+      setIsSaleValue(true);
     } else {
-      setRadioValue(false);
+      setIsSaleValue(false);
     }
   };
+
   return (
     <Box className="radio-wrapper">
       <label className="radio-title">IsSale:</label>
@@ -22,7 +23,8 @@ export const IsSaleInput: FC<IAdminRadio> = ({
         <input
           type="radio"
           value="true"
-          checked={radioValue === true}
+          name="isSale"
+          checked={isSaleValue === true}
           {...register('isSale')}
           className="radio-button"
           onChange={(e: any) => hanleChange(e.target.value)}
@@ -35,7 +37,8 @@ export const IsSaleInput: FC<IAdminRadio> = ({
         <input
           type="radio"
           value="false"
-          checked={radioValue === false}
+          name="isSale"
+          checked={isSaleValue === false}
           {...register('isSale')}
           onChange={(e: any) => hanleChange(e.target.value)}
           className="radio-button"

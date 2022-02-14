@@ -1,6 +1,8 @@
+import { ReactElement } from 'react';
+
 export interface IInput {
   register(message: string): void;
-  errorMessage: string | undefined;
+  errorMessage: string;
 }
 
 export interface ICartInput {
@@ -8,9 +10,12 @@ export interface ICartInput {
   onChange(value: string): void;
 }
 
-export interface IDateInput {
+export interface ICustomInput {
+  label: string;
+  name: string;
+  placeholder: string;
+  errorMessage: string;
   register(message: string): void;
-  errorMessage: string | undefined;
-  dateValue: string;
-  setDateValue(date: string): void;
+  icon?: ReactElement;
+  mask?: object[];
 }

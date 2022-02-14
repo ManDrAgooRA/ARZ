@@ -5,7 +5,7 @@ export interface IUser {
   phone?: string;
   dateOfBirthDay?: string;
   email?: string;
-  password?: string;
+  password: string;
   confirmPass?: string;
   role?: string;
   cart?: IGoods[];

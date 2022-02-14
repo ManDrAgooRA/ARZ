@@ -26,6 +26,7 @@ export const FilterBy: FC<IFilterBy> = ({ filterName }) => {
       filterName === 'categories' ? setCategories(value) : setCountries(value)
     );
   }, [value]);
+
   return (
     <>
       <Heading level="3">
