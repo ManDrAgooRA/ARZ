@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box } from 'grommet';
-import { goodsSelector } from '@/user/store/selectors';
+import { allGoodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
 import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
@@ -21,7 +21,7 @@ import './AdminGoodsForm.scss';
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
   const dispatch = useDispatch();
-  const goods = useSelector(goodsSelector);
+  const goods = useSelector(allGoodsSelector);
   const [productImage, setProductImage] = useState(
     currentForm === 'edit' ? goods[productId || 0].productImage : ''
   );
