@@ -6,12 +6,14 @@ export const TabelPagination = ({
   items,
   currentPage,
   handleChange,
+  pagesCount,
 }: {
   items: TGoodsUser[];
   currentPage: number;
   handleChange(e: any): void;
+  pagesCount?: number;
 }) => {
-  const pages = Math.ceil((+items.length - 1) / 20);
+  const pages = pagesCount || Math.ceil((+items.length - 1) / 20);
   return (
     <Box className="pagination-wrapper">
       <Pagination

@@ -1,22 +1,34 @@
 import { IUser } from '@/interfaces';
 
-export const ADMIN_ACTIONS = {
+export const adminActions = {
   ALL_USERS_SUCCESS: '[ADMIN] all users success',
   CHAGE_ADMIN_MODAL_STATE: '[ADMIN] change admin modal state',
   ADD_NEW_ROLE: '[ADMIN] add new role',
+  ADD_USER: '[ADMIN] add user',
+  EDIT_USER: '[ADMIN] edit user',
 };
 
 export const allUsersSuccess = (users: IUser) => ({
-  type: ADMIN_ACTIONS.ALL_USERS_SUCCESS,
+  type: adminActions.ALL_USERS_SUCCESS,
   payload: users,
 });
 
 export const changeAdminModalState = (isOpen: boolean) => ({
-  type: ADMIN_ACTIONS.CHAGE_ADMIN_MODAL_STATE,
+  type: adminActions.CHAGE_ADMIN_MODAL_STATE,
   payload: isOpen,
 });
 
 export const addNewRole = (role: string) => ({
-  type: ADMIN_ACTIONS.ADD_NEW_ROLE,
+  type: adminActions.ADD_NEW_ROLE,
   payload: role,
+});
+
+export const addUser = (user: IUser) => ({
+  type: adminActions.ADD_USER,
+  payload: user,
+});
+
+export const editUser = (user: IUser) => ({
+  type: adminActions.EDIT_USER,
+  payload: user,
 });

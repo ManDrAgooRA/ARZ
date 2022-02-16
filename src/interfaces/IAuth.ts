@@ -1,6 +1,7 @@
 import { IGoods } from '.';
 
 export interface IUser {
+  id?: number;
   userName?: string;
   phone?: string;
   dateOfBirthDay?: string;

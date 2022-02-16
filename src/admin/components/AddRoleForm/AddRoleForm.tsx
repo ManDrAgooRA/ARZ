@@ -23,7 +23,7 @@ export const AddRoleForm: FC<{ handleClose(): void }> = ({ handleClose }) => {
 
   const onSubmit = (data: { role: string }) => {
     dispatch(addNewRole(data.role));
-    dispatch(setMessage('Role was edde'));
+    dispatch(setMessage('Role was added'));
     dispatch(changeModalState(true));
     handleClose();
     reset();

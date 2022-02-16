@@ -91,10 +91,10 @@ export const UsersTabel = () => {
         <DataTable
           sortable
           data={currentPosts}
-          columns={getTableColumns(allTabelUsers)}
+          columns={getTableColumns(allTabelUsers[0])}
           resizeable
           pin
-          onClickRow={({ datum }) => {
+          onClickRow={({ datum }: any) => {
             setUserId(datum.id);
             dispatch(changeAdminModalState(true));
             setCurrentForm('edit');
@@ -102,10 +102,10 @@ export const UsersTabel = () => {
         />
       </Box>
       <TabelPagination
-        pagesCount={pagesCount}
         items={allTabelUsers}
         currentPage={+currentPage}
         handleChange={handleChange}
+        pagesCount={pagesCount}
       />
     </Box>
   );
