@@ -1,6 +1,6 @@
 import { IGoods, IUser } from '.';
 
-export interface IAuthState {
+export interface IUserState {
   userId: string;
   userCart: IGoods[];
   favorites: number[];

@@ -1,11 +1,11 @@
 import { userActions } from '@/user/store/actions';
-import { IAuthState, IGoods } from '@/interfaces';
+import { IUserState, IGoods } from '@/interfaces';
 
-export const initialState: IAuthState = {
+export const initialState: IUserState = {
   isLogin: false,
   userId: '',
   userCart: [],
-  favorites: [],
+  favorites: [2],
   userName: '',
   role: '',
 };
@@ -72,6 +72,22 @@ export function user(state = initialState, action: any) {
       return {
         ...state,
         userCart: [],
+      };
+
+    case userActions.ADD_TO_FAVORITE:
+      console.log(action.payload);
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
+
+    case userActions.REMOVE_FROM_FAVORITE:
+      console.log(action.payload);
+      return {
+        ...state,
+        favorites: state.favorites.filter(
+          (item: number) => item !== action.payload
+        ),
       };
 
     default:

@@ -20,7 +20,6 @@ export const Layout: FC<ILayout> = ({ children }) => {
   const handleClose = () => {
     dispatch(changeModalState(false));
   };
-
   return (
     <>
       <AppBar />

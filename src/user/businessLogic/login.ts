@@ -1,9 +1,9 @@
 import { login } from '@/api';
-import { IAuthData, IAuthResponse } from '@/interfaces';
+import { IUserData, IUserResponse } from '@/interfaces';
 
 export const getLogin = async ({
   requestBody,
-}: IAuthData): Promise<IAuthResponse> => {
+}: IUserData): Promise<IUserResponse> => {
   try {
     const response = await login({ requestBody });
     const data = await response.json();

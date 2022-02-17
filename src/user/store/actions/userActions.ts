@@ -1,4 +1,4 @@
-import { IAuthResponse, IGoods } from '@/interfaces';
+import { IUserResponse, IGoods } from '@/interfaces';
 
 export const userActions = {
   FETCH_SIGNUP_SUCCESS: '[AUTH] fetch signup success',
@@ -8,6 +8,8 @@ export const userActions = {
   REMOVE_FROM_CART: '[AUTH] remove from cart',
   CHANGE_COUNT_CART: '[AUTH] change count cart',
   CLEAR_CART: '[AUTH] clear cart',
+  ADD_TO_FAVORITE: '[USER] add to favorite',
+  REMOVE_FROM_FAVORITE: '[USER] remove from favorite',
 };
 
 export const changeSinUpStatus = (loginstatus: boolean) => ({
@@ -15,12 +17,12 @@ export const changeSinUpStatus = (loginstatus: boolean) => ({
   payload: loginstatus,
 });
 
-export const fetchSinUpSuccess = (user: IAuthResponse) => ({
+export const fetchSinUpSuccess = (user: IUserResponse) => ({
   type: userActions.FETCH_SIGNUP_SUCCESS,
   payload: user,
 });
 
-export const fetchLoginSuccess = (user: IAuthResponse) => ({
+export const fetchLoginSuccess = (user: IUserResponse) => ({
   type: userActions.FETCH_LOGIN_SUCCESS,
   payload: user,
 });
@@ -44,4 +46,14 @@ export const changeCountCart = (cart: IGoods[]) => ({
 
 export const clearCart = () => ({
   type: userActions.CLEAR_CART,
+});
+
+export const addToFavoriteList = (id: number) => ({
+  type: userActions.ADD_TO_FAVORITE,
+  payload: id,
+});
+
+export const removeFromFavorite = (id: number) => ({
+  type: userActions.REMOVE_FROM_FAVORITE,
+  payload: id,
 });

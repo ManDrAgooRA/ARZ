@@ -13,16 +13,16 @@ export interface IUser {
   favorites: number[];
 }
 
-export interface IAuthData {
+export interface IUserData {
   requestBody: IUser;
 }
 
-export interface IAuth {
+export interface ISignUpUser {
   requestBody: IUser;
   handleNavigate(params: string): void;
 }
 
-export interface IAuthResponseUser {
+export interface IUserResponseUser {
   email: string;
   firstName: string;
   lastName: string;
@@ -32,7 +32,7 @@ export interface IAuthResponseUser {
   id: number;
 }
 
-export interface IAuthResponse {
+export interface IUserResponse {
   accessToken: string;
-  user: IAuthResponseUser;
+  user: IUserResponseUser;
 }
