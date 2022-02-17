@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const adminGoodsForm = yup.object({
+export const adminGoodsFormSchema = yup.object({
   productImage: yup.string().required(),
   title: yup.string().required(),
   categories: yup.string().required(),

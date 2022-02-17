@@ -6,7 +6,7 @@ import { Box } from 'grommet';
 import { allGoodsSelector } from '@/user/store/selectors';
 import { IGoods } from '@/interfaces';
 import { IAdminForm } from '@/admin/interfaces';
-import { adminGoodsForm } from '@/admin/constants/validations/AdminGoodsForm';
+import { adminGoodsFormSchema } from '@/admin/constants/validations';
 import { changeAdminModalState } from '@/user/store/actions';
 import { editProductData } from '@/user/store/thunks/editProduct';
 import { addNewProduct } from '@/user/store/thunks/addProduct';
@@ -14,9 +14,9 @@ import {
   ImageInput,
   IsSaleInput,
 } from '@/admin/components/AdminGoodsForm/inputs';
-import { CastomInput } from '@/sharedComponents/CustomInputs/CastomInput/CastomInput';
-import { CastomTextArea } from '@/sharedComponents/CustomInputs/CastomTextArea/CastomTextArea';
-import { getDefaultValues, getAdminInputs } from '@/admin/utlis';
+import { CustomInput } from '@/sharedComponents/CustomInputs/CustomInput/CustomInput';
+import { CustomTextArea } from '@/sharedComponents/CustomInputs/CustomTextArea/CustomTextArea';
+import { getDefaultValues, getAdminInputs, getMaxId } from '@/admin/utlis';
 import './AdminGoodsForm.scss';
 
 export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
@@ -29,7 +29,6 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
     currentForm === 'edit' ? goods[productId || 0].isSale : false
   );
   const defaultValue = getDefaultValues(currentForm, goods, productId || 0);
-
   const {
     register,
     handleSubmit,
@@ -46,14 +45,14 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
       description: defaultValue?.description,
       isSale: defaultValue?.isSale,
     },
-    resolver: yupResolver(adminGoodsForm),
+    resolver: yupResolver(adminGoodsFormSchema),
   });
 
   const onSubmit = (data: IGoods) => {
     if (currentForm === 'add') {
       const formData = {
         ...data,
-        id: productId,
+        id: getMaxId(goods) + 1,
         isFavorite: false,
         productImage,
         isSale: isSaleValue,
@@ -90,7 +89,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
 
         {getAdminInputs(errors).map((item) => {
           return (
-            <CastomInput
+            <CustomInput
               key={item.name}
               label={item.label}
               name={item.name}
@@ -102,7 +101,7 @@ export const AdminGoodsForm: FC<IAdminForm> = ({ currentForm, productId }) => {
           );
         })}
 
-        <CastomTextArea
+        <CustomTextArea
           label="Description"
           name="description"
           placeholder="Description"

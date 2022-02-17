@@ -41,6 +41,14 @@ export const getTableColumns = (firstItem: TGoodsUser) => {
         };
       }
 
+      if (item === 'cart') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item} value`),
+          render: (datum: TGoodsUser) => `${datum.cart?.length}`,
+        };
+      }
+
       return {
         property: `${item}`,
         header: capitalizeFirstLetter(`${item}`),

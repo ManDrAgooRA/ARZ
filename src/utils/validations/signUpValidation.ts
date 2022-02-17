@@ -4,7 +4,7 @@ export const signUpValidationSchema = yup
   .object({
     userName: yup.string().required(),
     email: yup.string().email().required(),
-    phone: yup.string().required(),
+    phone: yup.string().min(14, 'Phone must be correct').required(),
     dateOfBirthDay: yup.string().required(),
     password: yup
       .string()

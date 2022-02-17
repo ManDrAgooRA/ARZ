@@ -11,3 +11,10 @@ export interface IProductImageInput {
   productImage: string;
   setProductImage(image: string): void;
 }
+
+export interface IRoleInput {
+  register(name: string): void;
+  errorMessage: string | undefined;
+  role: string;
+  setRole(option: string): void;
+}
