@@ -3,6 +3,7 @@ import { IGoods, IUser } from '.';
 export interface IAuthState {
   userId: string;
   userCart: IGoods[];
+  favorites: number[];
   isLogin: boolean;
   userName: string;
   role: string;

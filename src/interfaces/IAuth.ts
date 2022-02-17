@@ -10,6 +10,7 @@ export interface IUser {
   confirmPass?: string;
   role?: string;
   cart?: IGoods[];
+  favorites: number[];
 }
 
 export interface IAuthData {

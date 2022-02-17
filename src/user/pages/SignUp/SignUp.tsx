@@ -38,7 +38,7 @@ export const SignUp: FC = () => {
   const onSubmit = (data: IUser) => {
     dispatch(
       fetchSignUp({
-        requestBody: { ...data, role: 'user', cart: [] },
+        requestBody: { ...data, role: 'user', cart: [], favorites: [] },
         handleNavigate,
       })
     );

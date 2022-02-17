@@ -49,6 +49,14 @@ export const getTableColumns = (firstItem: TGoodsUser) => {
         };
       }
 
+      if (item === 'favorites') {
+        return {
+          property: `${item}`,
+          header: capitalizeFirstLetter(`${item} value`),
+          render: (datum: TGoodsUser) => `${datum.favorites?.length}`,
+        };
+      }
+
       return {
         property: `${item}`,
         header: capitalizeFirstLetter(`${item}`),
