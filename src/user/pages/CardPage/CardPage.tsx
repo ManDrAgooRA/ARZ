@@ -9,6 +9,7 @@ import {
   isLoadCurrentGoodsSelector,
   modalStateSeletor,
 } from '@/user/store/selectors';
+import { AddToFavorite } from '@/user/components/AddToFavorite/AddToFavorite';
 
 import './cardPage.scss';
 
@@ -40,6 +41,7 @@ export const CardPage: FC = () => {
               <img src={selectedGoods.productImage} alt={selectedGoods.title} />
             </Box>
             <Box className="card-content">
+              <AddToFavorite id={id || 0} />
               <button
                 className="btn btn-back"
                 type="button"

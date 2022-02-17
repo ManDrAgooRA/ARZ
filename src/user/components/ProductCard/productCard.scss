@@ -1,5 +1,6 @@
 .product{
   &-card{
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
   }
