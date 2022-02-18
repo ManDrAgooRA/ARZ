@@ -1,4 +1,4 @@
-import { IUser } from '@/interfaces';
+import { IGoods } from '@/interfaces';
 
 export interface IAdminModal {
   isOpen: boolean;
@@ -27,6 +27,16 @@ export interface IEditRequest {
 }
 
 export interface IEditUserRequest {
-  id?: number;
-  requestBody: IUser;
+  id: number;
+  requestBody: {
+    id: number;
+    userName: string;
+    phone: string;
+    dateOfBirthDay: string;
+    email: string;
+    password: string;
+    confirmPass: string;
+    role: string;
+    cart: IGoods[];
+  };
 }
