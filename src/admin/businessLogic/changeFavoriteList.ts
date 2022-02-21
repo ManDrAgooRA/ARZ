@@ -1,7 +1,7 @@
 import { editFavoriteListApi } from '@/admin/api';
 import { IEditFavoriteList } from '@/admin/interfaces';
 
-export const getFavoriteList = async ({
+export const changeFavoriteList = async ({
   id,
   requestBody,
 }: IEditFavoriteList) => {

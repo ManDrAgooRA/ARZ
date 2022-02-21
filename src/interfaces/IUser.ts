@@ -21,17 +21,7 @@ export interface ISignUpUser {
   handleNavigate(params: string): void;
 }
 
-export interface IUserResponseUser {
-  email: string;
-  firstName: string;
-  lastName: string;
-  age: string;
-  confirmPass: string;
-  userName: string;
-  id: number;
-}
-
 export interface IUserResponse {
   accessToken: string;
-  user: IUserResponseUser;
+  user: IUser;
 }

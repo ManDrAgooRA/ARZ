@@ -4,10 +4,10 @@ import {
   changeModalState,
   setMessage,
   editUser,
-  editToFavoriteList,
+  editFavoriteList,
 } from '@/user/store/actions';
 import { editUserApi } from '@/admin/api';
-import { getFavoriteList } from '@/admin/businessLogic/getFavoriteList';
+import { changeFavoriteList } from '@/admin/businessLogic';
 
 export const editUserData = ({
   id,
@@ -30,14 +30,14 @@ export const editUserData = ({
   };
 };
 
-export const edistUserFavoriteList = ({
+export const editUserFavoriteList = ({
   id,
   requestBody,
 }: IEditFavoriteList): AppThunk => {
   return async (dispatch) => {
     try {
-      const data = await getFavoriteList({ id, requestBody });
-      dispatch(editToFavoriteList(data.favorites));
+      const data = await changeFavoriteList({ id, requestBody });
+      dispatch(editFavoriteList(data.favorites));
     } catch {
       dispatch(changeModalState(true));
     }

@@ -47,7 +47,7 @@ export const clearCart = () => ({
   type: userActions.CLEAR_CART,
 });
 
-export const editToFavoriteList = (id: number[]) => ({
+export const editFavoriteList = (id: number[]) => ({
   type: userActions.EDIT_FAVORITE_LIST,
   payload: id,
 });

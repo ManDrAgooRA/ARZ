@@ -3,39 +3,31 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Favorite } from 'grommet-icons';
 import { userFavoritesSelector, userIdSelector } from '@/user/store/selectors';
 import { checkFavoriteId } from '@/admin/utlis';
-import { edistUserFavoriteList } from '@/user/store/thunks';
+import { editUserFavoriteList } from '@/user/store/thunks';
 
 export const AddToFavorite: FC<{ id: number }> = ({ id }) => {
   const dispatch = useDispatch();
   const favoriteList = useSelector(userFavoritesSelector);
   const userId = useSelector(userIdSelector);
   const [isFavorite, setIsFavorite] = useState(
-    !!checkFavoriteId({ favoriteList, favoriteId: +id })
+    checkFavoriteId({ favoriteList, favoriteId: +id })
   );
 
   const addToFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
+    const changedList = isFavorite
+      ? favoriteList.filter((item: number) => item !== id)
+      : [...favoriteList, +id];
+
+    dispatch(
+      editUserFavoriteList({
+        id: userId || 0,
+        requestBody: {
+          favorites: [...changedList],
+        },
+      })
+    );
     setIsFavorite(!isFavorite);
-    if (!checkFavoriteId({ favoriteList, favoriteId: +id })) {
-      dispatch(
-        edistUserFavoriteList({
-          id: userId || 0,
-          requestBody: {
-            favorites: [...favoriteList, +id],
-          },
-        })
-      );
-    } else {
-      const changedList = favoriteList.filter((item: number) => item !== id);
-      dispatch(
-        edistUserFavoriteList({
-          id: userId || 0,
-          requestBody: {
-            favorites: [...changedList],
-          },
-        })
-      );
-    }
   };
 
   return (
