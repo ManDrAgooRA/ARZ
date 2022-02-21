@@ -10,6 +10,6 @@ export const getUniqueEmail = ({
   userList: IUser[];
 }) => {
   return userList.find(
-    (item, id) => item.email === newEmail && id !== currentUserId
+    (item) => item.email === newEmail && item.id !== currentUserId
   );
 };

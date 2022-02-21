@@ -1,16 +1,15 @@
 import { IGoods } from '.';
 
 export interface IUser {
-  id?: number;
-  userName?: string;
-  phone?: string;
-  dateOfBirthDay?: string;
-  email?: string;
+  id: number;
+  userName: string;
+  phone: string;
+  dateOfBirthDay: string;
+  email: string;
   password: string;
-  confirmPass?: string;
-  role?: string;
-  cart?: IGoods[];
-  favorites: number[];
+  confirmPass: string;
+  role: string;
+  cart: IGoods[];
 }
 
 export interface IUserData {

@@ -73,8 +73,8 @@ export const AdminUserForm: FC<IAdminForm> = ({ currentForm, userId }) => {
     if (currentForm === 'edit' && !uniqueEmail) {
       dispatch(
         editUserData({
-          id: userId,
-          requestBody: { ...user, password: '1234567890' },
+          id: userId || 0,
+          requestBody: { ...user, id: userId || 0, password: '1234567890' },
         })
       );
     } else {
