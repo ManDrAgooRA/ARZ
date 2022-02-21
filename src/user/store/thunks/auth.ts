@@ -33,7 +33,6 @@ export const fetchLogin = ({
   return async (dispatch) => {
     try {
       const data = await getLogin({ requestBody });
-      console.log(data);
       if (typeof data === 'string') {
         throw new Error(data);
       }

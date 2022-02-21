@@ -8,8 +8,7 @@ export const userActions = {
   REMOVE_FROM_CART: '[AUTH] remove from cart',
   CHANGE_COUNT_CART: '[AUTH] change count cart',
   CLEAR_CART: '[AUTH] clear cart',
-  ADD_TO_FAVORITE: '[USER] add to favorite',
-  REMOVE_FROM_FAVORITE: '[USER] remove from favorite',
+  EDIT_FAVORITE_LIST: '[USER] edit favorite list',
 };
 
 export const changeSinUpStatus = (loginstatus: boolean) => ({
@@ -48,12 +47,7 @@ export const clearCart = () => ({
   type: userActions.CLEAR_CART,
 });
 
-export const addToFavoriteList = (id: number) => ({
-  type: userActions.ADD_TO_FAVORITE,
-  payload: id,
-});
-
-export const removeFromFavorite = (id: number) => ({
-  type: userActions.REMOVE_FROM_FAVORITE,
+export const editToFavoriteList = (id: number[]) => ({
+  type: userActions.EDIT_FAVORITE_LIST,
   payload: id,
 });

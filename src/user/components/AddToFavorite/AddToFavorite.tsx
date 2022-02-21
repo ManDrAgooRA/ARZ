@@ -1,65 +1,52 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import { Favorite } from 'grommet-icons';
-import { addToFavoriteList, removeFromFavorite } from '@/user/store/actions';
-import { userFavoritesSelector } from '@/user/store/selectors';
+import { userFavoritesSelector, userIdSelector } from '@/user/store/selectors';
+import { checkFavoriteId } from '@/admin/utlis';
+import { edistUserFavoriteList } from '@/user/store/thunks';
 
-const FavoriteFilled = styled(Favorite)`
-  path[fill='none'] {
-    fill: transparent;
-    stroke: 'red';
-  }
-`;
-
-export const AddToFavorite: FC<{ id: number | string }> = ({ id }) => {
+export const AddToFavorite: FC<{ id: number }> = ({ id }) => {
   const dispatch = useDispatch();
   const favoriteList = useSelector(userFavoritesSelector);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [color, setColor] = useState('transparent');
-
-  useEffect(() => {
-    if (isFavorite) {
-      setColor('#7D4CDB');
-    } else {
-      setColor('transparent');
-    }
-  }, [isFavorite]);
-
-  const checkFavoriteId = (favoriteId: number) => {
-    return favoriteList.some((item: number) => item === favoriteId);
-  };
+  const userId = useSelector(userIdSelector);
+  const [isFavorite, setIsFavorite] = useState(
+    !!checkFavoriteId({ favoriteList, favoriteId: +id })
+  );
 
   const addToFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // if (checkFavoriteId(+id)) {
-    //   dispatch(addToFavoriteList(+id));
-    //   console.log('work');
-    //   console.log(!checkFavoriteId(+id));
-    // } else {
-    //   dispatch(removeFromFavorite(+id));
-    //   // dispatch(addToFavoriteList(+id));
-    //   console.log('dont work');
-    // }
-    if (!checkFavoriteId(+id)) {
-      console.log('first');
-      dispatch(addToFavoriteList(+id));
+    setIsFavorite(!isFavorite);
+    if (!checkFavoriteId({ favoriteList, favoriteId: +id })) {
+      dispatch(
+        edistUserFavoriteList({
+          id: userId || 0,
+          requestBody: {
+            favorites: [...favoriteList, +id],
+          },
+        })
+      );
     } else {
-      console.log('not first');
-      dispatch(removeFromFavorite(+id));
-      // console.log(checkFavoriteId(+id));
+      const changedList = favoriteList.filter((item: number) => item !== id);
+      dispatch(
+        edistUserFavoriteList({
+          id: userId || 0,
+          requestBody: {
+            favorites: [...changedList],
+          },
+        })
+      );
     }
-    // console.log(checkFavoriteId(+id));
   };
-
-  // const deleteFromFavorite = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-  //   dispatch(removeFromFavorite(+id));
-  // };
 
   return (
     <button type="button" className="btn btn-product-favorite">
-      <FavoriteFilled color="brand" onClick={addToFavorite} />
+      <Favorite
+        color="brand"
+        onClick={addToFavorite}
+        className={
+          isFavorite ? 'product-favorite-icon__active' : 'product-favorite-icon'
+        }
+      />
     </button>
   );
 };
