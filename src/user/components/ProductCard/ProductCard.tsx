@@ -9,6 +9,7 @@ import {
   userRoleSelector,
   userIdSelector,
 } from '@/user/store/selectors';
+import { AddToFavorite } from '@/user/components/AddToFavorite/AddToFavorite';
 import './productCard.scss';
 
 export const ProductCard: FC<{ item: IGoods }> = ({ item }) => {
@@ -28,6 +29,7 @@ export const ProductCard: FC<{ item: IGoods }> = ({ item }) => {
 
   return (
     <Card pad="large" onClick={goCardPage} className="product-card">
+      <AddToFavorite id={item.id || 0} />
       <Box className="card-img">
         <img src={item.productImage} alt={item.title} />
       </Box>

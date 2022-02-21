@@ -3,13 +3,13 @@ import {
   fetchLoginSuccess,
   changeModalState,
 } from '@/user/store/actions';
-import { IAuth, AppThunk } from '@/interfaces';
+import { ISignUpUser, AppThunk } from '@/interfaces';
 import { getRegistrationData, getLogin } from '@/user/businessLogic';
 
 export const fetchSignUp = ({
   requestBody,
   handleNavigate,
-}: IAuth): AppThunk => {
+}: ISignUpUser): AppThunk => {
   return async (dispatch) => {
     try {
       const data = await getRegistrationData({ requestBody });
@@ -29,7 +29,7 @@ export const fetchSignUp = ({
 export const fetchLogin = ({
   requestBody,
   handleNavigate,
-}: IAuth): AppThunk => {
+}: ISignUpUser): AppThunk => {
   return async (dispatch) => {
     try {
       const data = await getLogin({ requestBody });

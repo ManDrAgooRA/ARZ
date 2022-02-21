@@ -6,3 +6,4 @@ export * from './getAdminInputs';
 export * from './getUserInputs';
 export * from './getMaxId';
 export * from './getUniqueEmail';
+export * from './checkFavoriteId';

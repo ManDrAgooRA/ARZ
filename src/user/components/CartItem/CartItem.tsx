@@ -15,21 +15,21 @@ export const CartItem: FC<IProductCartItem> = ({
 
   const incrementCount = () => {
     setCount(count + 1);
-    changeCart(item.id, count + 1);
+    changeCart(item.id || 0, count + 1);
   };
 
   const decrementCount = () => {
     setCount(count - 1);
-    changeCart(item.id, count - 1);
+    changeCart(item.id || 0, count - 1);
   };
 
   const handlerDelete = () => {
-    handleDelete(item.id);
+    handleDelete(item.id || 0);
   };
 
   const onChangeHandler = (value: string) => {
     setCount(+value <= 0 ? 1 : +value);
-    changeCart(item.id, +value <= 0 ? 1 : +value);
+    changeCart(item.id || 0, +value <= 0 ? 1 : +value);
   };
 
   return (

@@ -26,6 +26,13 @@ export interface IEditRequest {
   };
 }
 
+export interface IEditFavoriteList {
+  id: number;
+  requestBody: {
+    favorites: number[];
+  };
+}
+
 export interface IEditUserRequest {
   id: number;
   requestBody: {

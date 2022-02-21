@@ -1,7 +1,13 @@
-import { IEditUserRequest } from '@/admin/interfaces';
+import { IEditUserRequest, IEditFavoriteList } from '@/admin/interfaces';
 import { AppThunk } from '@/interfaces';
-import { changeModalState, setMessage, editUser } from '@/user/store/actions';
+import {
+  changeModalState,
+  setMessage,
+  editUser,
+  editFavoriteList,
+} from '@/user/store/actions';
 import { editUserApi } from '@/admin/api';
+import { changeFavoriteList } from '@/admin/businessLogic';
 
 export const editUserData = ({
   id,
@@ -19,6 +25,20 @@ export const editUserData = ({
       }
     } catch (e: any) {
       dispatch(setMessage(e.message));
+      dispatch(changeModalState(true));
+    }
+  };
+};
+
+export const editUserFavoriteList = ({
+  id,
+  requestBody,
+}: IEditFavoriteList): AppThunk => {
+  return async (dispatch) => {
+    try {
+      const data = await changeFavoriteList({ id, requestBody });
+      dispatch(editFavoriteList(data.favorites));
+    } catch {
       dispatch(changeModalState(true));
     }
   };

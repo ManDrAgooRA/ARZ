@@ -1,10 +1,11 @@
 import { userActions } from '@/user/store/actions';
-import { IAuthState } from '@/interfaces';
+import { IUserState, IGoods } from '@/interfaces';
 
-export const initialState: IAuthState = {
+export const initialState: IUserState = {
   isLogin: false,
   userId: '',
   userCart: [],
+  favorites: [],
   userName: '',
   role: '',
 };
@@ -24,6 +25,7 @@ export function user(state = initialState, action: any) {
         role: action.payload.user.role,
         userId: action.payload.user.id,
         userCart: [...action.payload.user.cart],
+        favorites: [...action.payload.user.favorites],
         isLogin: true,
       };
 
@@ -34,6 +36,7 @@ export function user(state = initialState, action: any) {
         role: action.payload.user.role,
         userId: action.payload.user.id,
         userCart: action.payload.user.cart ? [...action.payload.user.cart] : [],
+        favorites: [...action.payload.user.favorites],
         isLogin: true,
       };
 
@@ -44,7 +47,7 @@ export function user(state = initialState, action: any) {
       return {
         ...state,
         userCart: inCart
-          ? state.userCart.map((item) =>
+          ? state.userCart.map((item: IGoods) =>
               item.id === action.payload.id
                 ? { ...item, count: item.count + 1 }
                 : item
@@ -69,6 +72,12 @@ export function user(state = initialState, action: any) {
       return {
         ...state,
         userCart: [],
+      };
+
+    case userActions.EDIT_FAVORITE_LIST:
+      return {
+        ...state,
+        favorites: [...action.payload],
       };
 
     default:

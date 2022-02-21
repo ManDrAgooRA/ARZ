@@ -61,6 +61,17 @@
       background-color: darken($color: #7d4cdb66, $amount: 30);
     }
   }
+  &-product-favorite{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+  }
   &:hover{
     cursor: pointer;
   }

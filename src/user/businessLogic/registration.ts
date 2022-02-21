@@ -1,9 +1,9 @@
 import { registation } from '@/api';
-import { IAuthData, IAuthResponse } from '@/interfaces';
+import { IUserData, IUserResponse } from '@/interfaces';
 
 export const getRegistrationData = async ({
   requestBody,
-}: IAuthData): Promise<IAuthResponse> => {
+}: IUserData): Promise<IUserResponse> => {
   try {
     const response = await registation({ requestBody });
     const data = await response.json();

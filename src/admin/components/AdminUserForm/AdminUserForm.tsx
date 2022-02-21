@@ -52,7 +52,7 @@ export const AdminUserForm: FC<IAdminForm> = ({ currentForm, userId }) => {
   });
 
   const onSubmit = (data: IUser) => {
-    const user = { ...data, role, id: userId, cart: [] };
+    const user = { ...data, role, id: userId, cart: [], favorites: [] };
     const uniqueEmail = getUniqueEmail({
       currentUserId: userId || 1,
       newEmail: data.email || '',
