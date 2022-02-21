@@ -112,6 +112,9 @@ export function goods(state = initialState, action: any) {
     case goodsActions.EDIT_PRODUCT:
       return {
         ...state,
+        allGoods: state.allGoods.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
         goods: state.goods.map((item) =>
           item.id === action.payload.id ? action.payload : item
         ),

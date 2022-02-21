@@ -36,8 +36,11 @@ export const Login: FC = () => {
     <div className="container">
       <Heading level={2}>Login</Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-        <EmailInput register={register} errors={errors} />
-        <PasswordInput register={register} errors={errors} />
+        <EmailInput register={register} errorMessage={errors.email?.message} />
+        <PasswordInput
+          register={register}
+          errorMessage={errors.password?.message}
+        />
         <button type="submit" className="btn btn-form">
           Login
         </button>

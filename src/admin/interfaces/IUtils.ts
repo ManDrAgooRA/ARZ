@@ -9,4 +9,10 @@ export interface IErrorsAdminInputs {
   raiting?: FieldError;
 }
 
+export interface IErrorsUserInputs {
+  userName?: FieldError;
+  email?: FieldError;
+  phone?: FieldError;
+}
+
 export type TGoodsUser = IGoods & IUser;

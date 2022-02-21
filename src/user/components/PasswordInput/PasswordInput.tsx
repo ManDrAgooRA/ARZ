@@ -3,14 +3,14 @@ import { FormField, MaskedInput, Button } from 'grommet';
 import { Hide, View } from 'grommet-icons';
 import { IInput } from '@/interfaces';
 
-export const PasswordInput: FC<IInput> = ({ register, errors }) => {
+export const PasswordInput: FC<IInput> = ({ register, errorMessage }) => {
   const [passValue, setPassValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   return (
     <FormField
       label="Password"
       name="name"
-      error={errors.password?.message}
+      error={errorMessage}
       {...register('password')}
     >
       <div className="passord-wrap">

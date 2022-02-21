@@ -1,25 +1,28 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { FormField, MaskedInput } from 'grommet';
 import { Calendar } from 'grommet-icons';
 import { getDateMask } from '@/user/pages/SignUp/masks';
-import { IInput } from '@/interfaces';
+import { IDateInput } from '@/interfaces';
 
-export const DateInput: FC<IInput> = ({ register, errors }) => {
-  const [value, setValue] = useState('');
-
+export const DateInput: FC<IDateInput> = ({
+  register,
+  errorMessage,
+  dateValue,
+  setDateValue,
+}) => {
   return (
     <FormField
       label="Date of birthday"
       name="dateOfBirthDay"
-      error={errors.dateOfBirth?.message}
+      error={errorMessage}
       {...register('dateOfBirthDay')}
     >
       <MaskedInput
         icon={<Calendar />}
         name="dateOfBirthDay"
-        mask={getDateMask(value)}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
+        mask={getDateMask(dateValue)}
+        value={dateValue}
+        onChange={(event) => setDateValue(event.target.value)}
       />
     </FormField>
   );

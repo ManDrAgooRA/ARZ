@@ -1,16 +1,18 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Heading } from 'grommet';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchSignUp } from '@/user/store/thunks/auth';
-import { PhoneInput } from './Inputs/PhoneInput';
-import { DateInput } from './Inputs/DateInput';
-import { UserNameInput } from './Inputs/UserNameInput';
+import {
+  PhoneInput,
+  DateInput,
+  UserNameInput,
+  ConfirmPassword,
+} from '@/user/pages/SignUp/Inputs';
 import { EmailInput } from '@/user/components/EmailInput/EmailInput';
 import { PasswordInput } from '@/user/components/PasswordInput/PasswordInput';
-import { ConfirmPassword } from './Inputs/ConfirmPassword';
 import { signUpValidationSchema } from '@/utils/validations';
 import { IUser } from '@/interfaces';
 import './signUp.scss';
@@ -18,6 +20,7 @@ import './signUp.scss';
 export const SignUp: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [dateValue, setDateValue] = useState('');
 
   const {
     register,
@@ -46,12 +49,26 @@ export const SignUp: FC = () => {
     <div className="container">
       <Heading level={2}>SignUp</Heading>
       <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-        <UserNameInput register={register} errors={errors} />
-        <PhoneInput register={register} errors={errors} />
-        <DateInput register={register} errors={errors} />
-        <EmailInput register={register} errors={errors} />
-        <PasswordInput register={register} errors={errors} />
-        <ConfirmPassword register={register} errors={errors} />
+        <UserNameInput
+          register={register}
+          errorMessage={errors.userName?.message}
+        />
+        <PhoneInput register={register} errorMessage={errors.phone?.message} />
+        <DateInput
+          register={register}
+          errorMessage={errors.dateOfBirthDay?.message}
+          dateValue={dateValue}
+          setDateValue={setDateValue}
+        />
+        <EmailInput register={register} errorMessage={errors.email?.message} />
+        <PasswordInput
+          register={register}
+          errorMessage={errors.password?.message}
+        />
+        <ConfirmPassword
+          register={register}
+          errorMessage={errors.confirmPass?.message}
+        />
         <button type="submit" className="btn btn-form">
           SignUp
         </button>

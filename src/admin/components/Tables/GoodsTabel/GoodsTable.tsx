@@ -93,7 +93,7 @@ export const GoodsTable = () => {
         <DataTable
           sortable
           data={goods}
-          columns={getTableColumns(goods[0])}
+          columns={getTableColumns(allGoods[0])}
           pin
           onClickRow={({ datum }: any) => {
             setProductId(datum.id);

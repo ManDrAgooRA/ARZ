@@ -1,12 +1,13 @@
 import { IGoods } from '.';
 
 export interface IUser {
-  userName?: string;
-  phone?: string;
-  dateOfBirthDay?: string;
-  email?: string;
+  id: number;
+  userName: string;
+  phone: string;
+  dateOfBirthDay: string;
+  email: string;
   password: string;
-  confirmPass?: string;
+  confirmPass: string;
   role: string;
   cart: IGoods[];
 }

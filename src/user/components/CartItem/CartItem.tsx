@@ -2,11 +2,11 @@ import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash } from 'grommet-icons';
 import { LINKS } from '@/constants';
-import { IProductCardItem } from '@/interfaces';
+import { IProductCartItem } from '@/interfaces';
 import { CartInput } from '@/user/components/CartInput/CartInput';
 import './cartItem.scss';
 
-export const CartItem: FC<IProductCardItem> = ({
+export const CartItem: FC<IProductCartItem> = ({
   item,
   changeCart,
   handleDelete,
