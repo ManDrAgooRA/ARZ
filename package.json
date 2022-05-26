@@ -58,6 +58,7 @@
     "@hookform/resolvers": "^2.8.5",
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.22.0",
+    "dotenv": "^16.0.1",
     "dotenv-webpack": "^7.0.3",
     "faker": "^5.5.3",
     "grommet": "^2.19.1",
