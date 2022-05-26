@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --open",
+    "start": "webpack serve --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx}",
     "prettier": "prettier src/**/*.{ts,tsx}",
@@ -74,6 +75,7 @@
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
+    "webpack-merge": "^5.8.0",
     "yup": "^0.32.11"
   }
 }
