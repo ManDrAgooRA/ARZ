@@ -1,19 +1,19 @@
-const jsonServer = require('json-server');
+import { create, router as _router, defaults, rewriter } from 'json-server';
 
-const dotenv = require('dotenv');
+import { config } from 'dotenv';
 
-dotenv.config();
-const server = jsonServer.create();
-const router = jsonServer.router('./db.json');
+config();
+const server = create();
+const router = _router('./db.json');
 
-const middlewares = jsonServer.defaults({
+const middlewares = defaults({
   static: './build',
 });
 
 const PORT = process.env.PORT || 8000;
 server.use(middlewares);
 server.use(
-  jsonServer.rewriter({
+  rewriter({
     '/api/*': '/$1',
   })
 );
